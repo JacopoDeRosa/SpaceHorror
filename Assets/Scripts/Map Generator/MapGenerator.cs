@@ -5,13 +5,26 @@ using UnityEngine;
 public class MapGenerator : MonoBehaviour
 {
     [SerializeField] private MapRoom[] _corridors;
-    [SerializeField] private MapRoom[] _mainRooms;
     [SerializeField] private MapRoom[] _endRooms;
 
+    private MapRoom[,] _generatedMap;
 
-   private IEnumerator GenerateMap(int seed)
-   {
+    private WaitForSeconds _roomGenerationWait;
+
+    private void Awake()
+    {
+        _roomGenerationWait = new WaitForSeconds(Time.fixedDeltaTime);
+    }
+
+    private IEnumerator GenerateMap(int seed)
+    {
         Random.InitState(seed);
         yield return null;
-   }
+    }
+
+    private IEnumerator InstantiateRoom(MapRoom roomPrefab)
+    {
+
+        yield return _roomGenerationWait;
+    }
 }

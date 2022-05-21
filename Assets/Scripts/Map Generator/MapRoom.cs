@@ -7,23 +7,12 @@ public class MapRoom : MonoBehaviour
     public const string OccluderTag = "Player";
 
     [SerializeField] private MapRoom[] _connectedRooms;
-    [SerializeField] private Transform[] _connectors;
+    [SerializeField] private Direction _connections;
     [SerializeField] private Transform _entrance;
     [SerializeField] private MeshRenderer[] _childRenderers;
 
     private bool _inUse;
     private bool _visible;
-
-    public IEnumerable<Transform> Connectors 
-    {
-        get 
-        {
-            foreach (var connector in _connectors)
-            {
-                yield return connector;
-            }
-        } 
-    }
 
     private void OnValidate()
     {
