@@ -6,6 +6,7 @@ public class MapGenerator : MonoBehaviour
 {
     [SerializeField] private MapRoom[] _corridors;
     [SerializeField] private MapRoom[] _endRooms;
+    [SerializeField] private Vector2Int _roomSize;
 
     private MapRoom[,] _generatedMap;
 
