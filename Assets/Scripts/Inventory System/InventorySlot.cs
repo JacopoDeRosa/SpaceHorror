@@ -13,6 +13,12 @@ namespace SpaceHorror.InventorySystem
         private object _itemParameters;
 
         public GameItemData SlotItem { get => _slotItem; }
+
+        public InventorySlot(GameItem item)
+        {
+            _itemParameters = item.PackParameters();
+            _slotItem = item.Data;
+        }
     }
 }
 
