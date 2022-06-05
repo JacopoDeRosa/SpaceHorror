@@ -11,31 +11,39 @@ namespace SpaceHorror.InventorySystem.UI
     {
         [SerializeField] private Sprite _defaultSprite;
 
+        [SerializeField] private GameItemData _debugItem;
+
         [SerializeField] private Image _image;
         [SerializeField] private TMP_Text _description;
         [SerializeField] private TMP_Text[] _fieldsTexts;
 
         private Queue<TMP_Text> _freeTexts;
 
+        private void Start()
+        {
+            ResetInspector();
+        }
+
         public void ReadItem(GameItemData data)
         {
             ResetInspector();
             _image.sprite = data.Icon;
             _description.text = data.Description;
-
             foreach (string field in GetInspectorFields(data))
             {
                 if (_freeTexts.Count == 0) break;
                 TMP_Text text = _freeTexts.Dequeue();
+                text.gameObject.SetActive(true);
                 text.text = field;
             }
         }
 
-        public void ResetInspector()
+        private void ResetInspector()
         {
             foreach (TMP_Text text in _fieldsTexts)
             {
                 text.text = "";
+                text.gameObject.SetActive(false);
             }
             _freeTexts = new Queue<TMP_Text>(_fieldsTexts);
             _image.sprite = _defaultSprite;
@@ -57,8 +65,6 @@ namespace SpaceHorror.InventorySystem.UI
                     yield return attribute.Name + ": " + value;
                 }
             }
-        }
-
-        
+        }       
     }
 }

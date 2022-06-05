@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Generic Item Data
   m_EditorClassIdentifier: 
   _weight: 15
-  _pickUp: {fileID: 0}
+  _icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  _description: THIS IS A DEBUG ITEM
