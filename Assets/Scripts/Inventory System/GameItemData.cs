@@ -4,10 +4,24 @@ using UnityEngine;
 
 namespace SpaceHorror.InventorySystem
 {
+    [CreateAssetMenu(fileName = "Generic Item Data", menuName = "Items/New Generic Item Data")]
     public class GameItemData : ScriptableObject
     {
-        [SerializeField] private float _weight;
+        [SerializeField]
+        [InspectorField("Weight")]
+        private float _weight;
+
+        [SerializeField]
+        private Sprite _icon;
+
+        [SerializeField]
+        [TextArea]
+        private string _description;
+
+        private GameItem _pickUp;
 
         public float Weight { get => _weight; }
+        public Sprite Icon { get => _icon; }
+        public string Description { get => _description; }
     }
 }
