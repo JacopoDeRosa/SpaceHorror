@@ -9,12 +9,15 @@ namespace SpaceHorror.InventorySystem
     public class InventoryButton : Attribute
     {
         private string _text;
+        private Type _dataType;
 
         public string Text { get => _text; }
+        public Type DataType { get => _dataType; }
 
-        public InventoryButton(string buttonText)
+        public InventoryButton(string buttonText, Type dataType)
         {
             _text = buttonText;
+            _dataType = dataType;
         }
     }
 }

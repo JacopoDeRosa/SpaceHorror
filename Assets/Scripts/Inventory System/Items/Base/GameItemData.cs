@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace SpaceHorror.InventorySystem
 {
+    [CreateAssetMenu(fileName = "Generic Item Data", menuName = "Items/New Generic Item Data")]
     public class GameItemData : ScriptableObject
     {
         [SerializeField]
@@ -24,9 +25,9 @@ namespace SpaceHorror.InventorySystem
         public string Description { get => _description; }
         public GameItem PickUp { get => _pickUp; }
 
-        public virtual string GetItemType()
+        public virtual ItemTypes GetItemType()
         {
-            return "Generic";
+            return ItemTypes.Generic;
         }
     }
 }

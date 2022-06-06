@@ -11,12 +11,20 @@ namespace SpaceHorror.InventorySystem.UI
     {
         [SerializeField] private TMP_Text _text;
 
+        private bool _inUse;
 
         public Action onPress;
 
-        public void Init(string name)
+        public bool InUse { get => _inUse; }
+
+        public void SetName(string name)
         {
             _text.text = name;
+        }
+
+        public void SetInUse(bool inUse)
+        {
+            _inUse = inUse;
         }
 
         public void OnPointerDown(PointerEventData eventData)

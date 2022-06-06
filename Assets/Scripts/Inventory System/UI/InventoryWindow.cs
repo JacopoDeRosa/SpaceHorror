@@ -8,12 +8,15 @@ namespace SpaceHorror.InventorySystem.UI
     public class InventoryWindow : MonoBehaviour
     {
         [SerializeField] private InventorySlotUI[] _allSlots;
+        [SerializeField] private Inventory _inventory;
 
         private Queue<InventorySlotUI> _freeSlots;
+
 
         private void Start()
         {
             ResetWindow();
+            ReadInventory(_inventory);
         }
 
         private void ResetWindow()
@@ -34,6 +37,18 @@ namespace SpaceHorror.InventorySystem.UI
         public void ClearInventory(Inventory inventory)
         {
 
+        }
+
+        private void ReadInventory(Inventory inventory)
+        {
+            foreach (InventorySlot slot in inventory.InventorySlots)
+            {
+                if (_freeSlots.Count == 0) break;
+
+                var uiSlot = _freeSlots.Dequeue();
+                uiSlot.gameObject.SetActive(true);
+                uiSlot.Init(slot);
+            }
         }
     }
 }

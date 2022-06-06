@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
+using System.Reflection;
 using UnityEngine.EventSystems;
 
 namespace SpaceHorror.InventorySystem.UI
@@ -13,7 +15,7 @@ namespace SpaceHorror.InventorySystem.UI
         [SerializeField] private SlotOptionsMenu _optionsMenu;
         [SerializeField] private Vector2 _optionsMenuOffset;
 
-        private bool _selected;
+        private InventorySlot _targetSlot;
 
         public void OnPointerDown(PointerEventData eventData)
         {
@@ -26,6 +28,15 @@ namespace SpaceHorror.InventorySystem.UI
             {
                 print("Select the item");
             }
+        }
+
+        public void Init(InventorySlot slot)
+        {
+            _optionsMenu.InitButtons(slot.GetButtonActions());
+            _nameText.text = slot.ItemData.name;
+            _typeText.text = slot.ItemData.GetItemType().ToString();
+            _weightText.text = slot.ItemData.Weight.ToString();
+            _amountText.text = "x" + slot.ItemCount.ToString();
         }
     }
 }
