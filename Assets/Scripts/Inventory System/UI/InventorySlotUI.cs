@@ -5,29 +5,27 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 
-public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IPointerExitHandler
+namespace SpaceHorror.InventorySystem.UI
 {
-    [SerializeField] private TMP_Text _nameText, _typeText, _weightText, _amountText;
-    [SerializeField] private SlotOptionsMenu _optionsMenu;
-
-    private bool _selected;
-
-    public void OnPointerDown(PointerEventData eventData)
+    public class InventorySlotUI : MonoBehaviour, IPointerDownHandler
     {
-        if(eventData.button == PointerEventData.InputButton.Right)
-        {
-            _optionsMenu.ToggleVisible();
-            _optionsMenu.transform.position = eventData.position;
-        }
-        else if(eventData.button == PointerEventData.InputButton.Left)
-        {
-            print("Select the item");
-        }
-    }
+        [SerializeField] private TMP_Text _nameText, _typeText, _weightText, _amountText;
+        [SerializeField] private SlotOptionsMenu _optionsMenu;
+        [SerializeField] private Vector2 _optionsMenuOffset;
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        print("Exit");
-       // _optionsMenu.SetVisible(false);
+        private bool _selected;
+
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            if (eventData.button == PointerEventData.InputButton.Right)
+            {
+                _optionsMenu.ToggleVisible();
+                _optionsMenu.transform.position = eventData.position + _optionsMenuOffset;
+            }
+            else if (eventData.button == PointerEventData.InputButton.Left)
+            {
+                print("Select the item");
+            }
+        }
     }
 }

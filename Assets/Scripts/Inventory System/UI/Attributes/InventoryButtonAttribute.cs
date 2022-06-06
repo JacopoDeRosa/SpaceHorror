@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-[AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
-public class InventoryButton : Attribute
+namespace SpaceHorror.InventorySystem
 {
-    private string _text;
-
-    public string Text { get => _text; }
-
-    public InventoryButton(string buttonText)
+    [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
+    public class InventoryButton : Attribute
     {
-        _text = buttonText;
+        private string _text;
+
+        public string Text { get => _text; }
+
+        public InventoryButton(string buttonText)
+        {
+            _text = buttonText;
+        }
     }
 }

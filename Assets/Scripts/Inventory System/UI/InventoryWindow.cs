@@ -1,27 +1,40 @@
+using SpaceHorror.InventorySystem.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryWindow : MonoBehaviour
+namespace SpaceHorror.InventorySystem.UI
 {
-    [SerializeField] private InventorySlotUI[] _allSlots;
-
-    private Queue<InventorySlotUI> _freeSlots;
-
-    private void Start()
+    public class InventoryWindow : MonoBehaviour
     {
-        ResetWindow();
-    }
+        [SerializeField] private InventorySlotUI[] _allSlots;
 
+        private Queue<InventorySlotUI> _freeSlots;
 
-    private void ResetWindow()
-    {
-        foreach (InventorySlotUI slot in _allSlots)
+        private void Start()
         {
-            slot.gameObject.SetActive(false);
+            ResetWindow();
         }
 
-        _freeSlots = new Queue<InventorySlotUI>(_allSlots);
+        private void ResetWindow()
+        {
+            foreach (InventorySlotUI slot in _allSlots)
+            {
+                slot.gameObject.SetActive(false);
+            }
+
+            _freeSlots = new Queue<InventorySlotUI>(_allSlots);
+        }
+
+        public void SetInventory(Inventory inventory)
+        {
+
+        }
+
+        public void ClearInventory(Inventory inventory)
+        {
+
+        }
     }
 }
 

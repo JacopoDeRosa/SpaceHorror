@@ -3,35 +3,59 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class SlotOptionsMenu : MonoBehaviour, IPointerExitHandler
+namespace SpaceHorror.InventorySystem.UI
 {
-    [SerializeField] private GameObject _buttonsContainer;
-
-    private bool _visible;
-
-    public void OnPointerExit(PointerEventData eventData)
+    public class SlotOptionsMenu : MonoBehaviour, IPointerMoveHandler
     {
-        SetVisible(false);
-    }
+       
+        [SerializeField] private SlotOptionsButton[] _buttons;
 
-    public void SetVisible(bool visible)
-    {
-        if (visible == _visible) return;
+        private Queue<SlotOptionsButton> _freeButtons;
+        private bool _visible;
 
-        if(visible == false)
+        private void Start()
         {
-            _buttonsContainer.SetActive(false);
-        }
-        else
-        {
-            _buttonsContainer.SetActive(true);
+            foreach (var button in _buttons)
+            {
+                button.gameObject.SetActive(false);
+                button.onPress += ToggleVisible;
+            }
         }
 
-        _visible = visible;
-    }
+        public void SetVisible(bool visible)
+        {
+            if (visible == _visible) return;
 
-    public void ToggleVisible()
-    {
-        SetVisible(!_visible);
+            if (visible == false)
+            {
+                foreach (var button in _buttons)
+                {
+                    button.gameObject.SetActive(false);
+                    _freeButtons = new Queue<SlotOptionsButton>(_buttons);
+                }
+            }
+            else
+            {
+                foreach (var button in _buttons)
+                {
+                    button.gameObject.SetActive(true);
+                }
+            }
+
+            _visible = visible;
+        }
+        public void ToggleVisible()
+        {
+            SetVisible(!_visible);
+        }
+        public void OnPointerMove(PointerEventData eventData)
+        {
+            if (_visible == false) return;
+
+            if(RectTransformUtility.RectangleContainsScreenPoint((RectTransform)transform, eventData.position) == false)
+            {
+                SetVisible(false);
+            }
+        }
     }
 }

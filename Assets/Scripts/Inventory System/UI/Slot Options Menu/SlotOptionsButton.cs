@@ -5,23 +5,27 @@ using System;
 using TMPro;
 using UnityEngine.EventSystems;
 
-public class SlotOptionsButton : MonoBehaviour, IPointerDownHandler
+namespace SpaceHorror.InventorySystem.UI
 {
-    [SerializeField] private TMP_Text _text;
-
-
-    public Action onPress; 
-
-    public void Init(string name)
+    public class SlotOptionsButton : MonoBehaviour, IPointerDownHandler
     {
-        _text.text = name;
-    }
+        [SerializeField] private TMP_Text _text;
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        if(eventData.button == PointerEventData.InputButton.Left)
+
+        public Action onPress;
+
+        public void Init(string name)
         {
+            _text.text = name;
+        }
 
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            if (eventData.button == PointerEventData.InputButton.Left)
+            {
+                onPress?.Invoke();
+                print("Pressed");
+            }
         }
     }
 }
