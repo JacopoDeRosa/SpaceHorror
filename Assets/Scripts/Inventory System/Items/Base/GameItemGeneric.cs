@@ -9,15 +9,5 @@ namespace SpaceHorror.InventorySystem
         new protected T  _data;
 
         new public T Data { get => _data; }
-
-        public virtual object PackParameters()
-        {
-            return null;
-        }
-
-        public virtual void LoadParameters()
-        {
-
-        }
     }
 }

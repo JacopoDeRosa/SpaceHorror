@@ -23,5 +23,10 @@ namespace SpaceHorror.InventorySystem
         public Sprite Icon { get => _icon; }
         public string Description { get => _description; }
         public GameItem PickUp { get => _pickUp; }
+
+        public virtual string GetItemType()
+        {
+            return "Generic";
+        }
     }
 }
