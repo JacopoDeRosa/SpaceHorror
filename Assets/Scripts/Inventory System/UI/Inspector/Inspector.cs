@@ -10,9 +10,6 @@ namespace SpaceHorror.InventorySystem.UI
     public class Inspector : MonoBehaviour
     {
         [SerializeField] private Sprite _defaultSprite;
-
-        [SerializeField] private GameItemData _debugItem;
-
         [SerializeField] private Image _image;
         [SerializeField] private TMP_Text _description;
         [SerializeField] private TMP_Text[] _fieldsTexts;

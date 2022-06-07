@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weight: 0
   _icon: {fileID: 0}
-  _description: 
+  _description: 'Second Generic Usable Item
+
+'
   _pickUp: {fileID: 0}
