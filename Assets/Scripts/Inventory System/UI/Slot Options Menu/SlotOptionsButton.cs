@@ -13,7 +13,7 @@ namespace SpaceHorror.InventorySystem.UI
 
         private bool _inUse;
 
-        public Action onPress;
+        public event Action onPress;
 
         public bool InUse { get => _inUse; }
 
@@ -25,6 +25,11 @@ namespace SpaceHorror.InventorySystem.UI
         public void SetInUse(bool inUse)
         {
             _inUse = inUse;
+        }
+
+        public void ResetPressEvent()
+        {
+            onPress = null;
         }
 
         public void OnPointerDown(PointerEventData eventData)

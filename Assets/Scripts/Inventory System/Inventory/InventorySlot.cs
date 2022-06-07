@@ -79,33 +79,22 @@ namespace SpaceHorror.InventorySystem
         #endregion
 
         #region Options
-
-        public IEnumerable<ButtonAction> GetButtonActions()
-        {
-            yield return new ButtonAction("Drop x1", DropOne);
-            yield return new ButtonAction("Drop x5", DropFive);
-
-            UsableItemData usableItemData = _itemData as UsableItemData;
-            if(usableItemData != null)
-            {
-                yield return new ButtonAction("Consume", Use);
-            }
-            
-        }
-
+        [InventoryButton("Drop x1")]
         private void DropOne()
         {
-
+            Debug.Log("Dropped 1 of " + _itemData.name);
         }
 
+        [InventoryButton("Drop x5")]
         private void DropFive()
         {
-
+            Debug.Log("Dropped 5 of " + _itemData.name);
         }
 
+        [InventoryButton("Consume", typeof(UsableItemData))]
         private void Use()
         {
-
+            Debug.Log("Consumed " + _itemData.name);
         }
         #endregion
 

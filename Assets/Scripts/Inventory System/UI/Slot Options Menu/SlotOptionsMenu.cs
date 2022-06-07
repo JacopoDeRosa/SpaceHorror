@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System;
+using System.Reflection;
 
 namespace SpaceHorror.InventorySystem.UI
 {
@@ -28,7 +30,7 @@ namespace SpaceHorror.InventorySystem.UI
                 button.gameObject.SetActive(false);
 
                 // Setting the event to null clears it of all trash delegates.
-                button.onPress = null;
+                button.ResetPressEvent();
 
                 // Re-Adds the toggle visible action.
                 button.onPress += ToggleVisible;
@@ -37,30 +39,49 @@ namespace SpaceHorror.InventorySystem.UI
             }
         }
 
-        public void InitButtons(IEnumerable<ButtonAction> actions)
+        private void SetSlotActions(InventorySlot slot)
         {
-            foreach (ButtonAction action in actions)
+            BindingFlags bindingFlag = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
+
+            // Get the slot type and all its methods.
+            Type slotType = slot.GetType();
+            MethodInfo[] allMethods = slotType.GetMethods(bindingFlag);
+
+            // Get the event from the buttons
+            EventInfo buttonEventInfo = _buttons[0].GetType().GetEvent("onPress");
+            Type eventType = buttonEventInfo.EventHandlerType;
+
+            Type buttonAttributeType = typeof(InventoryButton);
+
+            foreach (MethodInfo method in allMethods)
             {
-                if (_freeButtons.Count == 0) return;
+                if (method.IsDefined(buttonAttributeType))
+                {
 
-                // Gets the button from the queue
-                var button = _freeButtons.Dequeue();
+                    // Get all the attributes, this helps find methods that may work with multiple types.
+                    IEnumerable<InventoryButton> attributes = method.GetCustomAttributes<InventoryButton>();
 
-                // Setting the event to null clears it of all trash delegates.
-                button.onPress = null;
+                    foreach (InventoryButton attribute in attributes)
+                    {
+                        if (attribute.DataType == typeof(GameItemData) || slot.ItemData.GetType() == attribute.DataType)
+                        {
+                            SlotOptionsButton button = _freeButtons.Dequeue();
+                            button.SetInUse(true);
+                            button.SetName(attribute.Text);
+                            Delegate handler = Delegate.CreateDelegate(eventType, slot, method);
+                            buttonEventInfo.AddEventHandler(button, handler);
+                        }
+                    }
 
-                // Re-Adds the toggle visible action.
-                button.onPress += ToggleVisible;
-
-                // Adds the action that the button needs to handle.
-                button.onPress += action.Action;
-
-                // Names the button after the action
-                button.SetName(action.Name);
-
-                // Sets the button in use so it will be drawn later.
-                button.SetInUse(true);
+                }
             }
+
+        }
+
+        public void SetSlot(InventorySlot slot)
+        {
+            ResetButtons();
+            SetSlotActions(slot);
         }
 
         public void SetVisible(bool visible)

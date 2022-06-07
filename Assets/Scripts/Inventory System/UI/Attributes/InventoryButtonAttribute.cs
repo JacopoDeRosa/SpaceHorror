@@ -13,7 +13,11 @@ namespace SpaceHorror.InventorySystem
 
         public string Text { get => _text; }
         public Type DataType { get => _dataType; }
-
+        public InventoryButton(string buttonText)
+        {
+            _text = buttonText;
+            _dataType = typeof(GameItemData);
+        }
         public InventoryButton(string buttonText, Type dataType)
         {
             _text = buttonText;

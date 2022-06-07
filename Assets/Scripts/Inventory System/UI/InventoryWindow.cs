@@ -9,6 +9,7 @@ namespace SpaceHorror.InventorySystem.UI
     {
         [SerializeField] private InventorySlotUI[] _allSlots;
         [SerializeField] private Inventory _inventory;
+        [SerializeField] private SlotOptionsMenu _optionsMenu;
 
         private Queue<InventorySlotUI> _freeSlots;
 
@@ -23,6 +24,7 @@ namespace SpaceHorror.InventorySystem.UI
         {
             foreach (InventorySlotUI slot in _allSlots)
             {
+                slot.SetOptionsMenu(_optionsMenu);
                 slot.gameObject.SetActive(false);
             }
 
