@@ -9,21 +9,19 @@ using UnityEngine.EventSystems;
 
 namespace SpaceHorror.InventorySystem.UI
 {
-    public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
+    public class ItemSlotUI : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
         [SerializeField] private Image _image;
-
         [SerializeField] private Vector2 _optionsMenuOffset;
 
         private Inspector _inspector;
-        private InventorySlot _targetSlot;
+        private ItemSlot _targetSlot;
         private SlotOptionsMenu _optionsMenu;
 
         public void SetOptionsMenu(SlotOptionsMenu menu)
         {
             _optionsMenu = menu;
         }
-
         public void SetInspector(Inspector inspector)
         {
             _inspector = inspector;
@@ -40,11 +38,11 @@ namespace SpaceHorror.InventorySystem.UI
                 _optionsMenu.ToggleVisible();
                 _optionsMenu.transform.position = eventData.position + _optionsMenuOffset;
 
-                print("Select " + _targetSlot.ItemData.name);
+           //  print("Select " + _targetSlot.ItemData.name);
             }
             else if (eventData.button == PointerEventData.InputButton.Left)
             {
-                print("Select " + _targetSlot.ItemData.name);
+           //     print("Select " + _targetSlot.ItemData.name);
             }
         }
 
@@ -56,17 +54,19 @@ namespace SpaceHorror.InventorySystem.UI
 
         public void OnDrag(PointerEventData eventData)
         {
-           
+            transform.position = eventData.position;
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            
+         //   print("End Drag of" + _targetSlot.ItemData.name);
+            _image.raycastTarget = true;
         }
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            
+           // print("Begin Drag of" + _targetSlot.ItemData.name);
+            _image.raycastTarget = false;
         }
     }
 }

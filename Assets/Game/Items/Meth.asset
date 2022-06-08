@@ -10,9 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88f567139e7670c4db2a1fe53436c43e, type: 3}
-  m_Name: Usable Item Data
+  m_Name: Meth
   m_EditorClassIdentifier: 
-  _weight: 5
-  _icon: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
-  _description: Generic Usable Item
+  _weight: 1
+  _icon: {fileID: 0}
+  _description: Baked by the bald man himself, worth a lot on the market, mexicans
+    call it "Azul".
+  _stackable: 1
+  _size: {x: 2, y: 2}
   _pickUp: {fileID: 0}

@@ -25,7 +25,7 @@ namespace SpaceHorror.InventorySystem.UI
             ResetInspector();
         }
 
-        public void ReadSlot(InventorySlot slot)
+        public void ReadSlot(ItemSlot slot)
         {
             ResetInspector();
 

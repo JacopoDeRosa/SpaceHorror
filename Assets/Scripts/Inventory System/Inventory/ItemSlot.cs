@@ -5,25 +5,28 @@ using System.Collections.Generic;
 namespace SpaceHorror.InventorySystem
 {
     [System.Serializable]
-    public class InventorySlot
+    public class ItemSlot
     {
         [SerializeField] private GameItemData _itemData;
         [SerializeField] private int _itemCount;
 
         private object _itemParameters;
 
+        private Vector2Int _size;
+        private Vector2Int _position;
+
         public object ItemParameters { get => _itemParameters; }
         public GameItemData ItemData { get => _itemData; }
         public int ItemCount { get => _itemCount; }
 
         #region Constructors
-        public InventorySlot(GameItem item)
+        public ItemSlot(GameItem item)
         {
             _itemParameters = item.PackParameters();
             _itemData = item.Data;
             _itemCount = 1;
         }
-        public InventorySlot(GameItemData data)
+        public ItemSlot(GameItemData data)
         {
             _itemData = data;
             _itemCount = 1;
@@ -34,7 +37,7 @@ namespace SpaceHorror.InventorySystem
         #region Equality Comparisons
         public override bool Equals(object obj)
         {
-            InventorySlot slot = obj as InventorySlot;
+            ItemSlot slot = obj as ItemSlot;
 
             if (slot == null) return false;
 
@@ -59,7 +62,7 @@ namespace SpaceHorror.InventorySystem
             }
         }
 
-        public static bool operator ==(InventorySlot a, InventorySlot b)
+        public static bool operator ==(ItemSlot a, ItemSlot b)
         {
             if(ReferenceEquals(a, b))
             {
@@ -72,7 +75,7 @@ namespace SpaceHorror.InventorySystem
 
             return a.Equals(b);
         }
-        public static bool operator !=(InventorySlot a, InventorySlot b)
+        public static bool operator !=(ItemSlot a, ItemSlot b)
         {
             return !(a == b);
         }

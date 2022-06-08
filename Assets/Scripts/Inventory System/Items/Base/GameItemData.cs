@@ -18,12 +18,21 @@ namespace SpaceHorror.InventorySystem
         [TextArea]
         private string _description;
 
+        [SerializeField]
+        private bool _stackable;
+
+        [SerializeField]
+        private Vector2Int _size;
+
         protected GameItem _pickUp;
 
         public float Weight { get => _weight; }
         public Sprite Icon { get => _icon; }
         public string Description { get => _description; }
+        public Vector2Int Size { get => _size; }
+        public bool Stackable { get => _stackable; }
         public GameItem PickUp { get => _pickUp; }
+
 
         public virtual ItemTypes GetItemType()
         {

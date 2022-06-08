@@ -1914,8 +1914,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: Test 01
-  _size: {x: 0, y: 0}
-  _initialItems: []
+  _size: {x: 12, y: 15}
+  _initialItems:
+  - _itemData: {fileID: 11400000, guid: 9df7238a0378ac14f9211b12c77c1144, type: 2}
+    _itemCount: 2
+  - _itemData: {fileID: 11400000, guid: c3e646bd08563dd4fa93e586a1f2c8d1, type: 2}
+    _itemCount: 5
+  - _itemData: {fileID: 11400000, guid: 54dd109a93b80c24f9e7fb0f09f7289c, type: 2}
+    _itemCount: 12
+  - _itemData: {fileID: 11400000, guid: 1199bb046dec1534fbabadcf18af8057, type: 2}
+    _itemCount: 1
 --- !u!1 &1130404359
 GameObject:
   m_ObjectHideFlags: 0
@@ -4280,7 +4288,7 @@ GameObject:
   - component: {fileID: 1759289680}
   - component: {fileID: 1759289682}
   m_Layer: 5
-  m_Name: Grid_Slot (1)
+  m_Name: Grid_Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4353,11 +4361,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1759289678}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da855edbff602944da7ba5767704f47f, type: 3}
+  m_Script: {fileID: 11500000, guid: 5aeb3e4140e33cc46ae04d1d82436639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _image: {fileID: 1759289680}
-  _optionsMenuOffset: {x: 0, y: 0}
 --- !u!224 &1907739203 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3461729197284000516, guid: 8dadfc7764e997f4c9f679de80f6a986,

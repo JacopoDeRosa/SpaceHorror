@@ -9,12 +9,14 @@ namespace SpaceHorror.InventorySystem
     {
         [SerializeField] private string _name;
         [SerializeField] private Vector2Int _size;
-        [SerializeField] private List<InventorySlot> _initialItems;
+        [SerializeField] private List<ItemSlot> _initialItems;
 
+        private List<ItemSlot> _allItems;
+        private InventoryCell[,] _slots;
 
-        private InventorySlot[,] _slots;
         public string Name { get => _name; }
-        public InventorySlot[,] InventorySlots { get => _slots; }
+        public InventoryCell[,] InventorySlots { get => _slots; }
+        public IEnumerable<ItemSlot> AllItems { get => new List<ItemSlot>(_allItems); }
 
 
         public event InventorySlotHandler onSlotAdded;
@@ -22,11 +24,28 @@ namespace SpaceHorror.InventorySystem
         public float GetTotalWeight()
         {
             float weight = 0;
-            foreach (InventorySlot slot in _slots)
+            foreach (ItemSlot item in _allItems)
             {
-                weight += slot.ItemData.Weight;
+                weight += item.ItemCount * item.ItemData.Weight;
             }
             return weight;
+        }
+
+        private void Awake()
+        {
+            _slots = new InventoryCell[_size.x, _size.y];
+            for (int x = 0; x < _size.x; x++)
+            {
+                for (int y = 0; y < _size.y; y++)
+                {
+                    _slots[x,y] = new InventoryCell(x, y);
+                }
+            }
+        }
+
+        public void TryPlaceItem(ItemSlot slot)
+        {
+
         }
     }
 }

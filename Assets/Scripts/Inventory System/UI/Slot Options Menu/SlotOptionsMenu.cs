@@ -39,7 +39,7 @@ namespace SpaceHorror.InventorySystem.UI
             }
         }
 
-        private void SetSlotActions(InventorySlot slot)
+        private void SetSlotActions(ItemSlot slot)
         {
             BindingFlags bindingFlag = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
 
@@ -87,7 +87,7 @@ namespace SpaceHorror.InventorySystem.UI
             button.onPress += action.Action;
         }
 
-        public void SetSlot(InventorySlot slot)
+        public void SetSlot(ItemSlot slot)
         {
             ResetButtons();
             SetSlotActions(slot);
