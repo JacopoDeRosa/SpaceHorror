@@ -3,22 +3,22 @@ using UnityEngine;
 
 namespace SpaceHorror.InventorySystem
 {
-    public class InventoryCell : MonoBehaviour
+    public class Cell
     {
         private ItemSlot _slot;
         private Vector2Int _position;
 
         public ItemSlot Occupied { get => _slot; }
-        public Vector2 Position { get => _position; }
+        public Vector2Int Position { get => _position; }
 
         public bool InUse { get => _slot != null; }
 
-        public InventoryCell()
+        public Cell()
         {
             _slot = null;
         }
 
-        public InventoryCell(int x, int y)
+        public Cell(int x, int y)
         {
             _position = new Vector2Int(x, y);
         }

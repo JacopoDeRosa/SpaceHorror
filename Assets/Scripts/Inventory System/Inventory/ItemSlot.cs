@@ -18,17 +18,23 @@ namespace SpaceHorror.InventorySystem
         public object ItemParameters { get => _itemParameters; }
         public GameItemData ItemData { get => _itemData; }
         public int ItemCount { get => _itemCount; }
+        public Vector2Int Size { get => _size; }
+        public Vector2Int Position { get => _position; }
+
+        public event ItemSlotHandler onSlotChanged;
 
         #region Constructors
         public ItemSlot(GameItem item)
         {
             _itemParameters = item.PackParameters();
             _itemData = item.Data;
+            _size = item.Data.Size;
             _itemCount = 1;
         }
         public ItemSlot(GameItemData data)
         {
             _itemData = data;
+            _size = data.Size;
             _itemCount = 1;
             _itemParameters = null;
         }
@@ -104,12 +110,30 @@ namespace SpaceHorror.InventorySystem
         public void AddToCount(int amount)
         {
             _itemCount += amount;
+            InvokeSlotChanged();
         }
         
         public void RemoveFromCount(int amount)
         {
             _itemCount -= amount;
+            InvokeSlotChanged();
         }
+
+        public void SetPosition(Vector2Int position)
+        {
+            _position = position;
+        }
+
+        private void InvokeSlotChanged()
+        {
+            onSlotChanged?.Invoke(this);
+        }
+
+        private void ResetEvents()
+        {
+            onSlotChanged = null;
+        }
+
     }
 }
 

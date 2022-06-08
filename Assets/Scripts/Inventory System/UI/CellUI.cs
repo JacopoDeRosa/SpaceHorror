@@ -6,14 +6,14 @@ using UnityEngine.EventSystems;
 
 namespace SpaceHorror.InventorySystem.UI
 {
-    public class InventoryCellUI : MonoBehaviour
+    public class CellUI : MonoBehaviour
     {
 
-        private InventoryCell _targetCell;
+        private Cell _targetCell;
 
-        public InventoryCell TargetCell { get => _targetCell; }
+        public Cell TargetCell { get => _targetCell; }
 
-        public void SetPosition(InventoryCell targetCell)
+        public void SetPosition(Cell targetCell)
         {
             _targetCell = targetCell;
         }

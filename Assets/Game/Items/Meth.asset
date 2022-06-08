@@ -17,5 +17,5 @@ MonoBehaviour:
   _description: Baked by the bald man himself, worth a lot on the market, mexicans
     call it "Azul".
   _stackable: 1
-  _size: {x: 2, y: 2}
+  _size: {x: 1, y: 1}
   _pickUp: {fileID: 0}
