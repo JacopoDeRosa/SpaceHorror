@@ -9,10 +9,9 @@ using UnityEngine.EventSystems;
 
 namespace SpaceHorror.InventorySystem.UI
 {
-    public class InventorySlotUI : MonoBehaviour, IPointerDownHandler
+    public class InventorySlotUI : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
-        [SerializeField] private TMP_Text _nameText, _typeText, _weightText, _amountText;
-        [SerializeField] private Image _background;
+        [SerializeField] private Image _image;
 
         [SerializeField] private Vector2 _optionsMenuOffset;
 
@@ -62,6 +61,21 @@ namespace SpaceHorror.InventorySystem.UI
         {
             _inspector.transform.position = _optionsMenu.transform.position;
             _inspector.ReadSlot(_targetSlot);
+        }
+
+        public void OnDrag(PointerEventData eventData)
+        {
+           
+        }
+
+        public void OnEndDrag(PointerEventData eventData)
+        {
+            
+        }
+
+        public void OnBeginDrag(PointerEventData eventData)
+        {
+            
         }
     }
 }

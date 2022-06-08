@@ -12,8 +12,6 @@ namespace SpaceHorror.InventorySystem.UI
         [SerializeField] private SlotOptionsMenu _optionsMenu;
         [SerializeField] private Inspector _inspector;
 
-        private Queue<InventorySlotUI> _freeSlots;
-
 
         private void Start()
         {
@@ -27,10 +25,7 @@ namespace SpaceHorror.InventorySystem.UI
             {
                 slot.SetOptionsMenu(_optionsMenu);
                 slot.SetInspector(_inspector);
-                slot.gameObject.SetActive(false);
             }
-
-            _freeSlots = new Queue<InventorySlotUI>(_allSlots);
         }
 
         public void SetInventory(Inventory inventory)
@@ -45,14 +40,7 @@ namespace SpaceHorror.InventorySystem.UI
 
         private void ReadInventory(Inventory inventory)
         {
-            foreach (InventorySlot slot in inventory.InventorySlots)
-            {
-                if (_freeSlots.Count == 0) break;
-
-                var uiSlot = _freeSlots.Dequeue();
-                uiSlot.gameObject.SetActive(true);
-                uiSlot.Init(slot);
-            }
+         
         }
     }
 }
