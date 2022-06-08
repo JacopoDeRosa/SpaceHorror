@@ -4,11 +4,13 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 namespace SpaceHorror.InventorySystem.UI
 {
     public class Inspector : MonoBehaviour
     {
+        [SerializeField] private GameObject _mainWindow;
         [SerializeField] private Sprite _defaultSprite;
         [SerializeField] private Image _image;
         [SerializeField] private TMP_Text _description;
@@ -16,23 +18,28 @@ namespace SpaceHorror.InventorySystem.UI
 
         private Queue<TMP_Text> _freeTexts;
 
+        private bool _visible;
+
         private void Start()
         {
             ResetInspector();
         }
 
-        public void ReadItem(GameItemData data)
+        public void ReadSlot(InventorySlot slot)
         {
             ResetInspector();
-            _image.sprite = data.Icon;
-            _description.text = data.Description;
-            foreach (string field in GetInspectorFields(data))
-            {
-                if (_freeTexts.Count == 0) break;
-                TMP_Text text = _freeTexts.Dequeue();
-                text.gameObject.SetActive(true);
-                text.text = field;
-            }
+
+            GameItemData slotData = slot.ItemData;
+
+            _image.sprite = slotData.Icon;
+
+            _description.text = slotData.Description;
+
+            AddFields(GetInspectorFields(slotData));
+
+            AddFields(GetInspectorFields(slot.ItemParameters));
+
+            SetVisible(true);
         }
 
         private void ResetInspector()
@@ -49,6 +56,8 @@ namespace SpaceHorror.InventorySystem.UI
 
         private IEnumerable<string> GetInspectorFields(object data)
         {     
+            if(data == null) yield break;
+
             var type = data.GetType();
             var propeties = type.GetFields(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public);
             Debug.Log(propeties.Length);
@@ -62,6 +71,33 @@ namespace SpaceHorror.InventorySystem.UI
                     yield return attribute.Name + ": " + value;
                 }
             }
-        }       
+        }  
+        
+        private void AddFields(IEnumerable<string> fields)
+        {
+            foreach (string field in fields)
+            {
+                if (_freeTexts.Count == 0) break;
+                TMP_Text text = _freeTexts.Dequeue();
+                text.gameObject.SetActive(true);
+                text.text = field;
+            }
+        }
+
+        public void SetVisible(bool visible)
+        {
+            if (_visible == visible) return;
+
+            if (visible)
+            {
+                _mainWindow.SetActive(true);
+            }
+            else
+            {
+                _mainWindow.SetActive(false);
+            }
+
+            _visible = visible;
+        }
     }
 }

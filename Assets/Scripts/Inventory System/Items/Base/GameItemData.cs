@@ -9,7 +9,7 @@ namespace SpaceHorror.InventorySystem
     {
         [SerializeField]
         [InspectorField("Weight")]
-        private float _weight;
+        protected float _weight;
 
         [SerializeField]
         private Sprite _icon;

@@ -78,6 +78,15 @@ namespace SpaceHorror.InventorySystem.UI
 
         }
 
+        public void AddSlotAction(ButtonAction action)
+        {
+            if (_freeButtons.Count == 0) return;
+            SlotOptionsButton button = _freeButtons.Dequeue();
+            button.SetInUse(true);
+            button.SetName(action.Name);
+            button.onPress += action.Action;
+        }
+
         public void SetSlot(InventorySlot slot)
         {
             ResetButtons();
