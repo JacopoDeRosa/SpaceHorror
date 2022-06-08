@@ -48,15 +48,6 @@ namespace SpaceHorror.InventorySystem.UI
             }
         }
 
-        public void Init(InventorySlot slot)
-        {
-            _nameText.text = slot.ItemData.name;
-            _typeText.text = slot.ItemData.GetItemType().ToString();
-            _weightText.text = slot.ItemData.Weight.ToString();
-            _amountText.text = "x" + slot.ItemCount.ToString();
-            _targetSlot = slot;
-        }
-
         private void InspectSlot()
         {
             _inspector.transform.position = _optionsMenu.transform.position;
