@@ -24,6 +24,11 @@ namespace SpaceHorror.InventorySystem.UI
 
         private CellUI[,] _cellsGrid;
 
+        private void Awake()
+        {
+            SubToEvents();
+        }
+
         private void Start()
         {
             if (_inventory == null)
@@ -50,6 +55,14 @@ namespace SpaceHorror.InventorySystem.UI
             }
             _freeSlots = new Queue<ItemSlotUI>(_allSlots);
             _freeCells = new Queue<CellUI>(_allCells);           
+        }
+
+        private void SubToEvents()
+        {
+            foreach (ItemSlotUI slot in _allSlots)
+            {
+                slot.onSlotDeath += RecycleSlotUI;
+            }
         }
 
         public void SetInventory(Inventory inventory)
@@ -99,6 +112,24 @@ namespace SpaceHorror.InventorySystem.UI
                 uiSlot.SetItemSlot(slot);
                 uiSlot.SetPosition(_cellsGrid[slot.Position.x, slot.Position.y].transform.position);
             }
+        }
+
+        private void RecycleSlotUI(ItemSlotUI slot)
+        {
+            slot.SetOptionsMenu(_optionsMenu);
+            slot.SetInspector(_inspector);
+            slot.SetItemSlot(null);
+            _freeSlots.Enqueue(slot);
+            slot.gameObject.SetActive(false);   
+        }
+
+        private void ResetCells()
+        {
+            foreach (CellUI cell in _allCells)
+            {
+                cell.gameObject.SetActive(false);
+            }
+            _freeCells = new Queue<CellUI>(_allCells);
         }
     }
 }

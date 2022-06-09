@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -23,7 +24,8 @@ namespace SpaceHorror.InventorySystem
         public Inventory ParentInventory { get => _parentInventory; }
 
         public event ItemSlotHandler onSlotPositionChange;
-        public event IntHandler onSlotCountChange;
+        public event ItemSlotHandler onSlotCountChange;
+        public event Action onDestroy;
 
         #region Constructors
         public ItemSlot(GameItem item, Inventory parent)
@@ -112,13 +114,13 @@ namespace SpaceHorror.InventorySystem
         public void AddToCount(int amount)
         {
             _itemCount += amount;
-            onSlotCountChange?.Invoke(_itemCount);
+            onSlotCountChange?.Invoke(this);
         }
         
         public void RemoveFromCount(int amount)
         {
             _itemCount -= amount;
-            onSlotCountChange?.Invoke(_itemCount);
+            onSlotCountChange?.Invoke(this);
         }
 
         public void SetPosition(Vector2Int position)
@@ -150,6 +152,21 @@ namespace SpaceHorror.InventorySystem
         public void DropBack()
         {
             _parentInventory.TryPlaceItem(this, _parentInventory.GetCell(Position.x, Position.y));
+        }
+
+        public bool TryTransferItems(ItemSlot slot)
+        {
+            if (_itemData.Stackable == false || slot.ItemData != _itemData) return false;
+
+            slot.AddToCount(_itemCount);
+            DestorySlot();
+
+            return true;
+        }
+
+        private void DestorySlot()
+        {
+            onDestroy?.Invoke();
         }
     }
 }

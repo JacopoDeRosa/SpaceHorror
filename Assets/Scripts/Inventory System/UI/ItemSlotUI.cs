@@ -45,6 +45,8 @@ namespace SpaceHorror.InventorySystem.UI
 
         private CellUI _starterCell;
 
+        public ItemSlotUIHandler onSlotDeath;
+
         public void SetOptionsMenu(SlotOptionsMenu menu)
         {
             _optionsMenu = menu;
@@ -61,12 +63,23 @@ namespace SpaceHorror.InventorySystem.UI
             UpdateTexts(slot);
             _spriteImage.sprite = slot.ItemData.Icon;
             _targetSlot = slot;
+            _targetSlot.onDestroy += OnTargetDeath;
+        }
+
+        private void OnTargetDeath()
+        {
+            onSlotDeath?.Invoke(this);
         }
 
         private void UpdateTexts(ItemSlot slot)
         {
             _nameText.text = slot.ItemData.name;
             _amountText.text = "x" + slot.ItemCount.ToString();
+        }
+
+        private void UpdateTexts()
+        {
+            UpdateTexts(_targetSlot);
         }
 
         private void InspectSlot()
