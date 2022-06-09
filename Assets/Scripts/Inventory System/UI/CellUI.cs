@@ -20,7 +20,7 @@ namespace SpaceHorror.InventorySystem.UI
             _targetCell = targetCell;
             debugText.text = targetCell.Position.ToString();
             gameObject.name = targetCell.Position.ToString();
-            if (_targetCell.InUse) GetComponent<Image>().color = Color.red;
+            if (_targetCell.InUse) GetComponent<Image>().color = Color.blue;
         }
 
     }

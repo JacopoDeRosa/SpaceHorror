@@ -97,7 +97,7 @@ namespace SpaceHorror.InventorySystem.UI
                 var uiSlot = _freeSlots.Dequeue();
                 uiSlot.gameObject.SetActive(true);
                 uiSlot.SetItemSlot(slot);
-                uiSlot.transform.position = _cellsGrid[slot.Position.x, slot.Position.y].transform.position;
+                uiSlot.SetPosition(_cellsGrid[slot.Position.x, slot.Position.y].transform.position);
             }
         }
     }

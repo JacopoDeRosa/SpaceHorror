@@ -62,11 +62,10 @@ namespace SpaceHorror.InventorySystem
                     {
                         slot.SetPosition(new Vector2Int(x, y));
 
-                        print("Placing" + slot.ItemData.name + " slot at " + x + " " + y + " it used this number of cells " + GetSlotCells(slot, checkCell).ToList().Count);
+                        print("Placing " + slot.ItemData.name + " slot at " + checkCell.Position + " it used this number of cells " + GetSlotCells(slot, checkCell).ToList().Count);
 
                         foreach (var cell in GetSlotCells(slot, checkCell))
                         {
-                            print(cell.Position);
                             cell.SetSlot(slot);
                         }
                         _allItems.Add(slot);
@@ -100,83 +99,42 @@ namespace SpaceHorror.InventorySystem
 
         public bool SlotCanFit(ItemSlot slot, Cell origin)
         {
-            int checkSizeX = slot.Size.x;
-            int checkSizeY = slot.Size.y;
+   
 
-            float checkFloatX = (float)checkSizeX / 2f;
-            float checkFloatY = (float)checkSizeY / 2f;
-
-            // Check Horizontal Cells To the left
-            for (int x = 1; x <= Mathf.FloorToInt(checkFloatX); x++)
+            Vector2 offsetF = slot.Size / 2;
+            Vector2Int offset = new Vector2Int(-Mathf.FloorToInt(offsetF.x), Mathf.FloorToInt(offsetF.y));
+            for (int y = 0; y < slot.Size.y; y++)
             {
-                Cell checkCell = GetCell(origin.Position.x - x, origin.Position.y);
-                if (checkCell == null || checkCell.InUse) return false;
+                for (int x = 0; x < slot.Size.x; x++)
+                {
+                    Vector2Int checkInt = origin.Position - offset;
+                    Cell checkCell = GetCell(checkInt.x, checkInt.y);
+                    if (checkCell == null || checkCell.InUse) return false;
+                    offset.x++;
+                }
+                offset.x = -Mathf.FloorToInt(offsetF.x);
+                offset.y--;
             }
-
-            // Check Horizontal Cells to the right
-            for (int y = 1; y <= Mathf.CeilToInt(checkFloatX); y++)
-            {
-                Cell checkCell = GetCell(origin.Position.x + y, origin.Position.y);
-                if (checkCell == null || checkCell.InUse) return false;
-            }
-
-            // Check Vertical Cells to the bottom
-            for (int u = 1; u <= Mathf.FloorToInt(checkFloatY); u++)
-            {
-                Cell checkCell = GetCell(origin.Position.x, origin.Position.y - u);
-                if (checkCell == null || checkCell.InUse) return false;
-            }
-
-            // Check Vertical Cells to the top
-            for (int v = 1; v <= Mathf.CeilToInt(checkFloatY); v++)
-            {
-                Cell checkCell = GetCell(origin.Position.x, origin.Position.y + v);
-                if (checkCell == null || checkCell.InUse) return false;
-            }
-
+         
             return true;
         }
 
         public IEnumerable<Cell> GetSlotCells(ItemSlot slot, Cell origin)
         {
-            int checkSizeX = slot.Size.x;
-            int checkSizeY = slot.Size.y;
-
-            if (checkSizeX == 0 && checkSizeY == 0)
+           
+            Vector2 offsetF = slot.Size / 2;
+            Vector2Int offset = new Vector2Int(-Mathf.FloorToInt(offsetF.x), Mathf.FloorToInt(offsetF.y));
+            for (int y = 0; y < slot.Size.y; y++)
             {
-                yield return origin;
-                yield break;
-            }
-
-            float checkFloatX = (float)checkSizeX / 2f;
-            float checkFloatY = (float)checkSizeY / 2f;
-
-            // Check Horizontal Cells To the left
-            for (int i = 1; i <= Mathf.FloorToInt(checkFloatX); i++)
-            {
-                Cell checkCell = GetCell(origin.Position.x - i, origin.Position.y);
-                yield return checkCell;
-            }
-
-            // Check Horizontal Cells to the right
-            for (int i = 1; i <= Mathf.CeilToInt(checkFloatX); i++)
-            {
-                Cell checkCell = GetCell(origin.Position.x + i, origin.Position.y);
-                yield return checkCell;
-            }
-
-            // Check Vertical Cells to the bottom
-            for (int i = 1; i <= Mathf.FloorToInt(checkFloatY); i++)
-            {
-                Cell checkCell = GetCell(origin.Position.x, origin.Position.y - i);
-                yield return checkCell;
-            }
-
-            // Check Vertical Cells to the top
-            for (int i = 1; i <= Mathf.CeilToInt(checkFloatY); i++)
-            {
-                Cell checkCell = GetCell(origin.Position.x, origin.Position.y + i);
-                yield return checkCell;
+                for (int x = 0; x < slot.Size.x; x++)
+                {
+                    Vector2Int checkInt = origin.Position - offset;
+                    Cell checkCell = GetCell(checkInt.x, checkInt.y);
+                    yield return checkCell;
+                    offset.x++;
+                }
+                offset.x = -Mathf.FloorToInt(offsetF.x);
+                offset.y--;
             }
         }
 

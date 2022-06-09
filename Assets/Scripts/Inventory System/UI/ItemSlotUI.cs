@@ -58,6 +58,7 @@ namespace SpaceHorror.InventorySystem.UI
             {
                 rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, size.x * InventoryWindow.cellSizeY);
                 rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, size.y * InventoryWindow.cellSizeY);
+         
             }
         }
 
@@ -85,7 +86,8 @@ namespace SpaceHorror.InventorySystem.UI
 
         public void OnEndDrag(PointerEventData eventData)
         {
-           if(eventData.hovered[eventData.hovered.Count - 1])
+            var possibleCell = eventData.hovered[eventData.hovered.Count - 1];
+           if(possibleCell)
            {
 
            }
@@ -96,6 +98,22 @@ namespace SpaceHorror.InventorySystem.UI
         {
             _backgroundImage.raycastTarget = false;
             _dragOffset = new Vector2(transform.position.x, transform.position.y) - eventData.position;
+        }
+
+        public void SetPosition(Vector2 postion)
+        {
+            if (_targetSlot.Size.x % 2 == 0)
+            {
+                postion.x += InventoryWindow.cellSizeX / 2;
+            }
+
+            if (_targetSlot.Size.y % 2 == 0)
+            {
+                postion.y += InventoryWindow.cellSizeY / 2;
+            }
+
+            transform.position = postion;
+
         }
     }
 }
