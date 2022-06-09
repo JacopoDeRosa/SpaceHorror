@@ -14,10 +14,6 @@ namespace SpaceHorror.InventorySystem
         private List<ItemSlot> _allItems;
         private Cell[,] _cells;
 
-        private Vector3[][] vettori;
-
-
-
         public string Name { get => _name; }
         public Cell[,] InventoryCells { get => _cells; }
         public Vector2Int Size { get => _size; }
@@ -55,6 +51,11 @@ namespace SpaceHorror.InventorySystem
             }
         }
 
+        /// <summary>
+        /// Places an item in an optimal position.
+        /// </summary>
+        /// <param name="slot"></param>
+        /// <returns></returns>
         public bool TryPlaceItem(ItemSlot slot)
         {
             for (int x = 0; x < _size.x; x++)
@@ -79,6 +80,12 @@ namespace SpaceHorror.InventorySystem
             return false;
         }
 
+        /// <summary>
+        /// Tries to place an item at a cell.
+        /// </summary>
+        /// <param name="slot"></param>
+        /// <param name="targetCell"></param>
+        /// <returns></returns>
         public bool TryPlaceItem(ItemSlot slot, Cell targetCell)
         {
             if (SlotCanFit(slot, targetCell))
@@ -95,6 +102,10 @@ namespace SpaceHorror.InventorySystem
             return false;
         }
 
+        /// <summary>
+        /// Sets the cells occupied by a slot to empty.
+        /// </summary>
+        /// <param name="slot"></param>
         public void ClearItemCells(ItemSlot slot)
         {
             if (slot.ParentInventory != this) return;
@@ -105,6 +116,12 @@ namespace SpaceHorror.InventorySystem
             }
         }
 
+        /// <summary>
+        /// Checks if a slot can fit on a cell.
+        /// </summary>
+        /// <param name="slot"></param>
+        /// <param name="origin"></param>
+        /// <returns></returns>
         public bool SlotCanFit(ItemSlot slot, Cell origin)
         {
             Vector2 offsetF = slot.Size / 2;
@@ -126,6 +143,12 @@ namespace SpaceHorror.InventorySystem
             return true;
         }
 
+        /// <summary>
+        /// Gets all cells a slot would use if placed at a position, some cells might be null if position is invalid.
+        /// </summary>
+        /// <param name="slot"></param>
+        /// <param name="origin"></param>
+        /// <returns></returns>
         public IEnumerable<Cell> GetSlotCells(ItemSlot slot, Cell origin)
         {
            
@@ -145,6 +168,12 @@ namespace SpaceHorror.InventorySystem
             }
         }
 
+        /// <summary>
+        /// Gets a cell at a position, return null if out of bounds.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
         public Cell GetCell(int x, int y)
         {
             
@@ -153,6 +182,12 @@ namespace SpaceHorror.InventorySystem
             return _cells[x, y];
         }
 
+        /// <summary>
+        /// Gets a cell at a position, return null if out of bounds.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
         public Cell GetCell(Vector2Int position)
         {
             return GetCell(position.x, position.y);

@@ -127,7 +127,7 @@ namespace SpaceHorror.InventorySystem
             onSlotPositionChange?.Invoke(this);
         }
 
-        private void ResetEvents()
+        private void ResetPositionChangeEvent()
         {
             onSlotPositionChange = null;
         }
@@ -151,7 +151,6 @@ namespace SpaceHorror.InventorySystem
         {
             _parentInventory.TryPlaceItem(this, _parentInventory.GetCell(Position.x, Position.y));
         }
-
     }
 }
 

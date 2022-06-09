@@ -96,10 +96,6 @@ namespace SpaceHorror.InventorySystem.UI
                 _optionsMenu.ToggleVisible();
                 _optionsMenu.transform.position = eventData.position + _optionsMenuOffset;
             }
-            else if (eventData.button == PointerEventData.InputButton.Left)
-            {
-
-            }
         }
 
         public void OnDrag(PointerEventData eventData)
