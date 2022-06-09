@@ -12,13 +12,12 @@ namespace SpaceHorror.InventorySystem
 
         private object _itemParameters;
 
-        private Vector2Int _size;
         private Vector2Int _position;
 
         public object ItemParameters { get => _itemParameters; }
         public GameItemData ItemData { get => _itemData; }
         public int ItemCount { get => _itemCount; }
-        public Vector2Int Size { get => _size; }
+        public Vector2Int Size { get => _itemData.Size; }
         public Vector2Int Position { get => _position; }
 
         public event ItemSlotHandler onSlotChanged;
@@ -28,13 +27,11 @@ namespace SpaceHorror.InventorySystem
         {
             _itemParameters = item.PackParameters();
             _itemData = item.Data;
-            _size = item.Data.Size;
             _itemCount = 1;
         }
         public ItemSlot(GameItemData data)
         {
             _itemData = data;
-            _size = data.Size;
             _itemCount = 1;
             _itemParameters = null;
         }

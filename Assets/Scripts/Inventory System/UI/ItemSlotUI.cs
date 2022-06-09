@@ -35,6 +35,8 @@ namespace SpaceHorror.InventorySystem.UI
         {
             SetSize(slot.Size);
             UpdateTexts(slot);
+            _spriteImage.sprite = slot.ItemData.Icon;
+            _targetSlot = slot;
         }
 
         private void UpdateTexts(ItemSlot slot)

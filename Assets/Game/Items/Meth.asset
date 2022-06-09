@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Meth
   m_EditorClassIdentifier: 
   _weight: 1
-  _icon: {fileID: 0}
+  _icon: {fileID: 21300000, guid: fce99e778405f254bb081e7758a49fd7, type: 3}
   _description: Baked by the bald man himself, worth a lot on the market, mexicans
     call it "Azul".
   _stackable: 1

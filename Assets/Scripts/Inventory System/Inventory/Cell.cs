@@ -8,7 +8,7 @@ namespace SpaceHorror.InventorySystem
         private ItemSlot _slot;
         private Vector2Int _position;
 
-        public ItemSlot Occupied { get => _slot; }
+        public ItemSlot Slot { get => _slot; }
         public Vector2Int Position { get => _position; }
 
         public bool InUse { get => _slot != null; }
