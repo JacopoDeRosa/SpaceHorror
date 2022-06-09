@@ -9,8 +9,11 @@ namespace SpaceHorror.InventorySystem
         private Vector2Int _position;
         
 
+
         public ItemSlot Slot { get => _slot; }
         public Vector2Int Position { get => _position; }
+
+        public CellHandler onCellUpdated;
 
         public bool InUse { get => _slot != null; }
 
@@ -27,7 +30,15 @@ namespace SpaceHorror.InventorySystem
         public void SetSlot(ItemSlot slot)
         {
             _slot = slot;
+            CallOnCellUpdated();
         }
+
+        private void CallOnCellUpdated()
+        {
+            onCellUpdated?.Invoke(this);
+        }
+
+
 
         
     }
