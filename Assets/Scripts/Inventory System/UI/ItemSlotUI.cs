@@ -20,6 +20,30 @@ namespace SpaceHorror.InventorySystem.UI
         private SlotOptionsMenu _optionsMenu;
 
         private Vector2 _dragOffset;
+        private Vector2Int CenterOffset
+        {
+            get
+            {
+
+                Vector2Int position = Vector2Int.zero;
+
+                if (_targetSlot == null) return position;
+
+                if (_targetSlot.Size.x % 2 == 0)
+                {
+                    position.x += InventoryWindow.cellSizeX / 2;
+                }
+
+                if (_targetSlot.Size.y % 2 == 0)
+                {
+                    position.y += InventoryWindow.cellSizeY / 2;
+                }
+
+                return position;
+            } 
+        }
+
+        private CellUI _starterCell;
 
         public void SetOptionsMenu(SlotOptionsMenu menu)
         {
@@ -57,8 +81,7 @@ namespace SpaceHorror.InventorySystem.UI
             if(rectTransform)
             {
                 rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, size.x * InventoryWindow.cellSizeY);
-                rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, size.y * InventoryWindow.cellSizeY);
-         
+                rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, size.y * InventoryWindow.cellSizeY);   
             }
         }
 
@@ -86,11 +109,26 @@ namespace SpaceHorror.InventorySystem.UI
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            var possibleCell = eventData.hovered[eventData.hovered.Count - 1];
-           if(possibleCell)
-           {
+            CellUI possibleCell = GetCellAtPivot();
 
-           }
+            if(possibleCell)
+            {
+                if(_targetSlot.DropInInventory(possibleCell.TargetCell))
+                {
+                    SetPosition(possibleCell.transform.position);
+                }
+                else
+                {
+                    _targetSlot.DropBack();
+                    SetPosition(_starterCell.transform.position);
+                }
+            }
+            else
+            {
+                _targetSlot.DropBack();
+                SetPosition(_starterCell.transform.position);
+            }
+            _starterCell = null;
             _backgroundImage.raycastTarget = true;
         }
 
@@ -98,22 +136,34 @@ namespace SpaceHorror.InventorySystem.UI
         {
             _backgroundImage.raycastTarget = false;
             _dragOffset = new Vector2(transform.position.x, transform.position.y) - eventData.position;
+            _targetSlot.LiftFromInventory();
+            _starterCell = GetCellAtPivot();
         }
 
-        public void SetPosition(Vector2 postion)
+        public void SetPosition(Vector2 position)
         {
-            if (_targetSlot.Size.x % 2 == 0)
+            position += CenterOffset;
+            transform.position = position;
+        }
+
+        private CellUI GetCellAtPivot()
+        {
+            PointerEventData fakeData = new PointerEventData(EventSystem.current);
+            fakeData.position = transform.position + new Vector3(-CenterOffset.x, -CenterOffset.y);
+            List<RaycastResult> raycastResults = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(fakeData, raycastResults);
+            CellUI possibleCell = null;
+            foreach (RaycastResult result in raycastResults)
             {
-                postion.x += InventoryWindow.cellSizeX / 2;
+                var cell = result.gameObject.GetComponent<CellUI>();
+                if (cell != null)
+                {
+                    possibleCell = cell;
+                    break;
+                }
             }
 
-            if (_targetSlot.Size.y % 2 == 0)
-            {
-                postion.y += InventoryWindow.cellSizeY / 2;
-            }
-
-            transform.position = postion;
-
+            return possibleCell;
         }
     }
 }

@@ -18,9 +18,26 @@ namespace SpaceHorror.InventorySystem.UI
         public void SetTargetCell(Cell targetCell)
         {
             _targetCell = targetCell;
+
             debugText.text = targetCell.Position.ToString();
+
             gameObject.name = targetCell.Position.ToString();
+
             if (_targetCell.InUse) GetComponent<Image>().color = Color.blue;
+
+            targetCell.onCellUpdated += UpdateCellValues;
+        }
+
+        private void UpdateCellValues(Cell targetCell)
+        {
+            if(targetCell.InUse)
+            {
+                GetComponent<Image>().color = Color.blue;
+            }
+            else
+            {
+                GetComponent<Image>().color = Color.gray;
+            }
         }
 
     }

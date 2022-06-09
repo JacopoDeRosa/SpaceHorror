@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eda8a5b9204312489cac450e1e39429, type: 3}
   m_Name: RokIt Launcher
   m_EditorClassIdentifier: 
-  _weight: 0
+  _weight: 20
   _icon: {fileID: 21300000, guid: c71b087776f22ad47802368cfcc42cde, type: 3}
   _description: Oi Oi waz dat? U think u got enuff dakka boi, there can be enuff
     dakka, diz RokIt launcher iz loved by thoze mek gitz use it to kill da SPACE

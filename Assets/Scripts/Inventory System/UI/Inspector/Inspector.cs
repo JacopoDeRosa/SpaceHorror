@@ -60,7 +60,6 @@ namespace SpaceHorror.InventorySystem.UI
 
             var type = data.GetType();
             var propeties = type.GetFields(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public);
-            Debug.Log(propeties.Length);
 
             foreach (var field in propeties)
             {

@@ -58,7 +58,7 @@ public class MapRoom : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag.Equals(OccluderTag))
+        if(other.gameObject.CompareTag(OccluderTag))
         {
             SetVisible(true);
             SetConnectedVisible(true);
@@ -68,7 +68,7 @@ public class MapRoom : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.tag.Equals(OccluderTag))
+        if(other.gameObject.CompareTag(OccluderTag))
         {
             SetVisible(false);
             SetConnectedVisible(false);

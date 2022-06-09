@@ -14,11 +14,14 @@ namespace SpaceHorror.InventorySystem
         private List<ItemSlot> _allItems;
         private Cell[,] _cells;
 
+        private Vector3[][] vettori;
+
+
+
         public string Name { get => _name; }
         public Cell[,] InventoryCells { get => _cells; }
         public Vector2Int Size { get => _size; }
         public IEnumerable<ItemSlot> AllItems { get => new List<ItemSlot>(_allItems); }
-
 
         public event ItemSlotHandler onSlotAdded;
 
@@ -32,7 +35,7 @@ namespace SpaceHorror.InventorySystem
             return weight;
         }
 
-        private void Awake()
+        protected virtual void Awake()
         {
             _allItems = new List<ItemSlot>();
             _cells = new Cell[_size.x, _size.y];
@@ -47,6 +50,7 @@ namespace SpaceHorror.InventorySystem
 
             foreach (ItemSlot item in _initialItems)
             {
+                item.SetParentInventory(this);
                 if (TryPlaceItem(item) == false) break;
             }
         }
@@ -62,8 +66,6 @@ namespace SpaceHorror.InventorySystem
                     {
                         slot.SetPosition(new Vector2Int(x, y));
 
-                        print("Placing " + slot.ItemData.name + " slot at " + checkCell.Position + " it used this number of cells " + GetSlotCells(slot, checkCell).ToList().Count);
-
                         foreach (var cell in GetSlotCells(slot, checkCell))
                         {
                             cell.SetSlot(slot);
@@ -71,23 +73,19 @@ namespace SpaceHorror.InventorySystem
                         _allItems.Add(slot);
                         return true;
                     }
-                    else
-                    {
-                        continue;
-                    }
                 }
             }
 
             return false;
         }
 
-        public bool TryPlaceItem(ItemSlot slot, Cell origin)
+        public bool TryPlaceItem(ItemSlot slot, Cell targetCell)
         {
-            if (SlotCanFit(slot, origin))
+            if (SlotCanFit(slot, targetCell))
             {
-                slot.SetPosition(origin.Position);
+                slot.SetPosition(targetCell.Position);
 
-                foreach (var cell in GetSlotCells(slot, origin))
+                foreach (var cell in GetSlotCells(slot, targetCell))
                 {
                     cell.SetSlot(slot);
                 }
@@ -97,10 +95,18 @@ namespace SpaceHorror.InventorySystem
             return false;
         }
 
+        public void ClearItemCells(ItemSlot slot)
+        {
+            if (slot.ParentInventory != this) return;
+
+            foreach (Cell cell in GetSlotCells(slot, GetCell(slot.Position.x, slot.Position.y)))
+            {
+                cell.SetSlot(null);
+            }
+        }
+
         public bool SlotCanFit(ItemSlot slot, Cell origin)
         {
-   
-
             Vector2 offsetF = slot.Size / 2;
             Vector2Int offset = new Vector2Int(-Mathf.FloorToInt(offsetF.x), Mathf.FloorToInt(offsetF.y));
             for (int y = 0; y < slot.Size.y; y++)
@@ -116,6 +122,7 @@ namespace SpaceHorror.InventorySystem
                 offset.y--;
             }
          
+          
             return true;
         }
 
@@ -144,6 +151,11 @@ namespace SpaceHorror.InventorySystem
             if (_cells.GetLength(0) <= x || _cells.GetLength(1) <= y || x < 0 || y < 0) return null;
 
             return _cells[x, y];
+        }
+
+        public Cell GetCell(Vector2Int position)
+        {
+            return GetCell(position.x, position.y);
         }
     }
 }

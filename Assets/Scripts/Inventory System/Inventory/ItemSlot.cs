@@ -13,27 +13,32 @@ namespace SpaceHorror.InventorySystem
         private object _itemParameters;
 
         private Vector2Int _position;
+        private Inventory _parentInventory;
 
         public object ItemParameters { get => _itemParameters; }
         public GameItemData ItemData { get => _itemData; }
-        public int ItemCount { get => _itemCount; }
+        public int ItemCount { get => _itemCount; }   
         public Vector2Int Size { get => _itemData.Size; }
         public Vector2Int Position { get => _position; }
+        public Inventory ParentInventory { get => _parentInventory; }
 
-        public event ItemSlotHandler onSlotChanged;
+        public event ItemSlotHandler onSlotPositionChange;
+        public event IntHandler onSlotCountChange;
 
         #region Constructors
-        public ItemSlot(GameItem item)
+        public ItemSlot(GameItem item, Inventory parent)
         {
             _itemParameters = item.PackParameters();
             _itemData = item.Data;
             _itemCount = 1;
+            _parentInventory = parent;
         }
-        public ItemSlot(GameItemData data)
+        public ItemSlot(GameItemData data, Inventory parent)
         {
             _itemData = data;
             _itemCount = 1;
             _itemParameters = null;
+            _parentInventory = parent;
         }
         #endregion
 
@@ -107,28 +112,44 @@ namespace SpaceHorror.InventorySystem
         public void AddToCount(int amount)
         {
             _itemCount += amount;
-            InvokeSlotChanged();
+            onSlotCountChange?.Invoke(_itemCount);
         }
         
         public void RemoveFromCount(int amount)
         {
             _itemCount -= amount;
-            InvokeSlotChanged();
+            onSlotCountChange?.Invoke(_itemCount);
         }
 
         public void SetPosition(Vector2Int position)
         {
             _position = position;
-        }
-
-        private void InvokeSlotChanged()
-        {
-            onSlotChanged?.Invoke(this);
+            onSlotPositionChange?.Invoke(this);
         }
 
         private void ResetEvents()
         {
-            onSlotChanged = null;
+            onSlotPositionChange = null;
+        }
+
+        public void SetParentInventory(Inventory inventory)
+        {
+            _parentInventory = inventory;
+        }
+
+        public void LiftFromInventory()
+        {
+            _parentInventory.ClearItemCells(this);
+        }
+
+        public bool DropInInventory(Cell cell)
+        {
+           return _parentInventory.TryPlaceItem(this, cell);
+        }
+
+        public void DropBack()
+        {
+            _parentInventory.TryPlaceItem(this, _parentInventory.GetCell(Position.x, Position.y));
         }
 
     }

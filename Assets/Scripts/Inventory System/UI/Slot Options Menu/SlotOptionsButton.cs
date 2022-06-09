@@ -37,7 +37,6 @@ namespace SpaceHorror.InventorySystem.UI
             if (eventData.button == PointerEventData.InputButton.Left)
             {
                 onPress?.Invoke();
-                print("Pressed");
             }
         }
     }

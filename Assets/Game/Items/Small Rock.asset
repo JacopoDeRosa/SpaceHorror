@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Small Rock
   m_EditorClassIdentifier: 
   _weight: 25
-  _icon: {fileID: 21300000, guid: 0957e8d6c49f9a64d8abf098eb4c8060, type: 3}
+  _icon: {fileID: 21300000, guid: cf522dc56b04c8948acb06fc5fbd405c, type: 3}
   _description: A really heavy piece of rock, why are you lugging this around?
   _stackable: 1
   _size: {x: 2, y: 2}
