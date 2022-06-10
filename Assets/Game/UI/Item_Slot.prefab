@@ -444,6 +444,7 @@ MonoBehaviour:
   _nameText: {fileID: 5734204142215061889}
   _amountText: {fileID: 5734204142655894768}
   _optionsMenuOffset: {x: 0, y: 0}
+  _hoverStack: []
 --- !u!114 &5734204142959086425
 MonoBehaviour:
   m_ObjectHideFlags: 0

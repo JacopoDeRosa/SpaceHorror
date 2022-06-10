@@ -94,8 +94,14 @@ namespace SpaceHorror.InventorySystem.UI
             RectTransform rectTransform = transform as RectTransform;
             if(rectTransform)
             {
-                rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, size.x * InventoryWindow.cellSizeY);
-                rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, size.y * InventoryWindow.cellSizeY);   
+                float sizeX = size.x * InventoryWindow.cellSizeX;
+                float sizeY = size.y * InventoryWindow.cellSizeY;
+
+                sizeX += InventoryWindow.cellsBorder * size.x;
+                sizeY += InventoryWindow.cellsBorder * size.y;
+
+                rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, sizeX);
+                rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, sizeY);   
             }
         }
 
