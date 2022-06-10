@@ -14,6 +14,7 @@ namespace SpaceHorror.InventorySystem.UI
         [SerializeField] private Image _backgroundImage, _spriteImage;
         [SerializeField] private TMP_Text _nameText, _amountText;
         [SerializeField] private Vector2 _optionsMenuOffset;
+        [SerializeField] private List<GameObject> _hoverStack;
 
         private Inspector _inspector;
         private ItemSlot _targetSlot;
@@ -31,12 +32,12 @@ namespace SpaceHorror.InventorySystem.UI
 
                 if (_targetSlot.Size.x % 2 == 0)
                 {
-                    position.x += InventoryWindow.cellSizeX / 2;
+                    position.x += (InventoryWindow.cellSizeX / 2) + InventoryWindow.cellsBorder / 2;
                 }
 
                 if (_targetSlot.Size.y % 2 == 0)
                 {
-                    position.y += InventoryWindow.cellSizeY / 2;
+                    position.y += (InventoryWindow.cellSizeY / 2) + InventoryWindow.cellsBorder / 2;
                 }
 
                 return position;
@@ -139,6 +140,7 @@ namespace SpaceHorror.InventorySystem.UI
             }
             _starterCell = null;
             _backgroundImage.raycastTarget = true;
+            transform.SetAsFirstSibling();
         }
 
         public void OnBeginDrag(PointerEventData eventData)
@@ -147,6 +149,7 @@ namespace SpaceHorror.InventorySystem.UI
             _dragOffset = new Vector2(transform.position.x, transform.position.y) - eventData.position;
             _targetSlot.LiftFromInventory();
             _starterCell = GetCellAtPivot();
+            transform.SetAsLastSibling();
         }
 
         public void SetPosition(Vector2 position)
@@ -155,14 +158,23 @@ namespace SpaceHorror.InventorySystem.UI
             transform.position = position;
         }
 
-        private CellUI GetCellAtPivot()
+        private List<RaycastResult> GetAllElementsAtPivot()
         {
             PointerEventData fakeData = new PointerEventData(EventSystem.current);
+
             fakeData.position = transform.position + new Vector3(-CenterOffset.x, -CenterOffset.y);
+
             List<RaycastResult> raycastResults = new List<RaycastResult>();
+
             EventSystem.current.RaycastAll(fakeData, raycastResults);
+
+            return raycastResults;
+        }
+
+        private CellUI GetCellAtPivot()
+        {
             CellUI possibleCell = null;
-            foreach (RaycastResult result in raycastResults)
+            foreach (RaycastResult result in GetAllElementsAtPivot())
             {
                 var cell = result.gameObject.GetComponent<CellUI>();
                 if (cell != null)
@@ -173,6 +185,31 @@ namespace SpaceHorror.InventorySystem.UI
             }
 
             return possibleCell;
+        }
+
+        private ItemSlotUI GetSlotAtPivot()
+        {
+            ItemSlotUI possibleSlot = null;
+            foreach (RaycastResult result in GetAllElementsAtPivot())
+            {
+               
+            }
+            return null;
+        }
+
+        private GameObject GetUiElementAtPivot()
+        {
+            return null;
+        }
+
+        private void Update()
+        {
+            List<GameObject> hover = new List<GameObject>();
+            foreach (var item in GetAllElementsAtPivot())
+            {
+                hover.Add(item.gameObject);
+            }
+            _hoverStack = hover;
         }
     }
 }

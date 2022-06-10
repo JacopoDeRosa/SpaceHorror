@@ -47,8 +47,9 @@ namespace SpaceHorror.InventorySystem
             foreach (ItemSlot item in _initialItems)
             {
                 item.SetParentInventory(this);
-                if (TryPlaceItem(item) == false) break;
+                TryPlaceItem(item);
             }
+            _initialItems.Clear();
         }
 
         /// <summary>

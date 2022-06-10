@@ -9,10 +9,10 @@ namespace SpaceHorror.InventorySystem.UI
     {
         public const int cellSizeX = 100;
         public const int cellSizeY = 100;
+        public const int cellsBorder = 2;
 
         [SerializeField] private ItemSlotUI[] _allSlots;
         [SerializeField] private CellUI[] _allCells;
-        [SerializeField] private int _cellsBorder;
         [SerializeField] private Vector2Int _padding;
         [SerializeField] private RectTransform _cellsContainer, _slotsContainer;
         [SerializeField] private Inventory _inventory;
@@ -98,8 +98,8 @@ namespace SpaceHorror.InventorySystem.UI
                     posX += cellSizeX / 2;
                     posY -= cellSizeY / 2;
 
-                    posX += (cellSizeX + _cellsBorder) * x;
-                    posY -= (cellSizeY + _cellsBorder) * y;
+                    posX += (cellSizeX + cellsBorder) * x;
+                    posY -= (cellSizeY + cellsBorder) * y;
 
                     cell.transform.localPosition = new Vector3Int(posX, posY);
                     _cellsGrid[x, y] = cell;

@@ -10,6 +10,8 @@ namespace SpaceHorror.InventorySystem.UI
     public class CellUI : MonoBehaviour
     {
         [SerializeField] private TMP_Text debugText;
+        [SerializeField] private Image _background;
+        [SerializeField] private Color _filledColor, _emptyColor;
 
         private Cell _targetCell;
 
@@ -19,11 +21,11 @@ namespace SpaceHorror.InventorySystem.UI
         {
             _targetCell = targetCell;
 
-            debugText.text = targetCell.Position.ToString();
+            if(debugText != null) debugText.text = targetCell.Position.ToString();
 
             gameObject.name = targetCell.Position.ToString();
 
-            if (_targetCell.InUse) GetComponent<Image>().color = Color.blue;
+            UpdateCellValues(targetCell);
 
             targetCell.onCellUpdated += UpdateCellValues;
         }
@@ -32,11 +34,11 @@ namespace SpaceHorror.InventorySystem.UI
         {
             if(targetCell.InUse)
             {
-                GetComponent<Image>().color = Color.blue;
+                _background.color = _filledColor;
             }
             else
             {
-                GetComponent<Image>().color = Color.gray;
+                _background.color = _emptyColor;
             }
         }
 
