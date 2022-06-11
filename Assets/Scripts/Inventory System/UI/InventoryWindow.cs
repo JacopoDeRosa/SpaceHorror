@@ -75,6 +75,13 @@ namespace SpaceHorror.InventorySystem.UI
 
         }
 
+        public CellUI GetCell(Vector2Int position)
+        {
+            if (_cellsGrid.GetLength(0) <= position.x || _cellsGrid.GetLength(1) <= position.y || position.x < 0 || position.y < 0) return null;
+
+            return _cellsGrid[position.x, position.y];
+        }
+
         private void ReadInventory(Inventory inventory)
         {
             ResetWindow();
@@ -131,6 +138,8 @@ namespace SpaceHorror.InventorySystem.UI
             }
             _freeCells = new Queue<CellUI>(_allCells);
         }
+
+       
     }
 }
 

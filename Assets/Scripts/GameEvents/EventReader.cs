@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class EvnetReader : MonoBehaviour
+public class EventReader : MonoBehaviour
 {
     [SerializeField] private GameEvent gameEvent;
 

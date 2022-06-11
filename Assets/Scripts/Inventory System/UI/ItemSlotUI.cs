@@ -19,6 +19,7 @@ namespace SpaceHorror.InventorySystem.UI
         private Inspector _inspector;
         private ItemSlot _targetSlot;
         private SlotOptionsMenu _optionsMenu;
+        private InventoryWindow _parentWindow;
 
         private Vector2 _dragOffset;
         private Vector2Int CenterOffset
@@ -65,6 +66,11 @@ namespace SpaceHorror.InventorySystem.UI
             _spriteImage.sprite = slot.ItemData.Icon;
             _targetSlot = slot;
             _targetSlot.onDestroy += OnTargetDeath;
+        }
+
+        public void SetParentWindow(InventoryWindow window)
+        {
+            _parentWindow = window;
         }
 
         private void OnTargetDeath()
