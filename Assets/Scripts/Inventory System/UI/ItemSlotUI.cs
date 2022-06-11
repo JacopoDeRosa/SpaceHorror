@@ -26,7 +26,6 @@ namespace SpaceHorror.InventorySystem.UI
         {
             get
             {
-
                 Vector2Int position = Vector2Int.zero;
 
                 if (_targetSlot == null) return position;
@@ -61,10 +60,16 @@ namespace SpaceHorror.InventorySystem.UI
 
         public void SetItemSlot(ItemSlot slot)
         {
+            if(slot == null)
+            {
+                _targetSlot = null;
+                return;
+            }
             SetSize(slot.Size);
             UpdateTexts(slot);
             _spriteImage.sprite = slot.ItemData.Icon;
             _targetSlot = slot;
+            _targetSlot.onSlotCountChange += UpdateTexts;
             _targetSlot.onDestroy += OnTargetDeath;
         }
 
@@ -204,13 +209,18 @@ namespace SpaceHorror.InventorySystem.UI
             ItemSlotUI possibleSlot = null;
             foreach (RaycastResult result in GetAllElementsAtPivot())
             {
-               
+                var slot = result.gameObject.GetComponent<ItemSlotUI>();
+                if(slot != null)
+                {
+                    possibleSlot = slot;
+                }
             }
-            return null;
+            return possibleSlot;
         }
 
         private GameObject GetUiElementAtPivot()
         {
+            // TODO: Implement.
             return null;
         }
 

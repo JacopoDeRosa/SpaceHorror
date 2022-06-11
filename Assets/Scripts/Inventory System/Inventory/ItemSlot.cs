@@ -146,7 +146,14 @@ namespace SpaceHorror.InventorySystem
 
         public bool DropInInventory(Cell cell)
         {
-           return _parentInventory.TryPlaceItem(this, cell);
+            if(cell.Slot != null)
+            {
+               return TryMergeSlot(cell.Slot);
+            }
+            else
+            {
+                return _parentInventory.TryPlaceItem(this, cell);
+            }
         }
 
         public void DropBack()
@@ -154,9 +161,9 @@ namespace SpaceHorror.InventorySystem
             _parentInventory.TryPlaceItem(this, _parentInventory.GetCell(Position.x, Position.y));
         }
 
-        public bool TryTransferItems(ItemSlot slot)
+        private bool TryMergeSlot(ItemSlot slot)
         {
-            if (_itemData.Stackable == false || slot.ItemData != _itemData) return false;
+            if (_itemData.Stackable == false || slot.ItemData != _itemData || slot.ParentInventory != ParentInventory) return false;
 
             slot.AddToCount(_itemCount);
             DestorySlot();

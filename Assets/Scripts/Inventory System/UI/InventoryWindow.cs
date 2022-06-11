@@ -47,6 +47,7 @@ namespace SpaceHorror.InventorySystem.UI
             {
                 slot.SetOptionsMenu(_optionsMenu);
                 slot.SetInspector(_inspector);
+                slot.SetParentWindow(this);
                 slot.gameObject.SetActive(false);
             }
             foreach (CellUI cell in _allCells)

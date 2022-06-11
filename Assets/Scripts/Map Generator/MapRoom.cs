@@ -2,77 +2,81 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapRoom : MonoBehaviour
+namespace SpaceHorror.MapGeneration
 {
-    public const string OccluderTag = "Player";
-
-    [SerializeField] private MapRoom[] _connectedRooms;
-    [SerializeField] private Direction _connections;
-    [SerializeField] private Transform _entrance;
-    [SerializeField] private MeshRenderer[] _childRenderers;
-
-    private bool _inUse;
-    private bool _visible;
-
-    private void OnValidate()
+    public class MapRoom : MonoBehaviour
     {
-        _childRenderers = GetComponentsInChildren<MeshRenderer>();
-    }
+        public const string OccluderTag = "Player";
 
-    public void SetVisible(bool visible)
-    {
-        if (_inUse && _visible) return;
+        [SerializeField] private MapRoom[] _connectedRooms;
+        [SerializeField] private Direction _connections;
+        [SerializeField] private Transform _entrance;
+        [SerializeField] private MeshRenderer[] _childRenderers;
 
-        foreach (MeshRenderer renderer in _childRenderers)
+        private bool _inUse;
+        private bool _visible;
+
+        private void OnValidate()
         {
-            if(visible)
+            _childRenderers = GetComponentsInChildren<MeshRenderer>();
+        }
+
+        public void SetVisible(bool visible)
+        {
+            if (_inUse && _visible) return;
+
+            foreach (MeshRenderer renderer in _childRenderers)
             {
-                renderer.enabled = true;
+                if (visible)
+                {
+                    renderer.enabled = true;
+                }
+                else
+                {
+                    renderer.enabled = false;
+                }
             }
-            else
+
+            _visible = visible;
+        }
+
+        public void SetConnectedVisible(bool visible)
+        {
+            foreach (var room in _connectedRooms)
             {
-                renderer.enabled = false;
+                room.SetVisible(visible);
             }
         }
 
-        _visible = visible;
-    }
-
-    public void SetConnectedVisible(bool visible)
-    {
-        foreach (var room in _connectedRooms)
+        public void SetConnectedRooms(MapRoom[] rooms)
         {
-            room.SetVisible(visible);
+            _connectedRooms = rooms;
         }
-    }
 
-    public void SetConnectedRooms(MapRoom[] rooms)
-    {
-        _connectedRooms = rooms;
-    }
-
-    public void Init()
-    {
-        SetVisible(false);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.CompareTag(OccluderTag))
-        {
-            SetVisible(true);
-            SetConnectedVisible(true);
-            _inUse = true;         
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if(other.gameObject.CompareTag(OccluderTag))
+        public void Init()
         {
             SetVisible(false);
-            SetConnectedVisible(false);
-            _inUse = false;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.CompareTag(OccluderTag))
+            {
+                SetVisible(true);
+                SetConnectedVisible(true);
+                _inUse = true;
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.gameObject.CompareTag(OccluderTag))
+            {
+                SetVisible(false);
+                SetConnectedVisible(false);
+                _inUse = false;
+            }
         }
     }
+
 }
