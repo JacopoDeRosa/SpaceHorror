@@ -617,6 +617,8 @@ MonoBehaviour:
   _crouchCheckerRadious: 0.35
   _checkerHeight: 2
   _checkerOffset: 0
+  _inputHardness: 7
+  _minInput: {x: 0.05, y: 0.05, z: 0.05}
 --- !u!114 &8069067934333637407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -794,8 +796,8 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8069067934333637392}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: f12d13d6b83aef54aa0bb2168991dabb, type: 2}
-  m_Controller: {fileID: 9100000, guid: f6388176b0102934cae9b0c706db83a8, type: 2}
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

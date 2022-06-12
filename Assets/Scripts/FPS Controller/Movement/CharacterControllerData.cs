@@ -17,7 +17,12 @@ namespace FPS.Movement
         [SerializeField] private float _checkerHeight = 2f;
         [SerializeField] private float _checkerOffset = 0;
 
+        [SerializeField] private float _inputHardness = 10;
+        [SerializeField] private Vector3 _minInput;
+
         private PlayerInput _input;
+
+        private Vector3 _targetPlanarInput;
 
         public Ray GroundCheckRay
         {
@@ -68,7 +73,15 @@ namespace FPS.Movement
 
         }
 
-
+        private void Update()
+        {
+            float smooth = Mathf.Clamp01(_inputHardness * Time.deltaTime);
+            PlanarInput = Vector3.Lerp(PlanarInput, _targetPlanarInput, smooth);
+            if(_targetPlanarInput.magnitude == 0 && PlanarInput.magnitude < _minInput.magnitude)
+            {
+                PlanarInput = Vector3.zero;
+            }
+        }
 
         public void SetControlLock(bool value)
         {
@@ -89,8 +102,10 @@ namespace FPS.Movement
         {
             Vector2 move = context.ReadValue<Vector2>();
 
-            PlanarInput = new Vector3(move.x, 0, move.y);
+            _targetPlanarInput = new Vector3(move.x, 0, move.y);
         }
+
+
 
         #region Draw Gizmos
 #if UNITY_EDITOR

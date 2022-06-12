@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInputMaker : MonoBehaviour
+public class PlayerInputMarker : MonoBehaviour
 {
     private void Awake()
     {
-        if(FindObjectsOfType<PlayerInputMaker>().Length > 1)
+        if(FindObjectsOfType<PlayerInputMarker>().Length > 1)
         {
             Destroy(gameObject);
         }

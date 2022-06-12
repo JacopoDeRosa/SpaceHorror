@@ -10,7 +10,7 @@
                     "type": "PassThrough",
                     "id": "b546bd72-f39b-4bfb-9a10-ed87b2e9dfde",
                     "expectedControlType": "Vector2",
-                    "processors": "StickDeadzone",
+                    "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
                 },
