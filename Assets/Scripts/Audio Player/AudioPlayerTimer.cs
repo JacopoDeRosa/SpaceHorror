@@ -6,8 +6,8 @@ namespace SpaceHorror.UI
 {
     public class AudioPlayerTimer : AudioPlayerComponent
     {
-        [SerializeField] private Text _currentTimeText;
-        [SerializeField] private Text _maxTimeText;
+        [SerializeField] private TMP_Text _currentTimeText;
+        [SerializeField] private TMP_Text _maxTimeText;
 
 
         protected override void Awake()
