@@ -5,6 +5,7 @@ using System.Linq;
 
 namespace SpaceHorror.InventorySystem
 {
+    [AddComponentMenu("Spacehorror/Inventory")]
     public class Inventory : MonoBehaviour
     {
         [SerializeField] private string _name;

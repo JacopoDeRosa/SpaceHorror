@@ -34,7 +34,7 @@ namespace FPS.Interaction
             }
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             if (_input)
             {

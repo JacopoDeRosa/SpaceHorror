@@ -61,16 +61,20 @@ namespace FPS.Movement
             {
                 _input.actions["Move"].performed += OnMove;
             }
-            
+
+            GameStatus.onMenuFocus += LockControls;
+            GameStatus.onMenuUnFocus += UnlockControls;
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             if (_input)
             {
                 _input.actions["Move"].performed -= OnMove;
             }
 
+            GameStatus.onMenuFocus -= LockControls;
+            GameStatus.onMenuUnFocus -= UnlockControls;
         }
 
         private void Update()
@@ -104,8 +108,6 @@ namespace FPS.Movement
 
             _targetPlanarInput = new Vector3(move.x, 0, move.y);
         }
-
-
 
         #region Draw Gizmos
 #if UNITY_EDITOR

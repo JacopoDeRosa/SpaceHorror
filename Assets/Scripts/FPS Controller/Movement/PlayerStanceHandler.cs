@@ -38,7 +38,7 @@ namespace FPS.Movement
             }
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             if (_input)
             {

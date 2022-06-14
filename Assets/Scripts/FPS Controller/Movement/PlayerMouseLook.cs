@@ -29,7 +29,6 @@ namespace FPS.Movement
 
         private void Awake()
         {
-            Cursor.lockState = CursorLockMode.Locked;
             _mainBody = gameObject.transform;
         }
 
@@ -42,7 +41,7 @@ namespace FPS.Movement
             }
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             if (_input)
             {

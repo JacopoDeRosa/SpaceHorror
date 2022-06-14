@@ -5,11 +5,13 @@ namespace FPS.Interaction
 {
     public interface IInteractable
     {
-        void Interact(GameObject actor);
+        public void Interact(GameObject actor);
 
-        void Select();
+        public void Select();
 
-        void DeSelect();
+        public void DeSelect();
+
+        public string GetInteractionType();
     }
 }
 

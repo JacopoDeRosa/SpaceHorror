@@ -50,6 +50,8 @@ namespace FPS.Movement
 
         private void Start()
         {
+            _controllerWrapper.SetMaxSpeed(_maxWalkSpeed);
+
             _input = FindObjectOfType<PlayerInput>();
             if(_input)
             {
@@ -57,7 +59,7 @@ namespace FPS.Movement
             }
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             if (_input)
             {

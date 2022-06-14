@@ -25,7 +25,7 @@ namespace SpaceHorror.UI
             window.Open();
         }
 
-        private void ResetMenus()
+        public void ResetMenus()
         {
             foreach (MenuWindow menu in _menuWindows)
             {

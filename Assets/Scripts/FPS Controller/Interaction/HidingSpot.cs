@@ -17,6 +17,11 @@ namespace FPS.Interaction
   
         }
 
+        public string GetInteractionType()
+        {
+            return "Hide";
+        }
+
         public void Interact(GameObject actor)
         {
             _virtualCamera.SetActive(true);

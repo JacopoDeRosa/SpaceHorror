@@ -593,7 +593,7 @@ MonoBehaviour:
   _gravity: {x: 0, y: -9.8, z: 0}
   _useGravity: 1
   _slopeLimit: 30
-  _maxSpeed: 5
+  _maxSpeed: 2
   _stepOffset: 0.3
   _stoppingPower: 28
   _stoppingDead: 0.4
@@ -637,10 +637,10 @@ MonoBehaviour:
   _controllerWrapper: {fileID: 8069067934333637398}
   _stanceManager: {fileID: 6722338899684953208}
   _acceleration: 15
-  _maxWalkSpeed: 5
-  _maxSprintSpeed: 10
+  _maxWalkSpeed: 3
+  _maxSprintSpeed: 6
   _maxCrouchSpeed: 2
-  _jumpForce: 4
+  _jumpForce: 6
   _jumpRate: 0.7
   _normalHeight: 2
   _crouchedHeight: 0.8

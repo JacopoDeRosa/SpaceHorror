@@ -15,7 +15,7 @@ namespace SpaceHorror.InventorySystem.UI
         [SerializeField] private CellUI[] _allCells;
         [SerializeField] private Vector2Int _padding;
         [SerializeField] private RectTransform _cellsContainer, _slotsContainer;
-        [SerializeField] private Inventory _inventory;
+        [SerializeField] private Inventory _starterInventory;
         [SerializeField] private SlotOptionsMenu _optionsMenu;
         [SerializeField] private Inspector _inspector;
 
@@ -31,13 +31,13 @@ namespace SpaceHorror.InventorySystem.UI
 
         private void Start()
         {
-            if (_inventory == null)
+            if (_starterInventory == null)
             {
                 ResetWindow();
             }
             else
             {
-                ReadInventory(_inventory);
+                ReadInventory(_starterInventory);
             }
         }
 

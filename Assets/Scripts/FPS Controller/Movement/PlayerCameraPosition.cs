@@ -35,16 +35,17 @@ namespace FPS.Movement
         {
             _stanceHandler.onStanceChange += SetHeadbobSpeed;
             _stanceHandler.onStanceChange += MoveCamera;
+            _speedActual = _headbobSpeed;
         }
 
         void FixedUpdate()
         {
             if (_controllerData.ControlsLocked) return;
-            // Update Headbob
-            _camera.localPosition = Vector3.Lerp(_normalPosition, _crouchedPosition, _cameraPosition) + HeadBobVector() * CurrentSpeed();      
+
+            _camera.localPosition = Vector3.Lerp(_normalPosition, _crouchedPosition, _cameraPosition) + GetHeadbobVector() * CurrentSpeed();      
         }
 
-        private Vector3 HeadBobVector()
+        private Vector3 GetHeadbobVector()
         {
             if (_headbob == false || _controllerData.IsGrounded == false) return Vector3.zero;
             _evaluationActual += _speedActual * Time.fixedDeltaTime;
