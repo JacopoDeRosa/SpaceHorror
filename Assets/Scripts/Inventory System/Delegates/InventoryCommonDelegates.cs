@@ -11,4 +11,5 @@ namespace SpaceHorror.InventorySystem
 namespace SpaceHorror.InventorySystem.UI
 {
     public delegate void ItemSlotUIHandler(ItemSlotUI slot);
+    public delegate void CompareWindowHandler(CompareWindow window);
 }

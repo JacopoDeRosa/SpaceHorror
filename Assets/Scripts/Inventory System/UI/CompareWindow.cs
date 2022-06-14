@@ -17,6 +17,10 @@ namespace SpaceHorror.InventorySystem.UI
         private Vector2 _dragOffset;
         private bool _dragging;
 
+        public InventoryWindow Window { get => _window; }
+
+        public event CompareWindowHandler onWindowClose;
+
         public void OnBeginDrag(PointerEventData eventData)
         {
             if(RectTransformUtility.RectangleContainsScreenPoint(_header.rectTransform, eventData.position))
@@ -42,7 +46,7 @@ namespace SpaceHorror.InventorySystem.UI
 
         public void Close()
         {
-
+            onWindowClose?.Invoke(this);
         }
     }
 }
