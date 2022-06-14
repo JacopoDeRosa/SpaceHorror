@@ -17,8 +17,6 @@ namespace SpaceHorror.InventorySystem.UI
         private Vector2 _dragOffset;
         private bool _dragging;
 
-        public InventoryWindow Window { get => _window; }
-
         public event CompareWindowHandler onWindowClose;
 
         public void OnBeginDrag(PointerEventData eventData)
@@ -47,6 +45,16 @@ namespace SpaceHorror.InventorySystem.UI
         public void Close()
         {
             onWindowClose?.Invoke(this);
+        }
+
+        public void ResetWindow()
+        {
+          // TODO: Implement
+        }
+
+        public void SetInventory(Inventory inventory)
+        {
+
         }
     }
 }

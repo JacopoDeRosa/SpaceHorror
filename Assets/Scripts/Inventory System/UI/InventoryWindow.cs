@@ -14,6 +14,7 @@ namespace SpaceHorror.InventorySystem.UI
         [SerializeField] private ItemSlotUI[] _allSlots;
         [SerializeField] private CellUI[] _allCells;
         [SerializeField] private Vector2Int _padding;
+        [SerializeField] private bool _dynamicWindow;
         [SerializeField] private RectTransform _cellsContainer, _slotsContainer;
         [SerializeField] private Inventory _starterInventory;
         [SerializeField] private SlotOptionsMenu _optionsMenu;
@@ -71,11 +72,6 @@ namespace SpaceHorror.InventorySystem.UI
 
         }
 
-        public void ClearInventory(Inventory inventory)
-        {
-
-        }
-
         public CellUI GetCell(Vector2Int position)
         {
             if (_cellsGrid.GetLength(0) <= position.x || _cellsGrid.GetLength(1) <= position.y || position.x < 0 || position.y < 0) return null;
@@ -86,6 +82,17 @@ namespace SpaceHorror.InventorySystem.UI
         private void ReadInventory(Inventory inventory)
         {
             ResetWindow();
+
+            if(_dynamicWindow)
+            {
+                RectTransform rectTransform = transform as RectTransform;
+                if(rectTransform)
+                {
+                    rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, inventory.Size.x * (cellSizeX + cellsBorder) + _padding.x * 2);
+                    rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, inventory.Size.y * (cellSizeY + cellsBorder) + _padding.y * 2);
+                }
+            }
+
             _cellsGrid = new CellUI[inventory.Size.x, inventory.Size.y];
 
             for (int y = 0; y < inventory.Size.y; y++)
