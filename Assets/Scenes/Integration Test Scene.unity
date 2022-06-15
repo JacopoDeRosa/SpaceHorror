@@ -10292,6 +10292,7 @@ MonoBehaviour:
     _itemCount: 1
   - _itemData: {fileID: 11400000, guid: 54dd109a93b80c24f9e7fb0f09f7289c, type: 2}
     _itemCount: 2
+  _allItems: []
 --- !u!1 &1130404359
 GameObject:
   m_ObjectHideFlags: 0
@@ -16228,6 +16229,7 @@ MonoBehaviour:
     _itemCount: 5
   - _itemData: {fileID: 11400000, guid: 54dd109a93b80c24f9e7fb0f09f7289c, type: 2}
     _itemCount: 2
+  _allItems: []
 --- !u!114 &1548774260
 MonoBehaviour:
   m_ObjectHideFlags: 0

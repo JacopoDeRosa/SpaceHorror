@@ -160,7 +160,7 @@ namespace SpaceHorror.InventorySystem.UI
             }
             _starterCell = null;
             _backgroundImage.raycastTarget = true;
-            transform.parent = _defaultParent;
+            transform.SetParent(_defaultParent);
             transform.SetAsFirstSibling();
         }
 
@@ -170,7 +170,7 @@ namespace SpaceHorror.InventorySystem.UI
             _dragOffset = new Vector2(transform.position.x, transform.position.y) - eventData.position;
             _targetSlot.LiftFromInventory();
             _starterCell = GetCellAtPivot();
-            transform.parent = transform.root;
+            transform.SetParent(transform.root);
             transform.SetAsLastSibling();
         }
 

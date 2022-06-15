@@ -36,6 +36,7 @@ namespace SpaceHorror.InventorySystem
         protected virtual void Awake()
         {
             _allItems = new List<ItemSlot>();
+
             _cells = new Cell[_size.x, _size.y];
 
             for (int y = 0; y < _size.y; y++)
@@ -51,7 +52,6 @@ namespace SpaceHorror.InventorySystem
                 item.SetParentInventory(this);
                 TryPlaceItem(item);
             }
-            _initialItems.Clear();
         }
 
         /// <summary>
@@ -75,11 +75,8 @@ namespace SpaceHorror.InventorySystem
                             cell.SetSlot(slot);
                         }
 
-                        if(_allItems.Contains(slot) == false && _initialItems.Contains(slot) == false)
-                        {
-                            _allItems.Add(slot);
-                        }
-                        
+                        _allItems.Add(slot);
+
                         return true;
                     }
                 }
@@ -121,6 +118,16 @@ namespace SpaceHorror.InventorySystem
             foreach (Cell cell in GetSlotCells(slot, GetCell(slot.Position.x, slot.Position.y)))
             {
                 cell.SetSlot(null);
+            }
+        }
+
+        public void RemoveItem(ItemSlot slot)
+        {
+            if (slot.ParentInventory != this) return;
+            ItemSlot mSlot = _allItems.Find(x => x.Equals(slot));
+            if (mSlot != null)
+            {
+                _allItems.Remove(mSlot);
             }
         }
 
