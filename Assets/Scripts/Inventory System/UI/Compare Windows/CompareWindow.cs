@@ -25,8 +25,8 @@ namespace SpaceHorror.InventorySystem.UI
             {
                 _dragOffset = new Vector2(transform.position.x, transform.position.y) - eventData.position;
                 _dragging = true;
-            }
-       
+                transform.SetAsLastSibling();
+            }      
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -54,7 +54,10 @@ namespace SpaceHorror.InventorySystem.UI
 
         public void SetInventory(Inventory inventory)
         {
+            if (inventory == null) return;
 
+            _title.text = inventory.Name;
+            _window.SetInventory(inventory);
         }
     }
 }

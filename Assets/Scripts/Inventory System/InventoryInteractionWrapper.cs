@@ -17,6 +17,7 @@ namespace SpaceHorror.InventorySystem
         public void Interact(GameObject actor)
         {
             print("Opening " + _target.Name);
+
         }
 
         public void Select()

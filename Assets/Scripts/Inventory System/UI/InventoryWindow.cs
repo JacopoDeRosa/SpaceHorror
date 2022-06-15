@@ -32,6 +32,8 @@ namespace SpaceHorror.InventorySystem.UI
 
         private void Start()
         {
+            StartWindow();
+
             if (_starterInventory == null)
             {
                 ResetWindow();
@@ -46,9 +48,6 @@ namespace SpaceHorror.InventorySystem.UI
         {
             foreach (ItemSlotUI slot in _allSlots)
             {
-                slot.SetOptionsMenu(_optionsMenu);
-                slot.SetInspector(_inspector);
-                slot.SetParentWindow(this);
                 slot.gameObject.SetActive(false);
             }
             foreach (CellUI cell in _allCells)
@@ -69,7 +68,14 @@ namespace SpaceHorror.InventorySystem.UI
 
         public void SetInventory(Inventory inventory)
         {
-
+            if(inventory == null)
+            {
+                ResetWindow();
+            }
+            else
+            {
+                ReadInventory(inventory);
+            }       
         }
 
         public CellUI GetCell(Vector2Int position)
@@ -138,16 +144,15 @@ namespace SpaceHorror.InventorySystem.UI
             slot.gameObject.SetActive(false);   
         }
 
-        private void ResetCells()
+        private void StartWindow()
         {
-            foreach (CellUI cell in _allCells)
+            foreach (ItemSlotUI slot in _allSlots)
             {
-                cell.gameObject.SetActive(false);
+                slot.SetOptionsMenu(_optionsMenu);
+                slot.SetInspector(_inspector);
+                slot.SetParentWindow(this);
             }
-            _freeCells = new Queue<CellUI>(_allCells);
-        }
-
-       
+        }       
     }
 }
 
