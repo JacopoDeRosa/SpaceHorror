@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SpaceHorror.UI;
 
 namespace SpaceHorror.InventorySystem.UI
 {
     public class CompareWindowsManager : MonoBehaviour
     {
+        [SerializeField] private InGameMenuManager _inGameMenu;
         [SerializeField] private CompareWindow[] _allWindows;
 
         private Queue<CompareWindow> _freeWindows;
@@ -16,9 +18,9 @@ namespace SpaceHorror.InventorySystem.UI
             ResetWindows();
         }
 
-        private void ResetWindows()
+        public void ResetWindows()
         {
-            foreach (CompareWindow window in _freeWindows)
+            foreach (CompareWindow window in _allWindows)
             {
                 window.ResetWindow();
                 window.gameObject.SetActive(false);
@@ -26,14 +28,18 @@ namespace SpaceHorror.InventorySystem.UI
             _freeWindows = new Queue<CompareWindow>(_allWindows);
         }
 
-        public void DisplayInventory(Inventory inventory)
+
+        public void DisplayInventoryWindow(Inventory inventory)
         {
             if (_freeWindows.Count == 0) return;
 
+            if(_inGameMenu.MenuOpen == false)
+            {
+                _inGameMenu.OpenMenu("Inventory");
+            }
+
             var window = _freeWindows.Dequeue();
-
             window.gameObject.SetActive(true);
-
             window.SetInventory(inventory);
         }
 

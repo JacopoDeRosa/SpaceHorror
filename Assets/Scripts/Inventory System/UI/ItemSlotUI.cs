@@ -14,12 +14,14 @@ namespace SpaceHorror.InventorySystem.UI
         [SerializeField] private Image _backgroundImage, _spriteImage;
         [SerializeField] private TMP_Text _nameText, _amountText;
         [SerializeField] private Vector2 _optionsMenuOffset;
-        [SerializeField] private List<GameObject> _hoverStack;
 
         private Inspector _inspector;
         private ItemSlot _targetSlot;
+
         private SlotOptionsMenu _optionsMenu;
         private InventoryWindow _parentWindow;
+
+        private Transform _defaultParent;
 
         private Vector2 _dragOffset;
         private Vector2Int CenterOffset
@@ -76,6 +78,7 @@ namespace SpaceHorror.InventorySystem.UI
         public void SetParentWindow(InventoryWindow window)
         {
             _parentWindow = window;
+            _defaultParent = transform.parent;
         }
 
         private void OnTargetDeath()
@@ -157,6 +160,7 @@ namespace SpaceHorror.InventorySystem.UI
             }
             _starterCell = null;
             _backgroundImage.raycastTarget = true;
+            transform.parent = _defaultParent;
             transform.SetAsFirstSibling();
         }
 
@@ -166,6 +170,7 @@ namespace SpaceHorror.InventorySystem.UI
             _dragOffset = new Vector2(transform.position.x, transform.position.y) - eventData.position;
             _targetSlot.LiftFromInventory();
             _starterCell = GetCellAtPivot();
+            transform.parent = transform.root;
             transform.SetAsLastSibling();
         }
 
@@ -222,16 +227,6 @@ namespace SpaceHorror.InventorySystem.UI
         {
             // TODO: Implement.
             return null;
-        }
-
-        private void Update()
-        {
-            List<GameObject> hover = new List<GameObject>();
-            foreach (var item in GetAllElementsAtPivot())
-            {
-                hover.Add(item.gameObject);
-            }
-            _hoverStack = hover;
         }
     }
 }

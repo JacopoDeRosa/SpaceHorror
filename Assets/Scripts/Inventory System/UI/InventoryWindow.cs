@@ -25,6 +25,8 @@ namespace SpaceHorror.InventorySystem.UI
 
         private CellUI[,] _cellsGrid;
 
+        private bool _windowStarted;
+
         private void Awake()
         {
             SubToEvents();
@@ -32,19 +34,10 @@ namespace SpaceHorror.InventorySystem.UI
 
         private void Start()
         {
-            StartWindow();
-
-            if (_starterInventory == null)
-            {
-                ResetWindow();
-            }
-            else
-            {
-                ReadInventory(_starterInventory);
-            }
+          if(_starterInventory) ReadInventory(_starterInventory);
         }
 
-        private void ResetWindow()
+        public void ResetWindow()
         {
             foreach (ItemSlotUI slot in _allSlots)
             {
@@ -87,9 +80,16 @@ namespace SpaceHorror.InventorySystem.UI
 
         private void ReadInventory(Inventory inventory)
         {
-            ResetWindow();
+            if(_windowStarted)
+            {
+                ResetWindow();
+            }
+            else
+            {
+                StartWindow();
+            }
 
-            if(_dynamicWindow)
+            if (_dynamicWindow)
             {
                 RectTransform rectTransform = transform as RectTransform;
                 if(rectTransform)
@@ -144,14 +144,27 @@ namespace SpaceHorror.InventorySystem.UI
             slot.gameObject.SetActive(false);   
         }
 
-        private void StartWindow()
+        public void StartWindow()
         {
+            if (_windowStarted) return;
+
             foreach (ItemSlotUI slot in _allSlots)
             {
                 slot.SetOptionsMenu(_optionsMenu);
                 slot.SetInspector(_inspector);
                 slot.SetParentWindow(this);
+                slot.gameObject.SetActive(false);
             }
+
+            foreach (CellUI cell in _allCells)
+            {
+                cell.gameObject.SetActive(false);
+            }
+
+            _freeSlots = new Queue<ItemSlotUI>(_allSlots);
+            _freeCells = new Queue<CellUI>(_allCells);
+
+            _windowStarted = true;
         }       
     }
 }

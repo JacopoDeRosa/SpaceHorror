@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using FPS.Interaction;
 
-namespace SpaceHorror.InventorySystem
+namespace SpaceHorror.InventorySystem.UI
 {
     public class InventoryInteractionWrapper : MonoBehaviour, IInteractable
     {
-        [SerializeField] private Inventory _target;
+        [SerializeField] private Inventory _targetInventory;
 
         public void DeSelect()
         {
@@ -16,8 +16,11 @@ namespace SpaceHorror.InventorySystem
 
         public void Interact(GameObject actor)
         {
-            print("Opening " + _target.Name);
-
+          var manager = FindObjectOfType<CompareWindowsManager>();
+            if(manager)
+            {
+                manager.DisplayInventoryWindow(_targetInventory);
+            }
         }
 
         public void Select()

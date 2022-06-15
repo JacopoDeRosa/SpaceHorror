@@ -5,13 +5,13 @@ using UnityEngine.InputSystem;
 
 namespace SpaceHorror.UI
 {
-    public class GameMenuInput : MonoBehaviour
+    public class InGameMenuManager : MonoBehaviour
     {
         [SerializeField] GameMenu _menu;
 
         private PlayerInput _input;
 
-        private bool _menuOpen;
+        public bool MenuOpen { get => _menu.gameObject.activeInHierarchy; }
 
         void Start()
         {
@@ -45,7 +45,7 @@ namespace SpaceHorror.UI
         }
 
 
-        private void OpenMenu(string menu)
+        public void OpenMenu(string menu)
         {
             if (_menu.gameObject.activeInHierarchy) return;
             _menu.gameObject.SetActive(true);

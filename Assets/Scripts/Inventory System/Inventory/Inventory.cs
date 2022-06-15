@@ -12,13 +12,14 @@ namespace SpaceHorror.InventorySystem
         [SerializeField] private Vector2Int _size;
         [SerializeField] private List<ItemSlot> _initialItems;
 
+        [SerializeField]
         private List<ItemSlot> _allItems;
         private Cell[,] _cells;
 
         public string Name { get => _name; }
         public Cell[,] InventoryCells { get => _cells; }
         public Vector2Int Size { get => _size; }
-        public IEnumerable<ItemSlot> AllItems { get => new List<ItemSlot>(_allItems); }
+        public List<ItemSlot> AllItems { get => new List<ItemSlot>(_allItems); }
 
         public event ItemSlotHandler onSlotAdded;
 
@@ -73,7 +74,12 @@ namespace SpaceHorror.InventorySystem
                         {
                             cell.SetSlot(slot);
                         }
-                        _allItems.Add(slot);
+
+                        if(_allItems.Contains(slot) == false && _initialItems.Contains(slot) == false)
+                        {
+                            _allItems.Add(slot);
+                        }
+                        
                         return true;
                     }
                 }

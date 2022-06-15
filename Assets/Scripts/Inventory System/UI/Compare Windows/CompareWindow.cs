@@ -28,7 +28,6 @@ namespace SpaceHorror.InventorySystem.UI
                 transform.SetAsLastSibling();
             }      
         }
-
         public void OnDrag(PointerEventData eventData)
         {
             if (_dragging)
@@ -36,7 +35,6 @@ namespace SpaceHorror.InventorySystem.UI
                 transform.position = eventData.position + _dragOffset;
             }
         }
-
         public void OnEndDrag(PointerEventData eventData)
         {
             _dragging = false;
@@ -49,7 +47,7 @@ namespace SpaceHorror.InventorySystem.UI
 
         public void ResetWindow()
         {
-          // TODO: Implement
+            _window.ResetWindow();
         }
 
         public void SetInventory(Inventory inventory)

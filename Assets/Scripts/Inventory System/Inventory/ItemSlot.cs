@@ -42,6 +42,14 @@ namespace SpaceHorror.InventorySystem
             _itemParameters = null;
             _parentInventory = parent;
         }
+
+        public ItemSlot(ItemSlot slot, Inventory parent)
+        {
+            _itemData = slot.ItemData;
+            _itemCount = slot.ItemCount;
+            _itemParameters = slot.ItemParameters;
+            _parentInventory = parent;
+        }
         #endregion
 
         #region Equality Comparisons
@@ -163,7 +171,7 @@ namespace SpaceHorror.InventorySystem
 
         private bool TryMergeSlot(ItemSlot slot)
         {
-            if (_itemData.Stackable == false || slot.ItemData != _itemData || slot.ParentInventory != ParentInventory) return false;
+            if (_itemData.Stackable == false || slot.ItemData != _itemData) return false;
 
             slot.AddToCount(_itemCount);
             DestorySlot();
@@ -171,7 +179,7 @@ namespace SpaceHorror.InventorySystem
             return true;
         }
 
-        private void DestorySlot()
+        public void DestorySlot()
         {
             onDestroy?.Invoke();
         }
