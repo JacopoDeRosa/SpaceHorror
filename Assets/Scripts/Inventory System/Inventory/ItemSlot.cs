@@ -61,11 +61,11 @@ namespace SpaceHorror.InventorySystem
 
             if(ItemParameters == null)
             {
-                return _itemData.Equals(slot.ItemData);
+                return _itemData.Equals(slot.ItemData) && Position == slot.Position;
             }
             else    
             {
-                return _itemParameters.Equals(slot.ItemParameters) && _itemData.Equals(slot.ItemData);
+                return _itemParameters.Equals(slot.ItemParameters) && _itemData.Equals(slot.ItemData) && Position == slot.Position;
             }        
         }
         public override int GetHashCode()
@@ -160,7 +160,19 @@ namespace SpaceHorror.InventorySystem
             }
             else
             {
-                return _parentInventory.TryPlaceItem(this, cell);
+                if(cell.Parent == ParentInventory)
+                {
+                    return _parentInventory.TryPlaceItem(this, cell);
+                }
+                else
+                {
+                    if(cell.Parent.TryPlaceItem(new ItemSlot(this, cell.Parent), cell))
+                    {
+                        DestorySlot();
+                        return true;
+                    }
+                    return false;
+                }
             }
         }
 
@@ -179,9 +191,10 @@ namespace SpaceHorror.InventorySystem
             return true;
         }
 
-        public void DestorySlot()
+        private void DestorySlot()
         {
             onDestroy?.Invoke();
+            _parentInventory.RemoveSlot(this);
         }
     }
 }

@@ -27,6 +27,8 @@ namespace SpaceHorror.InventorySystem.UI
 
         private bool _windowStarted;
 
+        private Inventory _targetInventory;
+
         private void Awake()
         {
             SubToEvents();
@@ -39,6 +41,11 @@ namespace SpaceHorror.InventorySystem.UI
 
         public void ResetWindow()
         {
+            if(_targetInventory != null)
+            {
+                _targetInventory.onSlotAdded -= SpawnUiSlot;
+            }
+
             foreach (ItemSlotUI slot in _allSlots)
             {
                 slot.gameObject.SetActive(false);
@@ -101,10 +108,12 @@ namespace SpaceHorror.InventorySystem.UI
 
             _cellsGrid = new CellUI[inventory.Size.x, inventory.Size.y];
 
+            // This spawns the ccells.
             for (int y = 0; y < inventory.Size.y; y++)
             {
                 for (int x = 0; x < inventory.Size.x; x++)
                 {
+                  
                     CellUI cell = _freeCells.Dequeue();
 
                     cell.gameObject.SetActive(true);
@@ -128,11 +137,20 @@ namespace SpaceHorror.InventorySystem.UI
             }
             foreach (ItemSlot slot in inventory.AllItems)
             {
-                var uiSlot = _freeSlots.Dequeue();
-                uiSlot.gameObject.SetActive(true);
-                uiSlot.SetItemSlot(slot);
-                uiSlot.SetPosition(_cellsGrid[slot.Position.x, slot.Position.y].transform.position);
+                SpawnUiSlot(slot);
             }
+
+            _targetInventory = inventory;
+
+            inventory.onSlotAdded += SpawnUiSlot;
+        }
+
+        private void SpawnUiSlot(ItemSlot slot)
+        {
+            var uiSlot = _freeSlots.Dequeue();
+            uiSlot.gameObject.SetActive(true);
+            uiSlot.SetItemSlot(slot);
+            uiSlot.SetPosition(_cellsGrid[slot.Position.x, slot.Position.y].transform.position);
         }
 
         private void RecycleSlotUI(ItemSlotUI slot)

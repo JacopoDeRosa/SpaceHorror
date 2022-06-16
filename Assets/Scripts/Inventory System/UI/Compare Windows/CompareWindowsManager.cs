@@ -15,6 +15,11 @@ namespace SpaceHorror.InventorySystem.UI
 
         private void Start()
         {
+            foreach (CompareWindow window in _allWindows)
+            {
+                window.onWindowClose += RecycleWindow;
+            }
+
             ResetWindows();
         }
 
@@ -43,5 +48,12 @@ namespace SpaceHorror.InventorySystem.UI
             window.SetInventory(inventory);
         }
 
+
+        private void RecycleWindow(CompareWindow window)
+        {
+            window.ResetWindow();
+            window.gameObject.SetActive(false);
+            _freeWindows.Enqueue(window);
+        }
     }
 }

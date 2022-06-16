@@ -43,7 +43,9 @@ namespace SpaceHorror.InventorySystem
             {
                 for (int x = 0; x < _size.x; x++)
                 {
-                    _cells[x,y] = new Cell(x, y);
+                    Cell newCell = new Cell(x, y);
+                    newCell.SetParent(this);
+                    _cells[x,y] = newCell;
                 }
             }
 
@@ -55,7 +57,7 @@ namespace SpaceHorror.InventorySystem
         }
 
         /// <summary>
-        /// Places an item in an optimal position.
+        /// Tries to place an item in an optimal position.
         /// </summary>
         /// <param name="slot"></param>
         /// <returns></returns>
@@ -68,15 +70,7 @@ namespace SpaceHorror.InventorySystem
                     Cell checkCell = GetCell(x, y);
                     if (SlotCanFit(slot, checkCell))
                     {
-                        slot.SetPosition(new Vector2Int(x, y));
-
-                        foreach (var cell in GetSlotCells(slot, checkCell))
-                        {
-                            cell.SetSlot(slot);
-                        }
-
-                        _allItems.Add(slot);
-
+                        PlaceItemAtPoint(slot, checkCell);
                         return true;
                     }
                 }
@@ -95,16 +89,28 @@ namespace SpaceHorror.InventorySystem
         {
             if (SlotCanFit(slot, targetCell))
             {
-                slot.SetPosition(targetCell.Position);
-
-                foreach (var cell in GetSlotCells(slot, targetCell))
-                {
-                    cell.SetSlot(slot);
-                }
+                PlaceItemAtPoint(slot, targetCell);
                 return true;
             }
 
             return false;
+        }
+
+        private void PlaceItemAtPoint(ItemSlot slot, Cell point)
+        {
+            slot.SetPosition(point.Position);
+
+            foreach (var cell in GetSlotCells(slot, point))
+            {
+                cell.SetSlot(slot);
+            }
+
+            if (_allItems.Contains(slot) == false)
+            {
+                _allItems.Add(slot);
+                onSlotAdded?.Invoke(slot);
+            }   
+
         }
 
         /// <summary>
@@ -121,7 +127,7 @@ namespace SpaceHorror.InventorySystem
             }
         }
 
-        public void RemoveItem(ItemSlot slot)
+        public void RemoveSlot(ItemSlot slot)
         {
             if (slot.ParentInventory != this) return;
             ItemSlot mSlot = _allItems.Find(x => x.Equals(slot));

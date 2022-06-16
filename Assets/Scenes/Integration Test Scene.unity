@@ -1664,7 +1664,7 @@ PrefabInstance:
     - target: {fileID: 1653369324098348400, guid: 2637bd81cbf78d540b29d90686e3bc6e,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 450
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1653369324098348400, guid: 2637bd81cbf78d540b29d90686e3bc6e,
         type: 3}
@@ -1690,21 +1690,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Compare Window (10)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1653369324098348406, guid: 2637bd81cbf78d540b29d90686e3bc6e,
-        type: 3}
-      propertyPath: _inspector
-      value: 
-      objectReference: {fileID: 1240342437}
-    - target: {fileID: 1653369324098348406, guid: 2637bd81cbf78d540b29d90686e3bc6e,
-        type: 3}
-      propertyPath: _optionsMenu
-      value: 
-      objectReference: {fileID: 93359404}
-    - target: {fileID: 1653369324098348406, guid: 2637bd81cbf78d540b29d90686e3bc6e,
-        type: 3}
-      propertyPath: _starterInventory
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2637bd81cbf78d540b29d90686e3bc6e, type: 3}
@@ -3871,7 +3856,7 @@ PrefabInstance:
     - target: {fileID: 1653369324098348400, guid: 2637bd81cbf78d540b29d90686e3bc6e,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 450
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1653369324098348400, guid: 2637bd81cbf78d540b29d90686e3bc6e,
         type: 3}
@@ -3897,21 +3882,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Compare Window (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1653369324098348406, guid: 2637bd81cbf78d540b29d90686e3bc6e,
-        type: 3}
-      propertyPath: _inspector
-      value: 
-      objectReference: {fileID: 1240342437}
-    - target: {fileID: 1653369324098348406, guid: 2637bd81cbf78d540b29d90686e3bc6e,
-        type: 3}
-      propertyPath: _optionsMenu
-      value: 
-      objectReference: {fileID: 93359404}
-    - target: {fileID: 1653369324098348406, guid: 2637bd81cbf78d540b29d90686e3bc6e,
-        type: 3}
-      propertyPath: _starterInventory
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2637bd81cbf78d540b29d90686e3bc6e, type: 3}
@@ -4547,7 +4517,7 @@ PrefabInstance:
     - target: {fileID: 1653369324098348400, guid: 2637bd81cbf78d540b29d90686e3bc6e,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 450
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1653369324098348400, guid: 2637bd81cbf78d540b29d90686e3bc6e,
         type: 3}
@@ -4573,21 +4543,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Compare Window (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1653369324098348406, guid: 2637bd81cbf78d540b29d90686e3bc6e,
-        type: 3}
-      propertyPath: _inspector
-      value: 
-      objectReference: {fileID: 1240342437}
-    - target: {fileID: 1653369324098348406, guid: 2637bd81cbf78d540b29d90686e3bc6e,
-        type: 3}
-      propertyPath: _optionsMenu
-      value: 
-      objectReference: {fileID: 93359404}
-    - target: {fileID: 1653369324098348406, guid: 2637bd81cbf78d540b29d90686e3bc6e,
-        type: 3}
-      propertyPath: _starterInventory
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2637bd81cbf78d540b29d90686e3bc6e, type: 3}
@@ -4699,7 +4654,7 @@ PrefabInstance:
     - target: {fileID: 1653369324098348400, guid: 2637bd81cbf78d540b29d90686e3bc6e,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 450
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1653369324098348400, guid: 2637bd81cbf78d540b29d90686e3bc6e,
         type: 3}
@@ -4725,21 +4680,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Compare Window (6)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1653369324098348406, guid: 2637bd81cbf78d540b29d90686e3bc6e,
-        type: 3}
-      propertyPath: _inspector
-      value: 
-      objectReference: {fileID: 1240342437}
-    - target: {fileID: 1653369324098348406, guid: 2637bd81cbf78d540b29d90686e3bc6e,
-        type: 3}
-      propertyPath: _optionsMenu
-      value: 
-      objectReference: {fileID: 93359404}
-    - target: {fileID: 1653369324098348406, guid: 2637bd81cbf78d540b29d90686e3bc6e,
-        type: 3}
-      propertyPath: _starterInventory
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2637bd81cbf78d540b29d90686e3bc6e, type: 3}
@@ -6102,7 +6042,7 @@ PrefabInstance:
     - target: {fileID: 1653369324098348400, guid: 2637bd81cbf78d540b29d90686e3bc6e,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 450
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1653369324098348400, guid: 2637bd81cbf78d540b29d90686e3bc6e,
         type: 3}
@@ -6128,21 +6068,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Compare Window (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1653369324098348406, guid: 2637bd81cbf78d540b29d90686e3bc6e,
-        type: 3}
-      propertyPath: _inspector
-      value: 
-      objectReference: {fileID: 1240342437}
-    - target: {fileID: 1653369324098348406, guid: 2637bd81cbf78d540b29d90686e3bc6e,
-        type: 3}
-      propertyPath: _optionsMenu
-      value: 
-      objectReference: {fileID: 93359404}
-    - target: {fileID: 1653369324098348406, guid: 2637bd81cbf78d540b29d90686e3bc6e,
-        type: 3}
-      propertyPath: _starterInventory
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2637bd81cbf78d540b29d90686e3bc6e, type: 3}
@@ -9145,7 +9070,7 @@ PrefabInstance:
     - target: {fileID: 1653369324098348400, guid: 2637bd81cbf78d540b29d90686e3bc6e,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 450
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1653369324098348400, guid: 2637bd81cbf78d540b29d90686e3bc6e,
         type: 3}
@@ -9171,21 +9096,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Compare Window (9)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1653369324098348406, guid: 2637bd81cbf78d540b29d90686e3bc6e,
-        type: 3}
-      propertyPath: _inspector
-      value: 
-      objectReference: {fileID: 1240342437}
-    - target: {fileID: 1653369324098348406, guid: 2637bd81cbf78d540b29d90686e3bc6e,
-        type: 3}
-      propertyPath: _optionsMenu
-      value: 
-      objectReference: {fileID: 93359404}
-    - target: {fileID: 1653369324098348406, guid: 2637bd81cbf78d540b29d90686e3bc6e,
-        type: 3}
-      propertyPath: _starterInventory
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2637bd81cbf78d540b29d90686e3bc6e, type: 3}
@@ -15051,7 +14961,7 @@ PrefabInstance:
     - target: {fileID: 1653369324098348400, guid: 2637bd81cbf78d540b29d90686e3bc6e,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 450
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1653369324098348400, guid: 2637bd81cbf78d540b29d90686e3bc6e,
         type: 3}
@@ -15077,21 +14987,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Compare Window (8)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1653369324098348406, guid: 2637bd81cbf78d540b29d90686e3bc6e,
-        type: 3}
-      propertyPath: _inspector
-      value: 
-      objectReference: {fileID: 1240342437}
-    - target: {fileID: 1653369324098348406, guid: 2637bd81cbf78d540b29d90686e3bc6e,
-        type: 3}
-      propertyPath: _optionsMenu
-      value: 
-      objectReference: {fileID: 93359404}
-    - target: {fileID: 1653369324098348406, guid: 2637bd81cbf78d540b29d90686e3bc6e,
-        type: 3}
-      propertyPath: _starterInventory
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2637bd81cbf78d540b29d90686e3bc6e, type: 3}
@@ -15203,7 +15098,7 @@ PrefabInstance:
     - target: {fileID: 1653369324098348400, guid: 2637bd81cbf78d540b29d90686e3bc6e,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 450
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1653369324098348400, guid: 2637bd81cbf78d540b29d90686e3bc6e,
         type: 3}
@@ -15229,21 +15124,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Compare Window (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1653369324098348406, guid: 2637bd81cbf78d540b29d90686e3bc6e,
-        type: 3}
-      propertyPath: _inspector
-      value: 
-      objectReference: {fileID: 1240342437}
-    - target: {fileID: 1653369324098348406, guid: 2637bd81cbf78d540b29d90686e3bc6e,
-        type: 3}
-      propertyPath: _optionsMenu
-      value: 
-      objectReference: {fileID: 93359404}
-    - target: {fileID: 1653369324098348406, guid: 2637bd81cbf78d540b29d90686e3bc6e,
-        type: 3}
-      propertyPath: _starterInventory
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2637bd81cbf78d540b29d90686e3bc6e, type: 3}
@@ -16221,7 +16101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: Test Chest
-  _size: {x: 8, y: 8}
+  _size: {x: 3, y: 3}
   _initialItems:
   - _itemData: {fileID: 11400000, guid: 9df7238a0378ac14f9211b12c77c1144, type: 2}
     _itemCount: 1
@@ -20508,7 +20388,7 @@ PrefabInstance:
     - target: {fileID: 1653369324098348400, guid: 2637bd81cbf78d540b29d90686e3bc6e,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 450
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1653369324098348400, guid: 2637bd81cbf78d540b29d90686e3bc6e,
         type: 3}
@@ -20534,21 +20414,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Compare Window (7)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1653369324098348406, guid: 2637bd81cbf78d540b29d90686e3bc6e,
-        type: 3}
-      propertyPath: _inspector
-      value: 
-      objectReference: {fileID: 1240342437}
-    - target: {fileID: 1653369324098348406, guid: 2637bd81cbf78d540b29d90686e3bc6e,
-        type: 3}
-      propertyPath: _optionsMenu
-      value: 
-      objectReference: {fileID: 93359404}
-    - target: {fileID: 1653369324098348406, guid: 2637bd81cbf78d540b29d90686e3bc6e,
-        type: 3}
-      propertyPath: _starterInventory
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2637bd81cbf78d540b29d90686e3bc6e, type: 3}
@@ -20660,7 +20525,7 @@ PrefabInstance:
     - target: {fileID: 1653369324098348400, guid: 2637bd81cbf78d540b29d90686e3bc6e,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 450
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1653369324098348400, guid: 2637bd81cbf78d540b29d90686e3bc6e,
         type: 3}
@@ -20686,21 +20551,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Compare Window (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1653369324098348406, guid: 2637bd81cbf78d540b29d90686e3bc6e,
-        type: 3}
-      propertyPath: _inspector
-      value: 
-      objectReference: {fileID: 1240342437}
-    - target: {fileID: 1653369324098348406, guid: 2637bd81cbf78d540b29d90686e3bc6e,
-        type: 3}
-      propertyPath: _optionsMenu
-      value: 
-      objectReference: {fileID: 93359404}
-    - target: {fileID: 1653369324098348406, guid: 2637bd81cbf78d540b29d90686e3bc6e,
-        type: 3}
-      propertyPath: _starterInventory
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2637bd81cbf78d540b29d90686e3bc6e, type: 3}

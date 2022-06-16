@@ -39,7 +39,7 @@ namespace FPS.Movement
 
         private bool CanJump
         {
-            get { return _timeSinceLastJump >= _jumpRate && _controllerData.CrouchForced == false; }
+            get { return _timeSinceLastJump >= _jumpRate && _controllerData.CrouchForced == false && _controllerData.IsGrounded; }
         }
 
         void Awake()
