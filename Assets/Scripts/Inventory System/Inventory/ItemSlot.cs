@@ -100,16 +100,17 @@ namespace SpaceHorror.InventorySystem
         #endregion
 
         #region Options
-        [InventoryButton("Drop x1")]
-        private void DropOne()
+        [InventoryButton("Drop")]
+        private void Drop()
         {
-            Debug.Log("Dropped 1 of " + _itemData.name);
-        }
-
-        [InventoryButton("Drop x5")]
-        private void DropFive()
-        {
-            Debug.Log("Dropped 5 of " + _itemData.name);
+            if(_itemCount == 1)
+            {
+                Debug.Log("Dropping " + _itemData.name);
+            }
+            else
+            {
+                Debug.Log("Opening drop window");
+            }
         }
 
         [InventoryButton("Consume", typeof(UsableItemData))]
@@ -118,6 +119,8 @@ namespace SpaceHorror.InventorySystem
             Debug.Log("Consumed " + _itemData.name);
         }
         #endregion
+
+        #region Inventory Methods
 
         public void AddToCount(int amount)
         {
@@ -196,6 +199,8 @@ namespace SpaceHorror.InventorySystem
             onDestroy?.Invoke();
             _parentInventory.RemoveSlot(this);
         }
+
+        #endregion
     }
 }
 
