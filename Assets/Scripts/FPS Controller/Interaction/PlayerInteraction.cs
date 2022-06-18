@@ -10,9 +10,7 @@ namespace FPS.Interaction
     public class PlayerInteraction : MonoBehaviour
     {
         [SerializeField] private float _interactionRange;
-        [SerializeField] private Transform _camera;
-
-        [SerializeField] private TMP_Text _interactionTest;
+        [SerializeField] private Transform _viewPivot;
 
         private PlayerInput _input;
         private IInteractable _target;
@@ -49,7 +47,7 @@ namespace FPS.Interaction
         private void SetTarget()
         {
             RaycastHit hitInfo;
-            Ray ray = new Ray(_camera.position + _camera.forward / 4, _camera.forward);
+            Ray ray = new Ray(_viewPivot.position + _viewPivot.forward / 4, _viewPivot.forward);
 
             if (Physics.Raycast(ray, out hitInfo, _interactionRange))
             {
@@ -87,7 +85,7 @@ namespace FPS.Interaction
         {
             if (_target == null) return;
 
-            _target.Interact(_camera.gameObject);
+            _target.Interact(gameObject);
             _target = null; // Setting target to null prevents conflicts if target is destroyed in use        
         }
 

@@ -166,6 +166,15 @@ namespace SpaceHorror.InventorySystem.UI
         {
             if (_windowStarted) return;
 
+            if(_inspector == null)
+            {
+                _inspector = FindObjectOfType<Inspector>();
+            }
+            if(_optionsMenu == null)
+            {
+                _optionsMenu = FindObjectOfType<SlotOptionsMenu>();
+            }
+
             foreach (ItemSlotUI slot in _allSlots)
             {
                 slot.SetOptionsMenu(_optionsMenu);

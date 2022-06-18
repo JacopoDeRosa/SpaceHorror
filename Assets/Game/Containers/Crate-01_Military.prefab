@@ -266,8 +266,6 @@ MonoBehaviour:
   _initialItems:
   - _itemData: {fileID: 11400000, guid: 54dd109a93b80c24f9e7fb0f09f7289c, type: 2}
     _itemCount: 3
-  - _itemData: {fileID: 11400000, guid: be2ef971afce3a34aa5178a6647437ad, type: 2}
-    _itemCount: 1
   _dropPoint: {x: 0, y: 0.35, z: 0.75}
 --- !u!114 &7333061037187375880
 MonoBehaviour:

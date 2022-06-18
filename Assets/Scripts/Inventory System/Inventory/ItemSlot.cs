@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using SpaceHorror.UI;
 
 namespace SpaceHorror.InventorySystem
 {
@@ -40,6 +41,21 @@ namespace SpaceHorror.InventorySystem
             _itemData = data;
             _itemCount = 1;
             _itemParameters = null;
+            _parentInventory = parent;
+        }
+        public ItemSlot(GameItemData data, Inventory parent, int count)
+        {
+            _itemData = data;
+            _itemCount = count;
+            _itemParameters = null;
+            _parentInventory = parent;
+        }
+
+        public ItemSlot(GameItemData data, Inventory parent, int count, object parameters)
+        {
+            _itemData = data;
+            _itemCount = count;
+            _itemParameters = parameters;
             _parentInventory = parent;
         }
 
@@ -105,11 +121,12 @@ namespace SpaceHorror.InventorySystem
         {
             if(_itemCount == 1)
             {
-                Debug.Log("Dropping " + _itemData.name);
+                DropItem(1);
             }
             else
             {
-                Debug.Log("Opening drop window");
+                IntActionWindow window = MonoBehaviour.FindObjectOfType<IntActionWindow>();
+                window.Init(DropItem, _itemCount);
             }
         }
 
@@ -119,6 +136,29 @@ namespace SpaceHorror.InventorySystem
             Debug.Log("Consumed " + _itemData.name);
         }
         #endregion
+
+        private void DropItem(int amount)
+        {
+            if (amount <= 0) return;
+
+            if(amount > _itemCount)
+            {
+                amount = _itemCount;
+            }
+
+            GameItemDrop drop = MonoBehaviour.Instantiate(_itemData.Drop, _parentInventory.DropPoint, Quaternion.identity);
+
+            drop.Init(this, amount);
+
+            if(amount == _itemCount)
+            {
+                DestroySlot();
+            }
+            else
+            {
+                RemoveFromCount(amount);
+            }
+        }
 
         #region Inventory Methods
 
@@ -171,7 +211,7 @@ namespace SpaceHorror.InventorySystem
                 {
                     if(cell.Parent.TryPlaceItem(new ItemSlot(this, cell.Parent), cell))
                     {
-                        DestorySlot();
+                        DestroySlot();
                         return true;
                     }
                     return false;
@@ -212,12 +252,12 @@ namespace SpaceHorror.InventorySystem
 
             slot.AddToCount(_itemCount);
 
-            DestorySlot();
+            DestroySlot();
 
             return true;
         }
 
-        private void DestorySlot()
+        private void DestroySlot()
         {
             onDestroy?.Invoke();
             _parentInventory.RemoveSlot(this);

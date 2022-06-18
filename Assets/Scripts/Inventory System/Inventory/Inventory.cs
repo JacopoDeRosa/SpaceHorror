@@ -23,6 +23,8 @@ namespace SpaceHorror.InventorySystem
         public Vector2Int Size { get => _size; }
         public List<ItemSlot> AllItems { get => new List<ItemSlot>(_allItems); }
 
+        public Vector3 DropPoint { get => transform.TransformPoint(_dropPoint); }
+
         public event ItemSlotHandler onSlotAdded;
 
 #if UNITY_EDITOR
@@ -144,6 +146,7 @@ namespace SpaceHorror.InventorySystem
             ItemSlot mSlot = _allItems.Find(x => x.Equals(slot));
             if (mSlot != null)
             {
+                ClearItemCells(slot);
                 _allItems.Remove(mSlot);
             }
         }
