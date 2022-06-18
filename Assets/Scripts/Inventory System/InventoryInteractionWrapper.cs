@@ -28,9 +28,9 @@ namespace SpaceHorror.InventorySystem.UI
 
         }
 
-        public string GetInteractionType()
+        public string GetInteractionName()
         {
-            return "Open";
+            return "Open " + _targetInventory.Name;
         }
     }
 }

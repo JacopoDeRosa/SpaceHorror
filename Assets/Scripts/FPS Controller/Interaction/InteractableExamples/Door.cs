@@ -19,7 +19,7 @@ namespace FPS.Interaction
 
         }
 
-        public string GetInteractionType()
+        public string GetInteractionName()
         {
             return "Toggle";
         }

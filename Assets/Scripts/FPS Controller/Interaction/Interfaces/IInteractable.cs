@@ -11,7 +11,7 @@ namespace FPS.Interaction
 
         public void DeSelect();
 
-        public string GetInteractionType();
+        public string GetInteractionName();
     }
 }
 

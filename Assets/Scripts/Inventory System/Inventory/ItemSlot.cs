@@ -157,9 +157,9 @@ namespace SpaceHorror.InventorySystem
 
         public bool DropInInventory(Cell cell)
         {
-            if(cell.Slot != null)
+            if(cell.Slot != null && TryMergeSlot(cell.Slot, out bool stillActive))
             {
-               return TryMergeSlot(cell.Slot);
+                return stillActive;
             }
             else
             {
@@ -184,11 +184,34 @@ namespace SpaceHorror.InventorySystem
             _parentInventory.TryPlaceItem(this, _parentInventory.GetCell(Position.x, Position.y));
         }
 
-        private bool TryMergeSlot(ItemSlot slot)
+        /// <summary>
+        /// Returns true if the slot was destroyed.
+        /// </summary>
+        /// <param name="slot"></param>
+        /// <returns></returns>
+        public bool TryMergeSlot(ItemSlot slot, out bool died)
         {
+            died = false;
+
             if (_itemData.Stackable == false || slot.ItemData != _itemData) return false;
+            if (EqualParameters(slot) == false) return false;
+
+            if(slot.ItemCount + _itemCount > _itemData.StackSize)
+            {
+                int toRemove = _itemCount - ((slot.ItemCount + _itemCount) - _itemData.StackSize);
+
+                slot.AddToCount(toRemove);
+                RemoveFromCount(toRemove);
+
+                died = false;
+
+                return true;
+            }
+
+            died = true;
 
             slot.AddToCount(_itemCount);
+
             DestorySlot();
 
             return true;
@@ -198,6 +221,15 @@ namespace SpaceHorror.InventorySystem
         {
             onDestroy?.Invoke();
             _parentInventory.RemoveSlot(this);
+        }
+
+        private bool EqualParameters(ItemSlot slot)
+        {
+            if (slot.ItemParameters == null && _itemParameters == null) return true;
+            if (slot.ItemParameters != null && _itemParameters == null) return false;
+            if (slot.ItemParameters == null && _itemParameters != null) return false;
+
+            return _itemParameters.Equals(slot.ItemParameters);
         }
 
         #endregion

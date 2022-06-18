@@ -11,8 +11,10 @@ namespace SpaceHorror.InventorySystem
         [SerializeField] private string _name;
         [SerializeField] private Vector2Int _size;
         [SerializeField] private List<ItemSlot> _initialItems;
+        [SerializeField] private Vector3 _dropPoint;
+        
 
-        [SerializeField]
+        
         private List<ItemSlot> _allItems;
         private Cell[,] _cells;
 
@@ -22,6 +24,15 @@ namespace SpaceHorror.InventorySystem
         public List<ItemSlot> AllItems { get => new List<ItemSlot>(_allItems); }
 
         public event ItemSlotHandler onSlotAdded;
+
+#if UNITY_EDITOR
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.red;
+
+            Gizmos.DrawSphere(transform.TransformPoint(_dropPoint), 0.15f);
+        }
+#endif
 
         public float GetTotalWeight()
         {
@@ -212,6 +223,17 @@ namespace SpaceHorror.InventorySystem
         public Cell GetCell(Vector2Int position)
         {
             return GetCell(position.x, position.y);
+        }
+
+        private IEnumerable<ItemSlot> GetAllSlotsWithSameItem(ItemSlot slot)
+        {
+            foreach  (ItemSlot mSlot in _allItems)
+            {
+                if(mSlot.ItemData == slot.ItemData)
+                {
+                    yield return mSlot;
+                }
+            }
         }
     }
 }

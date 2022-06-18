@@ -21,7 +21,7 @@ namespace FPS.Interaction
         GetComponent<MeshRenderer>().material.color = Color.white;
        }
 
-        public string GetInteractionType()
+        public string GetInteractionName()
         {
             return "Interact";
         }
