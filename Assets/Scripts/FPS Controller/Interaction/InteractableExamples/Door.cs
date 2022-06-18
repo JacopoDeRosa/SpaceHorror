@@ -6,8 +6,11 @@ namespace FPS.Interaction
 {
     public class Door : MonoBehaviour, IInteractable
     {
+        private bool _open;
+
         public void Interact(GameObject actor)
         {
+            _open = !_open;
             GetComponent<Animator>().SetTrigger("Toggle");
         }
         public void Select()
@@ -21,7 +24,14 @@ namespace FPS.Interaction
 
         public string GetInteractionName()
         {
-            return "Toggle";
+            if (_open)
+            {
+                return "Close Door";
+            }
+            else
+            {
+                return "Open Door";
+            }
         }
     }
 }

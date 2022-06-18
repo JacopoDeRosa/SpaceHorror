@@ -137,29 +137,6 @@ namespace SpaceHorror.InventorySystem
         }
         #endregion
 
-        private void DropItem(int amount)
-        {
-            if (amount <= 0) return;
-
-            if(amount > _itemCount)
-            {
-                amount = _itemCount;
-            }
-
-            GameItemDrop drop = MonoBehaviour.Instantiate(_itemData.Drop, _parentInventory.DropPoint, Quaternion.identity);
-
-            drop.Init(this, amount);
-
-            if(amount == _itemCount)
-            {
-                DestroySlot();
-            }
-            else
-            {
-                RemoveFromCount(amount);
-            }
-        }
-
         #region Inventory Methods
 
         public void AddToCount(int amount)
@@ -261,6 +238,29 @@ namespace SpaceHorror.InventorySystem
         {
             onDestroy?.Invoke();
             _parentInventory.RemoveSlot(this);
+        }
+
+        private void DropItem(int amount)
+        {
+            if (amount <= 0) return;
+
+            if (amount > _itemCount)
+            {
+                amount = _itemCount;
+            }
+
+            GameItemDrop drop = MonoBehaviour.Instantiate(_itemData.Drop, _parentInventory.DropPoint, Quaternion.identity);
+
+            drop.Init(this, amount);
+
+            if (amount == _itemCount)
+            {
+                DestroySlot();
+            }
+            else
+            {
+                RemoveFromCount(amount);
+            }
         }
 
         private bool EqualParameters(ItemSlot slot)
