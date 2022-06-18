@@ -25,7 +25,8 @@ namespace SpaceHorror.InventorySystem.Editors
             {
                 data.SetStackable(EditorGUILayout.Toggle("Stackable", data.Stackable));
             }
-           
+
+            EditorUtility.SetDirty(data);
         }
     }
 }

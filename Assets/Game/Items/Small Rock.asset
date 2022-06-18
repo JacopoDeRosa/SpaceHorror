@@ -16,4 +16,6 @@ MonoBehaviour:
   _icon: {fileID: 21300000, guid: cf522dc56b04c8948acb06fc5fbd405c, type: 3}
   _description: A really heavy piece of rock, why are you lugging this around?
   _stackable: 1
+  _maxStackSize: 3
   _size: {x: 2, y: 2}
+  _drop: {fileID: 0}

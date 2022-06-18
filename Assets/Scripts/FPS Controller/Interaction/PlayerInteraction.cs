@@ -21,6 +21,8 @@ namespace FPS.Interaction
         public event Action<IInteractable> onDeSelected;
 
 
+
+
         private void Start()
         {
             _input = FindObjectOfType<PlayerInput>();

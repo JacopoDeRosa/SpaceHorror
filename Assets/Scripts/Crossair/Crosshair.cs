@@ -1,14 +1,14 @@
-using System.Collections;
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace SpaceHorror.UI
 {
-    public class Crossair : UIElement
+    public class Crosshair : UIElement
     {
         [System.Serializable]
-        private class CrossairBit
+        private class CrosshairBit
         {     
             [SerializeField] private Vector3 _startPos;
             [SerializeField] private Vector3 _offset;
@@ -21,7 +21,7 @@ namespace SpaceHorror.UI
 
         [SerializeField] [Range(0, 1)] private float _size;
         [SerializeField] private Color _crossairColor = Color.white;
-        [SerializeField] private List<CrossairBit> _crossairBits = new List<CrossairBit>();
+        [SerializeField] private List<CrosshairBit> _crossairBits = new List<CrosshairBit>();
 
 
         private void OnValidate()
@@ -55,6 +55,36 @@ namespace SpaceHorror.UI
         public void SetColor(Color color)
         {
             _crossairColor = color;
+        }
+
+        public void SetSizeSmooth(float size)
+        {
+            size = Mathf.Clamp(size, 0, 1);
+            StopAllCoroutines();
+            StartCoroutine(SmootSizeChange(size));
+        }
+
+        private IEnumerator SmootSizeChange(float size)
+        {
+            WaitForFixedUpdate wait = new WaitForFixedUpdate();
+            if(_size > size)
+            {
+                while(_size > size)
+                {
+                    _size -= Time.fixedDeltaTime;
+                    ChangeSize();
+                    yield return wait;
+                }
+            }
+            else if(_size < size)
+            {
+                while (_size < size)
+                {
+                    _size += Time.fixedDeltaTime;
+                    ChangeSize();
+                    yield return wait;
+                }
+            }
         }
     }
 }

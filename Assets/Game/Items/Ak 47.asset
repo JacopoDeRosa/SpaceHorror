@@ -17,7 +17,8 @@ MonoBehaviour:
   _description: Goes pew pew at your enemies, hungry for 7.62mm ammo, was invented
     by a fat russian commie known as Mikhail Kalashnikov.
   _stackable: 0
+  _maxStackSize: 0
   _size: {x: 3, y: 1}
-  _pickUp: {fileID: 0}
+  _drop: {fileID: 0}
   _fireRate: 0
   _baseDamage: 0

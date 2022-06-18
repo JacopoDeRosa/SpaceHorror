@@ -18,7 +18,8 @@ MonoBehaviour:
     dakka, diz RokIt launcher iz loved by thoze mek gitz use it to kill da SPACE
     MARINEZ.
   _stackable: 0
+  _maxStackSize: 0
   _size: {x: 4, y: 2}
-  _pickUp: {fileID: 0}
+  _drop: {fileID: 0}
   _fireRate: 0
   _baseDamage: 0

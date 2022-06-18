@@ -16,5 +16,6 @@ MonoBehaviour:
   _icon: {fileID: 21300000, guid: 870f8ba6446cb394484b0a8e1b20c490, type: 3}
   _description: Basically just legal meth.
   _stackable: 1
+  _maxStackSize: 6
   _size: {x: 1, y: 1}
-  _pickUp: {fileID: 0}
+  _drop: {fileID: 0}

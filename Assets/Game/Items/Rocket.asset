@@ -16,5 +16,6 @@ MonoBehaviour:
   _icon: {fileID: 21300000, guid: 0fedd78a5d7a73b41859e89ea05a18e2, type: 3}
   _description: It's a rocket
   _stackable: 1
+  _maxStackSize: 3
   _size: {x: 1, y: 2}
   _drop: {fileID: 0}
