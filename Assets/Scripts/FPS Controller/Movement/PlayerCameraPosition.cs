@@ -24,12 +24,15 @@ namespace FPS.Movement
 
         private float _speedActual;
         private float _evaluationActual;
+        private Vector3 _lastHeadbobVector;
 
         [SerializeField] private float _stanceChangeTime = 0.1f;
         [SerializeField] Vector3 _normalPosition;
         [SerializeField] Vector3 _crouchedPosition;
 
         private float _cameraPosition = 0f;
+
+
 
         private void Awake()
         {
@@ -47,14 +50,15 @@ namespace FPS.Movement
 
         private Vector3 GetHeadbobVector()
         {
-            if (_headbob == false || _controllerData.IsGrounded == false) return Vector3.zero;
+            if (_headbob == false || _controllerData.IsGrounded == false) return _lastHeadbobVector;
             _evaluationActual += _speedActual * Time.fixedDeltaTime;
 
             float evaluationX = _headbobProfileX.Evaluate(_evaluationActual) * _headbobFactor.x;
             float evaluationY = _headbobProfileY.Evaluate(_evaluationActual) * _headbobFactor.y;
-           
 
-            return new Vector3(evaluationX, evaluationY, 0);
+            _lastHeadbobVector = new Vector3(evaluationX, evaluationY, 0);
+
+            return _lastHeadbobVector;
         }
 
         private void SetHeadbobSpeed(Stance stance)

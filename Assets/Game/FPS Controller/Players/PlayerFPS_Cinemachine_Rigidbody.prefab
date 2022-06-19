@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: -0.079370774, y: -0.29571596, z: 0.023318615, w: 0.9516872}
   m_LocalPosition: {x: -0.0025583506, y: -0.9863131, z: 2.4626887}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1643844147484676201}
   m_RootOrder: 0
@@ -71,6 +72,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3223585898820933140}
   m_RootOrder: 0
@@ -94,6 +96,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -151,6 +154,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1643844146388467814}
   m_Father: {fileID: 3223585898820933140}
@@ -182,7 +186,10 @@ MonoBehaviour:
     NearClipPlane: 0.1
     FarClipPlane: 1000
     Dutch: 0
+    ModeOverride: 0
     LensShift: {x: 0, y: 0}
+    GateFit: 2
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -227,6 +234,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1643844146808039970}
   - {fileID: 1643844147484676201}
@@ -282,6 +290,8 @@ MonoBehaviour:
   _crouchCheckerRadious: 0.35
   _checkerHeight: 1.9
   _checkerOffset: 0.1
+  _inputHardness: 10
+  _minInput: {x: 0, y: 0, z: 0}
 --- !u!114 &2591377777458418122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,13 +308,10 @@ MonoBehaviour:
   _rigidBody: {fileID: 3223585898820933150}
   _stanceManager: {fileID: 2165641394194909559}
   _controllerData: {fileID: 3223585898820933137}
-  _animator: {fileID: 6277469637086162652}
   _maxSpeed: 3
   _acceleration: 12
   _breakingForce: 50
   _inertiaDampenForce: 2.5
-  _slideBreakingMultiplier: 0.02
-  _minSlideSpeed: 5
   _speedBias: 0.01
   _maxSlope: 20
   _jumpForce: 5
@@ -390,8 +397,7 @@ MonoBehaviour:
   _headbobFactor: {x: 2, y: 0.5}
   _sprintSpeedMultiplier: 2
   _crouchSpeedMultiplier: 0.8
-  _stanceChangeFactor: 12
-  _slideCameraAngle: -5
+  _stanceChangeTime: 0.1
   _normalPosition: {x: 0, y: 1.8, z: 0}
   _crouchedPosition: {x: 0, y: 0.8, z: 0}
 --- !u!114 &3223585898820933149
@@ -408,10 +414,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _camera: {fileID: 1643844147484676201}
   _controllerData: {fileID: 3223585898820933137}
-  _MouseSensitivity: 150
-  _maxVerticalRotation: 75
+  _MouseSensitivity: 5
+  _maxVerticalRotation: 60
   _mouseSmooth: 1
-  _mouseSmoothFactor: 0.15
+  _mouseStiffness: 5
 --- !u!114 &6277469638032267220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,7 +431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactionRange: 4
-  _camera: {fileID: 1643844147484676201}
+  _viewPivot: {fileID: 1643844147484676201}
 --- !u!114 &1116403624775907344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -459,7 +465,7 @@ MonoBehaviour:
   _currentStance: 0
 --- !u!95 &6277469637086162652
 Animator:
-  serializedVersion: 3
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -472,6 +478,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1

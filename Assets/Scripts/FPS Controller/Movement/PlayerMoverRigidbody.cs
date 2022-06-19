@@ -89,8 +89,9 @@ namespace FPS.Movement
                 slopeDampen = surfaceAngle / _maxSlope;
             }
 
-            float moveX = Input.GetAxis("Horizontal") * (_actualAcceleration / slopeDampen);
-            float moveZ = Input.GetAxis("Vertical") * (_actualAcceleration / slopeDampen);
+            Debug.Log(_controllerData.PlanarInput.x);
+            float moveX = _controllerData.PlanarInput.x * (_actualAcceleration / slopeDampen);
+            float moveZ = _controllerData.PlanarInput.z * (_actualAcceleration / slopeDampen);
             Vector3 move = new Vector3(moveX, 0f, moveZ);
             move = Vector3.ClampMagnitude(move, _actualAcceleration);
             move = transform.TransformDirection(move);
@@ -114,7 +115,7 @@ namespace FPS.Movement
 
         private void Update()
         {
-            Jump();
+         //   Jump();
         }
 
         private void Jump()
