@@ -39,7 +39,7 @@ namespace FPS.Movement
 
         private bool CanJump
         {
-            get { return _timeSinceLastJump >= _jumpRate && _controllerData.CrouchForced == false && _controllerData.IsGrounded; }
+            get { return _timeSinceLastJump >= _jumpRate && _controllerData.CrouchForced == false && _controllerData.IsCenterGrounded; }
         }
 
         void Awake()
@@ -106,7 +106,7 @@ namespace FPS.Movement
         private void MovePlayer()
         {
             if (_controllerData.ControlsLocked) return;
-            if (_controllerData.IsGrounded == false) return;
+            if (_controllerData.IsCenterGrounded == false) return;
             _controllerWrapper.AddForce(_controllerData.PlanarInput * _acceleration);
         }
 

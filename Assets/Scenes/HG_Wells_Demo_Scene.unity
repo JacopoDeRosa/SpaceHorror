@@ -613,7 +613,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &402211943 stripped
 Transform:
@@ -1136,6 +1136,75 @@ ReflectionProbe:
   m_UseOcclusionCulling: 1
   m_Importance: 1
   m_CustomBakedTexture: {fileID: 0}
+--- !u!1001 &866796212
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7333061037187375877, guid: 7e10dea439d73e64abc7ad83d567811d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7333061037187375877, guid: 7e10dea439d73e64abc7ad83d567811d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.7952979
+      objectReference: {fileID: 0}
+    - target: {fileID: 7333061037187375877, guid: 7e10dea439d73e64abc7ad83d567811d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.02948308
+      objectReference: {fileID: 0}
+    - target: {fileID: 7333061037187375877, guid: 7e10dea439d73e64abc7ad83d567811d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.750953
+      objectReference: {fileID: 0}
+    - target: {fileID: 7333061037187375877, guid: 7e10dea439d73e64abc7ad83d567811d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7333061037187375877, guid: 7e10dea439d73e64abc7ad83d567811d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7333061037187375877, guid: 7e10dea439d73e64abc7ad83d567811d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7333061037187375877, guid: 7e10dea439d73e64abc7ad83d567811d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7333061037187375877, guid: 7e10dea439d73e64abc7ad83d567811d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7333061037187375877, guid: 7e10dea439d73e64abc7ad83d567811d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7333061037187375877, guid: 7e10dea439d73e64abc7ad83d567811d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7966749567603440063, guid: 7e10dea439d73e64abc7ad83d567811d,
+        type: 3}
+      propertyPath: m_Name
+      value: Crate-01_Military
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7e10dea439d73e64abc7ad83d567811d, type: 3}
 --- !u!1001 &936764961
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1521,6 +1590,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1296801187}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1324450103
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1769518798141195835, guid: 9db8c575b253b9249b379eebbbdcf7b0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1769518798141195835, guid: 9db8c575b253b9249b379eebbbdcf7b0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.387
+      objectReference: {fileID: 0}
+    - target: {fileID: 1769518798141195835, guid: 9db8c575b253b9249b379eebbbdcf7b0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.22099626
+      objectReference: {fileID: 0}
+    - target: {fileID: 1769518798141195835, guid: 9db8c575b253b9249b379eebbbdcf7b0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 12.023
+      objectReference: {fileID: 0}
+    - target: {fileID: 1769518798141195835, guid: 9db8c575b253b9249b379eebbbdcf7b0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071124
+      objectReference: {fileID: 0}
+    - target: {fileID: 1769518798141195835, guid: 9db8c575b253b9249b379eebbbdcf7b0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1769518798141195835, guid: 9db8c575b253b9249b379eebbbdcf7b0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70710117
+      objectReference: {fileID: 0}
+    - target: {fileID: 1769518798141195835, guid: 9db8c575b253b9249b379eebbbdcf7b0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1769518798141195835, guid: 9db8c575b253b9249b379eebbbdcf7b0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1769518798141195835, guid: 9db8c575b253b9249b379eebbbdcf7b0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 89.999
+      objectReference: {fileID: 0}
+    - target: {fileID: 1769518798141195835, guid: 9db8c575b253b9249b379eebbbdcf7b0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1769518798141195839, guid: 9db8c575b253b9249b379eebbbdcf7b0,
+        type: 3}
+      propertyPath: m_Name
+      value: Crate-01_Medical
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9db8c575b253b9249b379eebbbdcf7b0, type: 3}
 --- !u!1001 &1336510395
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2297,7 +2435,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1786524530
 PrefabInstance:
@@ -2802,7 +2940,7 @@ Transform:
   - {fileID: 1097868497}
   - {fileID: 78138137}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1912143328
 PrefabInstance:
@@ -3134,7 +3272,7 @@ Transform:
   m_Children:
   - {fileID: 649700416}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1994192428
 PrefabInstance:

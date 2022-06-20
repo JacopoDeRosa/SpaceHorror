@@ -71,7 +71,7 @@ namespace FPS.Movement
         }
         private void ChangeStepOffset()
         {
-            if (_controllerData.IsGrounded == false)
+            if (_controllerData.AllSidedsGrounded == false)
             {
                 _target.stepOffset = 0;
             }
@@ -96,7 +96,7 @@ namespace FPS.Movement
         }
         private void ClampMaxSpeed()
         {
-            if (_controllerData.IsGrounded == false) return;
+            if (_controllerData.IsCenterGrounded == false) return;
             _velocity = Vector3.ClampMagnitude(new Vector3(_velocity.x, 0, _velocity.z), _maxSpeed) + new Vector3(0, _velocity.y);
             if (_controllerData.PlanarInput.magnitude == 0)
             {
@@ -112,12 +112,12 @@ namespace FPS.Movement
         }
         private void AddGravity()
         {
-            if (_useGravity && _controllerData.IsGrounded == false)
+            if (_useGravity && _controllerData.IsCenterGrounded == false)
             {
                 AddForce(_gravity);
             }
             
-            if(_velocity.y <= 0 && _controllerData.IsGrounded == true)
+            if(_velocity.y <= 0 && _controllerData.IsCenterGrounded == true)
             {
                 _velocity = new Vector3(_velocity.x, 0, _velocity.z);
             }

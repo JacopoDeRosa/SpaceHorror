@@ -9,16 +9,23 @@ namespace FPS.Movement
     {
         [SerializeField] private PlayerStanceHandler _stanceHandler;
 
+        [Header("Ground Check")]
         [SerializeField] private bool _lockControls;
         [SerializeField] private float _sphereRadius = 0.39f;
         [SerializeField] private float _sphereDistance = 0.62f;
+        [SerializeField] private Vector3[] _additionalGroundChecks;
+        [SerializeField] private float _additionalChecksOffset = 0.3f;
 
+        [Header("Crouch Check")]
         [SerializeField] private float _crouchCheckerRadious = 0.35f;
         [SerializeField] private float _checkerHeight = 2f;
         [SerializeField] private float _checkerOffset = 0;
 
+        [Header("Input")]
         [SerializeField] private float _inputHardness = 10;
         [SerializeField] private Vector3 _minInput;
+
+
 
         private PlayerInput _input;
 
@@ -34,11 +41,30 @@ namespace FPS.Movement
         }
         public bool CanCrouch
         {
-            get { return _stanceHandler.CurrentStance != Stance.Running && IsGrounded; }
+            get { return _stanceHandler.CurrentStance != Stance.Running && AllSidedsGrounded; }
         }
-        public bool IsGrounded
+        public bool IsCenterGrounded
         {
             get { return Physics.SphereCast(GroundCheckRay, _sphereRadius, _sphereDistance, ~LayerMask.GetMask("Player")); }
+        }
+        public bool AllSidedsGrounded
+        {
+            get 
+            {
+                foreach (Vector3 check in _additionalGroundChecks)
+                {
+                    if (Physics.Raycast(transform.TransformPoint(check), Vector3.down, check.y + _additionalChecksOffset, ~LayerMask.GetMask("Player")))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+
+                return true;
+            }
         }
         public bool CrouchForced
         {
@@ -118,6 +144,12 @@ namespace FPS.Movement
             ExtendedGizmos.DrawWireCapsule(transform.position + new Vector3(0,_checkerOffset, 0), _crouchCheckerRadious, _checkerHeight);
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(GroundCheckRay.GetPoint(_sphereDistance), _sphereRadius);
+
+            Gizmos.color = Color.magenta;
+            foreach (Vector3 point in _additionalGroundChecks)
+            {
+                Gizmos.DrawRay(transform.TransformPoint(point), Vector3.down);
+            }
         }
 #endif
         #endregion

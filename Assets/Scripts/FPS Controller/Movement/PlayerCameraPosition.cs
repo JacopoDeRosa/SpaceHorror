@@ -50,7 +50,7 @@ namespace FPS.Movement
 
         private Vector3 GetHeadbobVector()
         {
-            if (_headbob == false || _controllerData.IsGrounded == false) return _lastHeadbobVector;
+            if (_headbob == false || _controllerData.IsCenterGrounded == false) return _lastHeadbobVector;
             _evaluationActual += _speedActual * Time.fixedDeltaTime;
 
             float evaluationX = _headbobProfileX.Evaluate(_evaluationActual) * _headbobFactor.x;
@@ -90,7 +90,7 @@ namespace FPS.Movement
         }
         private float CurrentSpeed()
         {
-            if (_controllerData.IsGrounded == false) return 0;
+            if (_controllerData.IsCenterGrounded == false) return 0;
             return Mathf.Clamp(Mathf.Abs(_controllerData.PlanarInput.x) + Mathf.Abs(_controllerData.PlanarInput.z), 0, 1);
         }
 

@@ -9377,7 +9377,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 961739749}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.8729999, z: -6.887}
+  m_LocalPosition: {x: 0, y: 1.851, z: -6.887}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -27556,7 +27556,7 @@ MonoBehaviour:
   _maxWalkSpeed: 2
   _maxSprintSpeed: 4
   _maxCrouchSpeed: 1
-  _jumpForce: 2
+  _jumpForce: 4
   _jumpRate: 0.7
   _normalHeight: 1.8
   _crouchedHeight: 0.8
@@ -27576,7 +27576,7 @@ CharacterController:
   m_SlopeLimit: 30
   m_StepOffset: 0.35
   m_SkinWidth: 0.0001
-  m_MinMoveDistance: 0.001
+  m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!4 &8069067934729585862
 Transform:
@@ -27586,7 +27586,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8069067934729585869}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.073, z: -6.887}
+  m_LocalPosition: {x: 0, y: 0.051, z: -6.887}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -27613,10 +27613,10 @@ MonoBehaviour:
   _groundOrientation: {fileID: 1466310506742045809}
   _gravity: {x: 0, y: -9.8, z: 0}
   _useGravity: 1
-  _slopeLimit: 50
+  _slopeLimit: 60
   _maxSpeed: 2
-  _stepOffset: 0.5
-  _stoppingPower: 50
+  _stepOffset: 0.4
+  _stoppingPower: 40
   _stoppingDead: 0.4
   _velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &8069067934729585868
@@ -27635,6 +27635,12 @@ MonoBehaviour:
   _lockControls: 0
   _sphereRadius: 0.39
   _sphereDistance: 0.62
+  _additionalGroundChecks:
+  - {x: 0, y: 0.5, z: 0.4}
+  - {x: 0, y: 0.5, z: -0.4}
+  - {x: 0.4, y: 0.5, z: 0}
+  - {x: -0.4, y: 0.5, z: 0}
+  _additionalChecksOffset: 0.5
   _crouchCheckerRadious: 0.35
   _checkerHeight: 1.8
   _checkerOffset: 0

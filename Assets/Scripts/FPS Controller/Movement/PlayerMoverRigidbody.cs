@@ -68,7 +68,7 @@ namespace FPS.Movement
 
         private void BreakPlayer()
         {
-            if (_controllerData.IsGrounded == false) return;
+            if (_controllerData.IsCenterGrounded == false) return;
             if (_controllerData.PlanarInput.magnitude == 0)
             {
                 _rigidBody.AddForce(-PlanarVelocity * _breakingForce);
@@ -80,7 +80,7 @@ namespace FPS.Movement
             if (_lockedControls) return;
             // Divide acceleration by slope dampen to add a max slope variable to controller
 
-            if (_controllerData.IsGrounded == false) return;
+            if (_controllerData.IsCenterGrounded == false) return;
             if (_controllerData.ControlsLocked) return;
             float slopeDampen = 1;
             float surfaceAngle = ExtendedRaycast.GetSurfaceAngle(transform.position + Vector3.up, Vector3.down, 1.5f, ~LayerMask.GetMask("Player"));
@@ -99,7 +99,7 @@ namespace FPS.Movement
         }
         private void ClampPlayerSpeed()
         {
-            if (_controllerData.IsGrounded == false) return;
+            if (_controllerData.IsCenterGrounded == false) return;
             // Clamp rigidbody velocity by creating a zero sum vector when velocity is too high (while ignoring vertical velocity)
             if (PlanarVelocity.magnitude >= _actualMaxSpeed)
             {
@@ -120,7 +120,7 @@ namespace FPS.Movement
 
         private void Jump()
         {
-            if (Input.GetKeyDown(KeyCode.Space) && _controllerData.IsGrounded && _timeSinceLastJump > _jumpCooldown)
+            if (Input.GetKeyDown(KeyCode.Space) && _controllerData.IsCenterGrounded && _timeSinceLastJump > _jumpCooldown)
             {
                 _timeSinceLastJump = 0;
                 _rigidBody.AddForce(0, _jumpForce, 0, ForceMode.Impulse);
