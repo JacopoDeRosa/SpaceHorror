@@ -20,14 +20,27 @@ namespace FPS.Movement
         [SerializeField] private float _stepOffset = 0.3f;
         [SerializeField] private float _stoppingPower;
         [SerializeField] private float _stoppingDead = 0.40f;
-
+        [SerializeField] private float _orientationChangeHardness = 5f;
+        [SerializeField] private float _maxSlopeStep = 5f;
+        [SerializeField] private float _gravityActivationDelay = 0.1f;
         [Header("Data:")]
         [SerializeField] private Vector3 _velocity;
 
         private Vector3 planarMoveOriented;
 
         public Vector3 Velocity { get => _velocity; }
+
         private Vector3 PlanarVelocity { get => new Vector3(_velocity.x, 0, _velocity.z); }
+
+        float _gravityDelayTimer;
+
+
+        [SerializeField]
+        private float _forwardSurfaceAngle;
+        [SerializeField]
+        private float _standingSurfaceAngle;
+
+        Quaternion _targetRotation;
 
         public void AddForce(Vector3 force)
         {
@@ -62,6 +75,8 @@ namespace FPS.Movement
 
         private void FixedUpdate()
         {
+            FindForwardSurfaceAngle();
+            FindStandingSurfaceAngle();
             ChangeStepOffset();
             OrientMoverToSlope();
             AddGravity();
@@ -69,9 +84,24 @@ namespace FPS.Movement
             TransormPlanarMovement();
             MoveController();
         }
+
+        private void FindForwardSurfaceAngle()
+        {
+            Ray ray = new Ray(transform.position + (planarMoveOriented.normalized * _target.radius) + Vector3.up, Vector3.down);
+            
+            _forwardSurfaceAngle = ExtendedRaycast.GetSurfaceAngle(ray, 1.5f, ~LayerMask.GetMask("Player"));
+        }
+
+        private void FindStandingSurfaceAngle()
+        {
+            Ray ray = new Ray(transform.position + Vector3.up, Vector3.down);
+
+            _standingSurfaceAngle = ExtendedRaycast.GetSurfaceAngle(ray, 1.5f, ~LayerMask.GetMask("Player"));
+        }
+
         private void ChangeStepOffset()
         {
-            if (_controllerData.AllSidedsGrounded == false)
+            if (_standingSurfaceAngle > _maxSlopeStep || _controllerData.AllSidedsGrounded == false)
             {
                 _target.stepOffset = 0;
             }
@@ -80,20 +110,21 @@ namespace FPS.Movement
                 _target.stepOffset = _stepOffset;
             }
         }
+
         private void MoveController()
         {
             Vector3 moveVector = new Vector3(0, _velocity.y, 0) + planarMoveOriented;
             _target.Move(moveVector * Time.fixedDeltaTime);
         }
+
         private void TransormPlanarMovement()
         {
             // Orient Movement to slope
             planarMoveOriented = _groundOrientation.TransformDirection(new Vector3(_velocity.x, 0, _velocity.z));
 
-            // Stop player from moving onto slopes
-            Ray ray = new Ray(transform.position + (planarMoveOriented.normalized * _target.radius) + Vector3.up, Vector3.down);
-            if (ExtendedRaycast.GetSurfaceAngle(ray, 1.5f, ~LayerMask.GetMask("Player")) >= _slopeLimit) _velocity = new Vector3(_velocity.x, 0, _velocity.y);
+            if (_forwardSurfaceAngle >= _slopeLimit) _velocity = new Vector3(_velocity.x, 0, _velocity.y);
         }
+
         private void ClampMaxSpeed()
         {
             if (_controllerData.IsCenterGrounded == false) return;
@@ -110,26 +141,39 @@ namespace FPS.Movement
                 }
             }
         }
+
         private void AddGravity()
         {
+           
             if (_useGravity && _controllerData.IsCenterGrounded == false)
             {
-                AddForce(_gravity);
+                if(_gravityDelayTimer < Time.time)
+                {
+                    AddForce(_gravity);
+                }
+
             }
             
             if(_velocity.y <= 0 && _controllerData.IsCenterGrounded == true)
             {
                 _velocity = new Vector3(_velocity.x, 0, _velocity.z);
+                _gravityDelayTimer = Time.time + _gravityActivationDelay;
             }
         }
+
         private void OrientMoverToSlope()
         {
             RaycastHit hit;
+
+            float actualHardness = Mathf.Clamp01(_orientationChangeHardness * Time.fixedDeltaTime); 
+
             if (Physics.Raycast(_controllerData.GroundCheckRay, out hit, 1.5f, ~LayerMask.GetMask("Player")))
             {
-                _groundOrientation.rotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
+                _targetRotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
+                _groundOrientation.rotation = Quaternion.Lerp(_groundOrientation.rotation, _targetRotation, actualHardness);
             }
         }
+
         private IEnumerator ChangeMaxSpeed(float goal, float time)
         {
             
@@ -154,6 +198,14 @@ namespace FPS.Movement
             }
             _maxSpeed = goal;
         }
-        
+
+        private void OnDrawGizmos()
+        {
+            Ray ray = new Ray(transform.position + Vector3.up, Vector3.down);
+
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawRay(ray);
+        }
+
     }
 }
