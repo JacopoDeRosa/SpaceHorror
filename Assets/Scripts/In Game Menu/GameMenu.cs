@@ -51,5 +51,26 @@ namespace SpaceHorror.UI
 
             window.OpenSubmenu(buffer[1]);
         }
+
+        public GameObject OpenMenuWithReturn(string path)
+        {
+            ResetMenus();
+
+            if (string.IsNullOrEmpty(path)) return null;
+
+            string[] buffer = path.Split(_separators);
+
+            var window = GetMenuWindow(buffer[0]);
+
+            if (window == null) return null;
+
+            OpenWindow(window);
+
+            if (buffer.Length <= 1) return window.Target;
+
+            window.OpenSubmenu(buffer[1]);
+
+            return window.Target;
+        }
     }
 }

@@ -14,7 +14,6 @@ namespace SpaceHorror.UI.Editors
 
         public override void OnInspectorGUI()
         {
-            Debug.Log("I Exist");
             DrawDefaultInspector();
 
             GUILayout.BeginHorizontal();
@@ -43,7 +42,12 @@ namespace SpaceHorror.UI.Editors
 
             GameMenu menu = target as GameMenu;
 
-            menu.OpenMenu(path);
+            GameObject ping = menu.OpenMenuWithReturn(path);
+
+            if (ping != null)
+            {
+                EditorGUIUtility.PingObject(ping);
+            }
         }
     }
 }

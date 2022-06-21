@@ -14,6 +14,7 @@ namespace SpaceHorror.UI
 
         [SerializeField] protected GameObject _target;
 
+        public GameObject Target { get => _target; }
 
         public UnityEvent onMenuOpen;
 
