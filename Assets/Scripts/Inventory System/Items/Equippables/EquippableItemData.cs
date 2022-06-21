@@ -5,12 +5,14 @@ using UnityEngine;
 namespace SpaceHorror.InventorySystem
 {
     [CreateAssetMenu(fileName = "Weapon Data", menuName = "Items/New Weapon Data")]
-    public class WeaponItemData : GameItemData<WeaponItem>
+    public class EquippableItemData : GameItemData
     {
         [SerializeField][InspectorField("Attack Rate")]
         private float _fireRate;
 
-        [SerializeField][InspectorField("Damage")]
-        private float _baseDamage;
+        public override ItemTypes GetItemType()
+        {
+            return ItemTypes.Equipment;
+        }
     }
 }

@@ -4,8 +4,10 @@ using UnityEngine;
 
 namespace SpaceHorror.InventorySystem
 {
-    public class UsableItem : GameItem<UsableItemData>
+    public class Equipment : MonoBehaviour
     {
-      
+        [SerializeField] EquippableItem _equippedItem;
+
+
     }
 }

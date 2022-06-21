@@ -130,7 +130,7 @@ namespace SpaceHorror.InventorySystem
             }
         }
 
-        [InventoryButton("Consume", typeof(UsableItemData))]
+        [InventoryButton("Consume", typeof(ConsumableItemData))]
         private void Use()
         {
             Debug.Log("Consumed " + _itemData.name);

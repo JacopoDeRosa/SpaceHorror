@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SpaceHorror.InventorySystem
 {
-    public class WeaponItem : GameItem<WeaponItemData>
+    public class EquippableItem : GameItem<EquippableItemData>
     {
        
     }
