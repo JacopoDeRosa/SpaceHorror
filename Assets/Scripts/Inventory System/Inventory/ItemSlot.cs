@@ -50,7 +50,6 @@ namespace SpaceHorror.InventorySystem
             _itemParameters = null;
             _parentInventory = parent;
         }
-
         public ItemSlot(GameItemData data, Inventory parent, int count, object parameters)
         {
             _itemData = data;
@@ -58,7 +57,6 @@ namespace SpaceHorror.InventorySystem
             _itemParameters = parameters;
             _parentInventory = parent;
         }
-
         public ItemSlot(ItemSlot slot, Inventory parent)
         {
             _itemData = slot.ItemData;

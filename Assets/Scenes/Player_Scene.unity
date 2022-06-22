@@ -27641,6 +27641,7 @@ GameObject:
   - component: {fileID: 1466310506579346694}
   - component: {fileID: 5492473919075691202}
   - component: {fileID: 8069067934729585872}
+  - component: {fileID: 8069067934729585873}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -27764,6 +27765,28 @@ MonoBehaviour:
   - _itemData: {fileID: 11400000, guid: c3e646bd08563dd4fa93e586a1f2c8d1, type: 2}
     _itemCount: 3
   _dropPoint: {x: 0, y: 1.25, z: 1.25}
+--- !u!114 &8069067934729585873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8069067934729585869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 338b84c8ec61ff44ab5e782cd48076b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slotA:
+    _item: {fileID: 0}
+  _slotB:
+    _item: {fileID: 0}
+  _slotC:
+    _item: {fileID: 0}
+  _slotD:
+    _item: {fileID: 0}
+  _characterAnimator: {fileID: 0}
+  _parentInventory: {fileID: 8069067934729585872}
 --- !u!1001 &9159389461100928137
 PrefabInstance:
   m_ObjectHideFlags: 0
