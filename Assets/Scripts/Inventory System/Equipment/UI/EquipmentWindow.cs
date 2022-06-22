@@ -12,7 +12,17 @@ namespace SpaceHorror.InventorySystem
 
         private void Awake()
         {
-            
+            _equippableA.SetTargetEquipment(_target);
+            _equippableA.SetSlotType(EquipmentSlotType.Primary);
+
+            _equippableB.SetTargetEquipment(_target);
+            _equippableB.SetSlotType(EquipmentSlotType.Secondary);
+
+            _consumableA.SetTargetEquipment(_target);
+            _consumableA.SetSlotType(EquipmentSlotType.Primary);
+
+            _consumableB.SetTargetEquipment(_target);
+            _consumableB.SetSlotType(EquipmentSlotType.Secondary);
         }
 
         private void SetTargetEquipment(Equipment target)

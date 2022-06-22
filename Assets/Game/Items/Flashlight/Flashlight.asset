@@ -19,5 +19,5 @@ MonoBehaviour:
   _maxStackSize: 0
   _size: {x: 3, y: 1}
   _drop: {fileID: 9137712039772362355, guid: d59c7d5344661e045a2d005fd31ff981, type: 3}
-  _item: {fileID: 0}
+  _item: {fileID: 8401629190061641638, guid: 60e9b87d9c6845944beace72c7d5a437, type: 3}
   _animatorOverride: {fileID: 0}

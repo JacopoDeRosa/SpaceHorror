@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace SpaceHorror.InventorySystem
 {
@@ -15,29 +14,7 @@ namespace SpaceHorror.InventorySystem
 
         private EquipmentSlotType _activeEquipmentSlot;
 
-        private PlayerInput _input;
-
         public Inventory ParentInventory { get => _parentInventory; }
-
-        
-        private void Start()
-        {
-            _input = FindObjectOfType<PlayerInput>();
-            if(_input)
-            {
-                _input.actions["Equip A"].started += OnEquipA;
-                _input.actions["Equip B"].started += OnEquipB;
-            }
-        }
-
-        private void OnDisable()
-        {
-            if (_input)
-            {
-                _input.actions["Equip A"].started -= OnEquipA;
-                _input.actions["Equip B"].started -= OnEquipB;
-            }
-        }
 
         public bool TrySetEquippableItem(ItemSlot itemSlot, EquipmentSlotType type)
         {
@@ -86,7 +63,7 @@ namespace SpaceHorror.InventorySystem
 
         public bool TrySetConsumableItem(ItemSlot itemSlot, ConsumableSlot slot)
         {
-            if (slot.ActiveSlot != null) return false;
+            if (slot.ActiveSlot.ItemData != null) return false;
 
             if(itemSlot.ItemData is ConsumableItemData)
             {
@@ -95,19 +72,9 @@ namespace SpaceHorror.InventorySystem
             return true;
         }
 
-        private void ActivateSlot(EquipmentSlotType slotType)
+        public void ActivateSlot(EquipmentSlotType slotType)
         {
 
-        }
-
-        private void OnEquipA(InputAction.CallbackContext context)
-        {
-            ActivateSlot(EquipmentSlotType.Primary);
-        }
-
-        private void OnEquipB(InputAction.CallbackContext context)
-        {
-            ActivateSlot(EquipmentSlotType.Secondary);
         }
     }
 }

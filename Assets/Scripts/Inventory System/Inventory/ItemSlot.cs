@@ -232,7 +232,7 @@ namespace SpaceHorror.InventorySystem
             return true;
         }
 
-        private void DestroySlot()
+        public void DestroySlot()
         {
             onDestroy?.Invoke();
             _parentInventory.RemoveSlot(this);

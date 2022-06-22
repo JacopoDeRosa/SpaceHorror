@@ -140,19 +140,21 @@ namespace SpaceHorror.InventorySystem.UI
         public void OnEndDrag(PointerEventData eventData)
         {
             CellUI possibleCell = GetCellAtPivot();
-
-            if(possibleCell)
-            {
-                if(_targetSlot.DropInInventory(possibleCell.TargetCell))
-                {
-                    SetPosition(possibleCell.transform.position);
-                }
-                else
-                {
-                    _targetSlot.DropBack();
-                    SetPosition(_starterCell.transform.position);
-                }
+            EquippableSlotUI equippableSlot = GetEquippableSlotAtPivot();
+            ConsumableSlotUI consumableSlot = GetConsumableSlotAtPivot();
+            
+            if(possibleCell && _targetSlot.DropInInventory(possibleCell.TargetCell))
+            {          
+              SetPosition(possibleCell.transform.position);
             }
+            else if(equippableSlot && equippableSlot.TrySetItem(_targetSlot))
+            {
+              _targetSlot.DestroySlot();
+            }
+            else if(consumableSlot && consumableSlot.TrySetItem(_targetSlot))
+            {
+                _targetSlot.DestroySlot();
+            }         
             else
             {
                 _targetSlot.DropBack();
@@ -195,32 +197,37 @@ namespace SpaceHorror.InventorySystem.UI
 
         private CellUI GetCellAtPivot()
         {
-            CellUI possibleCell = null;
-            foreach (RaycastResult result in GetAllElementsAtPivot())
-            {
-                var cell = result.gameObject.GetComponent<CellUI>();
-                if (cell != null)
-                {
-                    possibleCell = cell;
-                    break;
-                }
-            }
 
-            return possibleCell;
+            return GetItemAtPivot<CellUI>();
         }
 
         private ItemSlotUI GetSlotAtPivot()
         {
-            ItemSlotUI possibleSlot = null;
+            return GetItemAtPivot<ItemSlotUI>();
+        }
+
+        private EquippableSlotUI GetEquippableSlotAtPivot()
+        {
+            return GetItemAtPivot<EquippableSlotUI>();
+        }
+
+        private ConsumableSlotUI GetConsumableSlotAtPivot()
+        {
+            return GetItemAtPivot<ConsumableSlotUI>();
+        }
+
+        private T GetItemAtPivot<T>() where T : class
+        {
+            T possibleItem = null;
             foreach (RaycastResult result in GetAllElementsAtPivot())
             {
-                var slot = result.gameObject.GetComponent<ItemSlotUI>();
-                if(slot != null)
+                var slot = result.gameObject.GetComponent<T>();
+                if (slot != null)
                 {
-                    possibleSlot = slot;
+                    possibleItem = slot;
                 }
             }
-            return possibleSlot;
+            return possibleItem;
         }
 
         private GameObject GetUiElementAtPivot()

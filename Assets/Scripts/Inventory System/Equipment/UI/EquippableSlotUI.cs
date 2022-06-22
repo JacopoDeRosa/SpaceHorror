@@ -21,6 +21,11 @@ namespace SpaceHorror.InventorySystem
             SlotType = slotType;
         }
 
+        public void SetTargetEquipment(Equipment equipment)
+        {
+            _targetEquipment = equipment;
+        }
+
         public bool TrySetItem(ItemSlot slot)
         {
             if (_targetEquipment == null) return false;
