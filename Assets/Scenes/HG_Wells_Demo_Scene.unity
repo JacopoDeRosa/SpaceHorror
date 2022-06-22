@@ -2278,6 +2278,55 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7333061037187375883, guid: 7e10dea439d73e64abc7ad83d567811d,
+        type: 3}
+      propertyPath: _initialItems.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7333061037187375883, guid: 7e10dea439d73e64abc7ad83d567811d,
+        type: 3}
+      propertyPath: _initialItems.Array.data[0]._itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 5f46950219a021e438cdbf362c66e0a1,
+        type: 2}
+    - target: {fileID: 7333061037187375883, guid: 7e10dea439d73e64abc7ad83d567811d,
+        type: 3}
+      propertyPath: _initialItems.Array.data[1]._itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 00df4ce862f42a640b347c05b2fc2b62,
+        type: 2}
+    - target: {fileID: 7333061037187375883, guid: 7e10dea439d73e64abc7ad83d567811d,
+        type: 3}
+      propertyPath: _initialItems.Array.data[2]._itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 5f46950219a021e438cdbf362c66e0a1,
+        type: 2}
+    - target: {fileID: 7333061037187375883, guid: 7e10dea439d73e64abc7ad83d567811d,
+        type: 3}
+      propertyPath: _initialItems.Array.data[3]._itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 5f46950219a021e438cdbf362c66e0a1,
+        type: 2}
+    - target: {fileID: 7333061037187375883, guid: 7e10dea439d73e64abc7ad83d567811d,
+        type: 3}
+      propertyPath: _initialItems.Array.data[0]._itemCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7333061037187375883, guid: 7e10dea439d73e64abc7ad83d567811d,
+        type: 3}
+      propertyPath: _initialItems.Array.data[1]._itemCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7333061037187375883, guid: 7e10dea439d73e64abc7ad83d567811d,
+        type: 3}
+      propertyPath: _initialItems.Array.data[2]._itemCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7333061037187375883, guid: 7e10dea439d73e64abc7ad83d567811d,
+        type: 3}
+      propertyPath: _initialItems.Array.data[3]._itemCount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7966749567603440063, guid: 7e10dea439d73e64abc7ad83d567811d,
         type: 3}
       propertyPath: m_Name

@@ -11,6 +11,7 @@ namespace SpaceHorror.InventorySystem
         [SerializeField] private ConsumableSlot _consumableA, _consumableB;
         [SerializeField] private Animator _characterAnimator;
         [SerializeField] private Inventory _parentInventory;
+        [SerializeField] private Transform _itemContainer;
 
         private EquipmentSlotType _activeEquipmentSlot;
 
@@ -38,24 +39,60 @@ namespace SpaceHorror.InventorySystem
             }
         }
 
-        public bool TrySetEquippableSlotItem(ItemSlot itemSlot, EquipmentSlotType type)
+        public bool TrySetEquippableItem(ItemSlot itemSlot, EquipmentSlotType type)
         {
             if(type == EquipmentSlotType.Primary)
             {
-                return TrySetEquippableSlotItem(itemSlot, _equippableA);
+                return TrySetEquippableItem(itemSlot, _equippableA);
             }
             else if(type == EquipmentSlotType.Secondary)
             {
-                return TrySetEquippableSlotItem(itemSlot, _equippableB);
+                return TrySetEquippableItem(itemSlot, _equippableB);
             }
 
             return false;
         }
 
-        public bool TrySetEquippableSlotItem(ItemSlot itemSlot, EquippableSlot slot)
+        public bool TrySetEquippableItem(ItemSlot itemSlot, EquippableSlot slot)
         {
             if (slot.Item != null) return false;
+
+            EquippableItemData equippableItemData = itemSlot.ItemData as EquippableItemData;
+
+            if (equippableItemData == null) return false;
+
+            EquippableItem item = Instantiate(equippableItemData.Item, _itemContainer);
+
+            item.LoadParameters(itemSlot.ItemParameters);
+
+            slot.SetItem(item);
+
+            return true;
+        }
+
+        public bool TrySetConsumableItem(ItemSlot itemSlot, EquipmentSlotType type)
+        {
+            if (type == EquipmentSlotType.Primary)
+            {
+                return TrySetConsumableItem(itemSlot, _consumableA);
+            }
+            else if (type == EquipmentSlotType.Secondary)
+            {
+                return TrySetConsumableItem(itemSlot, _consumableB);
+            }
+
             return false;
+        }
+
+        public bool TrySetConsumableItem(ItemSlot itemSlot, ConsumableSlot slot)
+        {
+            if (slot.ActiveSlot != null) return false;
+
+            if(itemSlot.ItemData is ConsumableItemData)
+            {
+                slot.SetSlot(itemSlot);        
+            }
+            return true;
         }
 
         private void ActivateSlot(EquipmentSlotType slotType)

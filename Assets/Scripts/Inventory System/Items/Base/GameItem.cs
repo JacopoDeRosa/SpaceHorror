@@ -14,7 +14,7 @@ namespace SpaceHorror.InventorySystem
         {
             return null;
         }
-        public virtual void LoadParameters()
+        public virtual void LoadParameters(object parameters)
         {
 
         }

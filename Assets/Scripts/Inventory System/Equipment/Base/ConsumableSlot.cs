@@ -10,6 +10,8 @@ namespace SpaceHorror.InventorySystem
         [SerializeField] private ItemSlot _activeConsumable;
 
 
+        public ItemSlot ActiveSlot { get => _activeConsumable; }
+
 
         public void SetSlot(ItemSlot slot)
         {
