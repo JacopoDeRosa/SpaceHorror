@@ -252,8 +252,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 6526156158583682100}
   m_AABB:
-    m_Center: {x: 0.86710095, y: 0.69477373, z: 0.018141627}
-    m_Extent: {x: 0.84088564, y: 0.70522636, z: 0.13887623}
+    m_Center: {x: 0.85, y: 0.7, z: 0}
+    m_Extent: {x: 1.2, y: 0.8, z: 0.4}
   m_DirtyAABB: 0
 --- !u!1 &6203972388069146176
 GameObject:
@@ -340,6 +340,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8295456895815841266}
+  - component: {fileID: 7425041899826320766}
+  - component: {fileID: 3552701154650148135}
+  - component: {fileID: 8922719480843622965}
   m_Layer: 0
   m_Name: Hatch_Wall
   m_TagString: Untagged
@@ -365,3 +368,52 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &7425041899826320766
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8670751672753631048}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 92f714b4cae9b26408999a1aaa8b4949, type: 3}
+  m_Controller: {fileID: 9100000, guid: 2e7b95f88b757354093d3388ddbb8ee8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3552701154650148135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8670751672753631048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 490fff393593e4945b2d3f1a394e2e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _openAudio: {fileID: 8300000, guid: 82430821fdba8d840be825e21e649b2b, type: 3}
+  _closeAudio: {fileID: 8300000, guid: 82430821fdba8d840be825e21e649b2b, type: 3}
+  _name: Hatch
+  _animator: {fileID: 7425041899826320766}
+--- !u!65 &8922719480843622965
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8670751672753631048}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.1911702, z: 0.2854967}
+  m_Center: {x: -0, y: 0.5955851, z: -1.8589654}

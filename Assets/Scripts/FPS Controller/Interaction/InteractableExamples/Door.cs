@@ -6,12 +6,15 @@ namespace FPS.Interaction
 {
     public class Door : MonoBehaviour, IInteractable
     {
+        [SerializeField] private AudioClip _openAudio, _closeAudio;
+        [SerializeField] private string _name = "Door";
+        [SerializeField] private Animator _animator;
         private bool _open;
 
         public void Interact(GameObject actor)
         {
             _open = !_open;
-            GetComponent<Animator>().SetTrigger("Toggle");
+            _animator.SetBool("Open", _open);
         }
         public void Select()
         {
@@ -26,12 +29,24 @@ namespace FPS.Interaction
         {
             if (_open)
             {
-                return "Close Door";
+                return "Close " + _name;
             }
             else
             {
-                return "Open Door";
+                return "Open " + _name;
             }
+        }
+
+        public void OnOpen()
+        {
+            if (_openAudio == null) return;
+            AudioSource.PlayClipAtPoint(_openAudio, transform.position);
+        }
+
+        public void OnClose()
+        {
+            if (_closeAudio == null) return;
+            AudioSource.PlayClipAtPoint(_closeAudio, transform.position);
         }
     }
 }

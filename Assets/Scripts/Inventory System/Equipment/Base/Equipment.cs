@@ -7,22 +7,18 @@ namespace SpaceHorror.InventorySystem
 {
     public class Equipment : MonoBehaviour
     {
-        [SerializeField] private EquipmentSlot _slotA, _slotB, _slotC, _slotD;
+        [SerializeField] private EquippableSlot _equippableA, _equippableB;
+        [SerializeField] private ConsumableSlot _consumableA, _consumableB;
         [SerializeField] private Animator _characterAnimator;
         [SerializeField] private Inventory _parentInventory;
+
+        private EquipmentSlotType _activeEquipmentSlot;
 
         private PlayerInput _input;
 
         public Inventory ParentInventory { get => _parentInventory; }
 
-        private void Awake()
-        {
-            _slotA = new EquipmentSlot(this);
-            _slotB = new EquipmentSlot(this);
-            _slotC = new EquipmentSlot(this);
-            _slotD = new EquipmentSlot(this);
-        }
-
+        
         private void Start()
         {
             _input = FindObjectOfType<PlayerInput>();
@@ -30,8 +26,6 @@ namespace SpaceHorror.InventorySystem
             {
                 _input.actions["Equip A"].started += OnEquipA;
                 _input.actions["Equip B"].started += OnEquipB;
-                _input.actions["Equip C"].started += OnEquipC;
-                _input.actions["Equip D"].started += OnEquipD;
             }
         }
 
@@ -41,45 +35,42 @@ namespace SpaceHorror.InventorySystem
             {
                 _input.actions["Equip A"].started -= OnEquipA;
                 _input.actions["Equip B"].started -= OnEquipB;
-                _input.actions["Equip C"].started -= OnEquipC;
-                _input.actions["Equip D"].started -= OnEquipD;
             }
         }
 
-        public bool TrySetSlotItem(ItemSlot itemSlot, EquipmentSlot equipmentSlot)
+        public bool TrySetEquippableSlotItem(ItemSlot itemSlot, EquipmentSlotType type)
         {
-            if (equipmentSlot.Parent != this) return false;
+            if(type == EquipmentSlotType.Primary)
+            {
+                return TrySetEquippableSlotItem(itemSlot, _equippableA);
+            }
+            else if(type == EquipmentSlotType.Secondary)
+            {
+                return TrySetEquippableSlotItem(itemSlot, _equippableB);
+            }
 
-            EquippableItemData data = itemSlot.ItemData as EquippableItemData;
+            return false;
+        }
 
-            if (data == null) return false;
+        public bool TrySetEquippableSlotItem(ItemSlot itemSlot, EquippableSlot slot)
+        {
+            if (slot.Item != null) return false;
+            return false;
+        }
 
-            EquippableItem item = Instantiate(data.Item, transform);
+        private void ActivateSlot(EquipmentSlotType slotType)
+        {
 
-            equipmentSlot.SetItem(item);
-
-
-            return true;
         }
 
         private void OnEquipA(InputAction.CallbackContext context)
         {
-
+            ActivateSlot(EquipmentSlotType.Primary);
         }
 
         private void OnEquipB(InputAction.CallbackContext context)
         {
-
-        }
-
-        private void OnEquipC(InputAction.CallbackContext context)
-        {
-
-        }
-
-        private void OnEquipD(InputAction.CallbackContext context)
-        {
-
+            ActivateSlot(EquipmentSlotType.Secondary);
         }
     }
 }

@@ -115,7 +115,7 @@ namespace SpaceHorror.InventorySystem
 
         #region Options
         [InventoryButton("Drop")]
-        private void Drop()
+        public void Drop()
         {
             if(_itemCount == 1)
             {
@@ -129,7 +129,7 @@ namespace SpaceHorror.InventorySystem
         }
 
         [InventoryButton("Consume", typeof(ConsumableItemData))]
-        private void Use()
+        public void Use()
         {
             Debug.Log("Consumed " + _itemData.name);
         }

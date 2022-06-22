@@ -114,7 +114,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Equip C",
+                    "name": "Usable A",
                     "type": "Button",
                     "id": "6b18dd93-054b-449d-beaf-c8e7a3ba76b2",
                     "expectedControlType": "Button",
@@ -123,7 +123,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Equip D",
+                    "name": "Usable B",
                     "type": "Button",
                     "id": "ccbb8193-63b0-4251-9287-8c42ec7e9b40",
                     "expectedControlType": "Button",
@@ -459,7 +459,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Equip C",
+                    "action": "Usable A",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -470,7 +470,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Equip D",
+                    "action": "Usable B",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

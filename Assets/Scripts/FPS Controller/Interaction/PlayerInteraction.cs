@@ -11,6 +11,7 @@ namespace FPS.Interaction
     {
         [SerializeField] private float _interactionRange;
         [SerializeField] private Transform _viewPivot;
+        [SerializeField] private LayerMask _interactionMask;
 
         private PlayerInput _input;
         private IInteractable _target;
@@ -49,7 +50,7 @@ namespace FPS.Interaction
             RaycastHit hitInfo;
             Ray ray = new Ray(_viewPivot.position + _viewPivot.forward / 4, _viewPivot.forward);
 
-            if (Physics.Raycast(ray, out hitInfo, _interactionRange))
+            if (Physics.Raycast(ray, out hitInfo, _interactionRange, _interactionMask, QueryTriggerInteraction.Collide))
             {
                 IInteractable interaction = hitInfo.transform.GetComponent<IInteractable>();
 

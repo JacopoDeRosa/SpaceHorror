@@ -17,5 +17,16 @@ namespace SpaceHorror.InventorySystem
         {
             return ItemTypes.Equipment;
         }
+
+        private void OnValidate()
+        {
+            if (_item != null)
+            {
+                if (_item.Data != this)
+                {
+                    Debug.Log("The currently set item for " + name + " is not the same the Item's Data, is this Correct?");
+                }
+            }
+        }
     }
 }
