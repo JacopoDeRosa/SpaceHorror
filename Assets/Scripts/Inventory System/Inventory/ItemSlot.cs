@@ -235,7 +235,10 @@ namespace SpaceHorror.InventorySystem
         public void DestroySlot()
         {
             onDestroy?.Invoke();
-            _parentInventory.RemoveSlot(this);
+            if (_parentInventory != null)
+            {
+                _parentInventory.RemoveSlot(this);
+            }
         }
 
         private void DropItem(int amount)

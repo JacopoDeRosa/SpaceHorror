@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 namespace SpaceHorror.InventorySystem.UI
 {
-    public class ConsumableSlotUI : MonoBehaviour
+    public class ConsumableSlotUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
         [SerializeField] private TMP_Text _amountText;
         [SerializeField] private TMP_Text _nameText;
@@ -47,6 +48,49 @@ namespace SpaceHorror.InventorySystem.UI
         private void RefreshAmountText(ItemSlot slot)
         {
             _amountText.text = "x" + slot.ItemCount.ToString();
+        }
+
+        public void OnBeginDrag(PointerEventData eventData)
+        {
+            ItemSlot slot = _targetEquipment.ClearConsumableSlot(SlotType);
+
+            _image.sprite = _defaultSprite;
+            _nameText.text = "Empty Slot";
+            _amountText.text = "x00";
+
+            if (slot == null)
+            {
+                print("Slot is null");
+            }
+
+            _itemRemover.gameObject.SetActive(true);
+            _itemRemover.SetItemSlot(slot);
+            _itemRemover.transform.position = eventData.position;
+        }
+
+        public void OnDrag(PointerEventData eventData)
+        {
+            _itemRemover.transform.position = eventData.position;
+        }
+
+        public void OnEndDrag(PointerEventData eventData)
+        {
+            CellUI cell = _itemRemover.GetItemAtPivot<CellUI>();
+
+
+            if (cell == null)
+            {
+                Debug.Log("Cell Null");
+                TrySetItem(_itemRemover.Slot);
+                _itemRemover.gameObject.SetActive(false);
+            }
+            else
+            {
+                if (_itemRemover.Slot.DropInInventory(cell.TargetCell))
+                {
+                    _itemRemover.gameObject.SetActive(false);
+                }
+            }
         }
     }
 }

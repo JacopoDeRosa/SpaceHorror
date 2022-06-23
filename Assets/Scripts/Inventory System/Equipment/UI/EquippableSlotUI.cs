@@ -25,8 +25,6 @@ namespace SpaceHorror.InventorySystem.UI
             _image.sprite = _defaultSprite;
             _nameText.text = "Empty Slot";
 
-            print(slot.ItemData.name);
-
             if(slot == null)
             {
                 print("Slot is null");
@@ -46,9 +44,12 @@ namespace SpaceHorror.InventorySystem.UI
         {
             CellUI cell = _itemRemover.GetItemAtPivot<CellUI>();
 
+
             if(cell == null)
             {
+                Debug.Log("Cell Null");
                 TrySetItem(_itemRemover.Slot);
+                _itemRemover.gameObject.SetActive(false);
             }
             else
             {

@@ -6,6 +6,7 @@ namespace SpaceHorror.InventorySystem
 {
     public class GameItem : MonoBehaviour
     {
+        [SerializeField]
         protected GameItemData _data;
 
         public GameItemData Data { get => _data; }

@@ -25,7 +25,8 @@ namespace SpaceHorror.InventorySystem
 
         public void ClearActiveSlot()
         {
-            _activeConsumable = null;
+            GameItemData data = null;
+            _activeConsumable = new ItemSlot(data, null);
         }
     }
 }

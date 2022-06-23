@@ -23,10 +23,5 @@ namespace SpaceHorror.InventorySystem
                 _light.enabled = false;
             }
         }
-
-        private void OnValidate()
-        {
-            print(_data.name);
-        }
     }
 }
