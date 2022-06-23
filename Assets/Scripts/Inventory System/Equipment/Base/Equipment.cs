@@ -12,8 +12,6 @@ namespace SpaceHorror.InventorySystem
         [SerializeField] private Inventory _parentInventory;
         [SerializeField] private Transform _itemContainer;
 
-        private EquipmentSlotType _activeEquipmentSlot;
-
         public Inventory ParentInventory { get => _parentInventory; }
 
         public bool TrySetEquippableItem(ItemSlot itemSlot, EquipmentSlotType type)
@@ -75,6 +73,88 @@ namespace SpaceHorror.InventorySystem
         public void ActivateSlot(EquipmentSlotType slotType)
         {
 
+        }
+
+        public EquippableSlot GetEquippableSlot(EquipmentSlotType equipmentSlotType)
+        {
+            if(equipmentSlotType == EquipmentSlotType.Primary)
+            {
+                return _equippableA;
+            }
+            else if(equipmentSlotType == EquipmentSlotType.Secondary)
+            {
+                return _equippableB;
+            }
+
+            return null;
+        }
+
+        public ConsumableSlot GetConsumableSlot(EquipmentSlotType equipmentSlotType)
+        {
+            if (equipmentSlotType == EquipmentSlotType.Primary)
+            {
+                return _consumableA;
+            }
+            else if (equipmentSlotType == EquipmentSlotType.Secondary)
+            {
+                return _consumableB;
+            }
+
+            return null;
+        }
+
+        public ItemSlot ClearEquippableSlot(EquipmentSlotType equipmentSlotType)
+        {
+            if(equipmentSlotType == EquipmentSlotType.Primary)
+            {
+                return ClearEquippableSlot(_equippableA);
+            }
+            else if(equipmentSlotType == EquipmentSlotType.Secondary)
+            {
+                return ClearEquippableSlot(_equippableB);
+            }
+
+            return null;
+        }
+
+        private ItemSlot ClearEquippableSlot(EquippableSlot slot)
+        {
+            if (slot.Item == null) return null;
+
+            ItemSlot itemSlot = new ItemSlot(slot.Item, null);
+
+            Destroy(slot.Item.gameObject);
+
+            //TODO: Reset Animator Override.
+
+            slot.RemoveItem();
+
+            return itemSlot;
+        }
+
+        public ItemSlot ClearConsumableSlot(EquipmentSlotType equipmentSlotType)
+        {
+            if (equipmentSlotType == EquipmentSlotType.Primary)
+            {
+                return ClearConsumableSlot(_consumableA);
+            }
+            else if (equipmentSlotType == EquipmentSlotType.Secondary)
+            {
+                return ClearConsumableSlot(_consumableB);
+            }
+
+            return null;
+        }
+
+        public ItemSlot ClearConsumableSlot(ConsumableSlot slot)
+        {
+            if (slot.ActiveSlot.ItemData == null) return null;
+
+            ItemSlot itemSlot = slot.ActiveSlot;
+
+            slot.ClearActiveSlot();
+
+            return itemSlot;
         }
     }
 }

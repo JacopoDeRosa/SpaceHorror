@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SpaceHorror.InventorySystem
+namespace SpaceHorror.InventorySystem.UI
 {
     public class EquipmentWindow : MonoBehaviour
     {

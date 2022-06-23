@@ -306,6 +306,8 @@ MonoBehaviour:
   _amountText: {fileID: 1474288950402243162}
   _nameText: {fileID: 6582258342668679615}
   _image: {fileID: 1477637448103534044}
+  _defaultSprite: {fileID: 21300000, guid: 81a8b330b05165846968749bf2e534b6, type: 3}
+  _itemRemover: {fileID: 0}
 --- !u!1 &1908689517264816165
 GameObject:
   m_ObjectHideFlags: 0

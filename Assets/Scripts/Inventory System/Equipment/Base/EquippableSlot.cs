@@ -15,5 +15,10 @@ namespace SpaceHorror.InventorySystem
         {
             _item = item;
         }
+
+        public void RemoveItem()
+        {
+            _item = null;
+        }
     }
 }

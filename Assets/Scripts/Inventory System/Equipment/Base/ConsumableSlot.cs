@@ -22,5 +22,10 @@ namespace SpaceHorror.InventorySystem
         {
             _activeConsumable.Use();
         }
+
+        public void ClearActiveSlot()
+        {
+            _activeConsumable = null;
+        }
     }
 }

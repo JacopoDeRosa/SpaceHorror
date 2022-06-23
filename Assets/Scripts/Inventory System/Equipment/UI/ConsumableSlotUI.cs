@@ -4,13 +4,16 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-namespace SpaceHorror.InventorySystem
+namespace SpaceHorror.InventorySystem.UI
 {
     public class ConsumableSlotUI : MonoBehaviour
     {
         [SerializeField] private TMP_Text _amountText;
         [SerializeField] private TMP_Text _nameText;
         [SerializeField] private Image _image;
+        [SerializeField] private Sprite _defaultSprite;
+        [SerializeField] private ItemRemoverUI _itemRemover;
+
         private Equipment _targetEquipment;
 
         public EquipmentSlotType SlotType { get; private set; }
@@ -41,9 +44,9 @@ namespace SpaceHorror.InventorySystem
             return false;
         }
 
-        private void RefreshAmountText()
+        private void RefreshAmountText(ItemSlot slot)
         {
-
+            _amountText.text = "x" + slot.ItemCount.ToString();
         }
     }
 }
