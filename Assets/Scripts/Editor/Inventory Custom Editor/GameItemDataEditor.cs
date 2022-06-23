@@ -14,19 +14,27 @@ namespace SpaceHorror.InventorySystem.Editors
 
             GameItemData data = target as GameItemData;
 
-            if(data.Stackable)
+            DrawStackableToggle(data);
+          
+            EditorUtility.SetDirty(data);
+        }
+
+        private void DrawStackableToggle(GameItemData data)
+        {
+            if (data is EquippableItemData) return;
+
+            if (data.Stackable)
             {
                 GUILayout.BeginHorizontal();
                 data.SetStackable(EditorGUILayout.Toggle("Stackable", data.Stackable));
                 data.SetStackSize(EditorGUILayout.IntField("Stack Size", data.StackSize));
-                GUILayout.EndHorizontal();          
+                GUILayout.EndHorizontal();
             }
             else
             {
                 data.SetStackable(EditorGUILayout.Toggle("Stackable", data.Stackable));
             }
 
-            EditorUtility.SetDirty(data);
         }
     }
 }

@@ -8,18 +8,22 @@ namespace SpaceHorror.InventorySystem
     {
         [SerializeField] private EquippableSlot _equippableA, _equippableB;
         [SerializeField] private ConsumableSlot _consumableA, _consumableB;
+        [SerializeField] private CharacterAnimatorWrap _animator;
         [SerializeField] private Inventory _parentInventory;
         [SerializeField] private Transform _itemContainer;
+
+        private EquipmentSlotType _activeSlot;
+        private bool _slotIsActive;
 
         public Inventory ParentInventory { get => _parentInventory; }
 
         public bool TrySetEquippableItem(ItemSlot itemSlot, EquipmentSlotType type)
         {
-            if(type == EquipmentSlotType.Primary)
+            if (type == EquipmentSlotType.Primary)
             {
                 return TrySetEquippableItem(itemSlot, _equippableA);
             }
-            else if(type == EquipmentSlotType.Secondary)
+            else if (type == EquipmentSlotType.Secondary)
             {
                 return TrySetEquippableItem(itemSlot, _equippableB);
             }
@@ -38,6 +42,8 @@ namespace SpaceHorror.InventorySystem
             EquippableItem item = Instantiate(equippableItemData.Item, _itemContainer);
 
             item.LoadParameters(itemSlot.ItemParameters);
+
+            item.gameObject.SetActive(false);
 
             slot.SetItem(item);
 
@@ -62,17 +68,50 @@ namespace SpaceHorror.InventorySystem
         {
             if (slot.ActiveSlot.ItemData != null) return false;
 
-            if(itemSlot.ItemData is ConsumableItemData)
+            if (itemSlot.ItemData is ConsumableItemData)
             {
-                slot.SetSlot(itemSlot);        
+                slot.SetSlot(itemSlot);
             }
             return true;
         }
 
         public void ActivateSlot(EquipmentSlotType slotType)
         {
+            if (_slotIsActive && _activeSlot == slotType) return;
 
+            if (slotType == EquipmentSlotType.Primary)
+            {
+                ActivateSlot(_equippableA);
+            }
+            else if (slotType == EquipmentSlotType.Secondary)
+            {
+                ActivateSlot(_equippableB);
+            }
         }
+
+        private void ActivateSlot(EquippableSlot slot)
+        {
+            slot.Item.gameObject.SetActive(true);
+            _slotIsActive = true;
+            EquippableItemData data = slot.Item.Data as EquippableItemData;
+            _animator.SetAnimatorOverride(data.AnimatorOverride);
+        }
+
+        public void ClearActiveSlot()
+        {
+            if (_slotIsActive == false) return;
+
+            _animator.ResetAnimatorOverride();
+
+            if(_activeSlot == EquipmentSlotType.Primary)
+            {
+                _equippableA.Item.gameObject.SetActive(false);
+            }
+            else if(_activeSlot == EquipmentSlotType.Secondary)
+            {
+                _equippableB.Item.gameObject.SetActive(false);
+            }
+        }      
 
         public ItemSlot ClearEquippableSlot(EquipmentSlotType equipmentSlotType)
         {

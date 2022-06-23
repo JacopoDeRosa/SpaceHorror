@@ -2,7 +2,13 @@ fileFormatVersion: 2
 guid: d786deeca647b1e4d9d410aa38dda10f
 ModelImporter:
   serializedVersion: 21202
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: -6608829514823852661
+    second: Player_FPS_Rig|FP_Player_Idle
+  - first:
+      74: -706115909364597326
+    second: Player_FPS_Rig|FP_Player_Idle_Flashlight
   externalObjects: {}
   materials:
     materialImportMode: 2
