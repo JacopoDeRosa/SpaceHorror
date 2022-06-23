@@ -8,7 +8,6 @@ namespace SpaceHorror.InventorySystem
     {
         [SerializeField] private EquippableSlot _equippableA, _equippableB;
         [SerializeField] private ConsumableSlot _consumableA, _consumableB;
-        [SerializeField] private Animator _characterAnimator;
         [SerializeField] private Inventory _parentInventory;
         [SerializeField] private Transform _itemContainer;
 
@@ -75,34 +74,6 @@ namespace SpaceHorror.InventorySystem
 
         }
 
-        public EquippableSlot GetEquippableSlot(EquipmentSlotType equipmentSlotType)
-        {
-            if(equipmentSlotType == EquipmentSlotType.Primary)
-            {
-                return _equippableA;
-            }
-            else if(equipmentSlotType == EquipmentSlotType.Secondary)
-            {
-                return _equippableB;
-            }
-
-            return null;
-        }
-
-        public ConsumableSlot GetConsumableSlot(EquipmentSlotType equipmentSlotType)
-        {
-            if (equipmentSlotType == EquipmentSlotType.Primary)
-            {
-                return _consumableA;
-            }
-            else if (equipmentSlotType == EquipmentSlotType.Secondary)
-            {
-                return _consumableB;
-            }
-
-            return null;
-        }
-
         public ItemSlot ClearEquippableSlot(EquipmentSlotType equipmentSlotType)
         {
             if(equipmentSlotType == EquipmentSlotType.Primary)
@@ -124,8 +95,6 @@ namespace SpaceHorror.InventorySystem
             ItemSlot itemSlot = new ItemSlot(slot.Item, null);
 
             Destroy(slot.Item.gameObject);
-
-            //TODO: Reset Animator Override.
 
             slot.RemoveItem();
 
