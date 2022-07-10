@@ -7,8 +7,8 @@ namespace SpaceHorror.InventorySystem
     public class Flashlight : EquippableItem
     {
         [SerializeField] private Light _light;
-        
-        private bool _on;
+
+        private bool _on = true;
 
         public override void PrimaryUse()
         {

@@ -52,6 +52,8 @@ namespace SpaceHorror.InventorySystem
             return ItemTypes.Generic;
         }
 
+        #region Editor specific code
+
 #if UNITY_EDITOR
         /// <summary>
         /// Editor Only Function, do not call in game
@@ -62,10 +64,16 @@ namespace SpaceHorror.InventorySystem
             _stackable = stackable;
         }
 
-        public void SetStackSize(int size)
+        /// <summary>
+        /// Editor Only Function, do not call in game
+        /// </summary>
+        /// <param name="stackable"></param>
+        public void SetMaxStackSize(int size)
         {
             _maxStackSize = size;
         }
 #endif
+
+        #endregion
     }
 }

@@ -227,5 +227,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debugText: {fileID: 0}
   _background: {fileID: 3612590344681649641}
-  _filledColor: {r: 0.3584906, g: 0.3584906, b: 0.3584906, a: 0.21568628}
-  _emptyColor: {r: 0.3584906, g: 0.3584906, b: 0.3584906, a: 0.21568628}
+  _filledColor: {r: 0.3584906, g: 0.3584906, b: 0.3584906, a: 0.60784316}
+  _emptyColor: {r: 0.3584906, g: 0.3584906, b: 0.3584906, a: 0.60784316}

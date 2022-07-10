@@ -114,6 +114,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Remove Equipped",
+                    "type": "Button",
+                    "id": "0aee4032-188d-49ee-89ab-ce10bafcbf11",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Usable A",
                     "type": "Button",
                     "id": "6b18dd93-054b-449d-beaf-c8e7a3ba76b2",
@@ -471,6 +480,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Usable B",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bad0abf1-d4ee-4973-96ff-d8e97db377df",
+                    "path": "<Keyboard>/v",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Remove Equipped",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

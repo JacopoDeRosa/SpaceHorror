@@ -27,7 +27,7 @@ namespace SpaceHorror.InventorySystem.Editors
             {
                 GUILayout.BeginHorizontal();
                 data.SetStackable(EditorGUILayout.Toggle("Stackable", data.Stackable));
-                data.SetStackSize(EditorGUILayout.IntField("Stack Size", data.StackSize));
+                data.SetMaxStackSize(EditorGUILayout.IntField("Stack Size", data.StackSize));
                 GUILayout.EndHorizontal();
             }
             else

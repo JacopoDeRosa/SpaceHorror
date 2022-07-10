@@ -17,10 +17,22 @@ namespace SpaceHorror
 
         public void SetAnimatorOverride(AnimatorOverrideController controller)
         {
+            if(controller == null)
+            {
+                Debug.LogError("Passed Override is Null");
+                return;
+            }
+
             _target.runtimeAnimatorController = controller;
         }
         public void ResetAnimatorOverride()
         {
+            if (_defaultController == null)
+            {
+                Debug.LogError("Defualt Controller is Null");
+                return;
+            }
+
             _target.runtimeAnimatorController = _defaultController;
         }
     }

@@ -15,20 +15,20 @@ namespace SpaceHorror.InventorySystem.UI
         [SerializeField] private ItemRemoverUI _itemRemover;
 
         private Equipment _targetEquipment;
+        private bool _dragging;
 
         public EquipmentSlotType SlotType { get; private set; }
 
         public void OnBeginDrag(PointerEventData eventData)
         {
             ItemSlot slot = _targetEquipment.ClearEquippableSlot(SlotType);
-
-            _image.sprite = _defaultSprite;
-            _nameText.text = "Empty Slot";
-
             if(slot == null)
             {
-                print("Slot is null");
+                return;
             }
+            _dragging = true;
+            _image.sprite = _defaultSprite;
+            _nameText.text = "Empty Slot";
 
             _itemRemover.gameObject.SetActive(true);
             _itemRemover.SetItemSlot(slot);
@@ -37,15 +37,18 @@ namespace SpaceHorror.InventorySystem.UI
 
         public void OnDrag(PointerEventData eventData)
         {
+            if (_dragging == false) return; 
             _itemRemover.transform.position = eventData.position;
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
+            if (_dragging == false) return;
+
             CellUI cell = _itemRemover.GetItemAtPivot<CellUI>();
+            _dragging = false;
 
-
-            if(cell == null)
+            if (cell == null)
             {
                 Debug.Log("Cell Null");
                 TrySetItem(_itemRemover.Slot);

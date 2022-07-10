@@ -71,13 +71,18 @@ namespace SpaceHorror.InventorySystem
             if (itemSlot.ItemData is ConsumableItemData)
             {
                 slot.SetSlot(itemSlot);
+                return true;
             }
-            return true;
+
+            return false;
+
         }
 
         public void ActivateSlot(EquipmentSlotType slotType)
         {
             if (_slotIsActive && _activeSlot == slotType) return;
+
+            ClearActiveSlot();
 
             if (slotType == EquipmentSlotType.Primary)
             {
@@ -91,6 +96,11 @@ namespace SpaceHorror.InventorySystem
 
         private void ActivateSlot(EquippableSlot slot)
         {
+            if (slot.Item == null)
+            {
+                return;
+            }
+
             slot.Item.gameObject.SetActive(true);
             _slotIsActive = true;
             EquippableItemData data = slot.Item.Data as EquippableItemData;
@@ -111,16 +121,40 @@ namespace SpaceHorror.InventorySystem
             {
                 _equippableB.Item.gameObject.SetActive(false);
             }
+
+            _slotIsActive = false;
         }      
+
+        public EquippableItem GetActiveSlotItem()
+        {
+            if(_slotIsActive == false)
+            {
+                return null;
+            }
+
+            if(_activeSlot == EquipmentSlotType.Primary)
+            {
+                return _equippableA.Item;
+            }
+            else if(_activeSlot == EquipmentSlotType.Secondary)
+            {
+                return _equippableB.Item;
+            }
+
+            return null;
+
+        }
 
         public ItemSlot ClearEquippableSlot(EquipmentSlotType equipmentSlotType)
         {
             if(equipmentSlotType == EquipmentSlotType.Primary)
             {
+                if (_activeSlot == EquipmentSlotType.Primary) ClearActiveSlot();
                 return ClearEquippableSlot(_equippableA);
             }
             else if(equipmentSlotType == EquipmentSlotType.Secondary)
             {
+                if (_activeSlot == EquipmentSlotType.Secondary) ClearActiveSlot();
                 return ClearEquippableSlot(_equippableB);
             }
 

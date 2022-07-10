@@ -16,6 +16,7 @@ namespace SpaceHorror.InventorySystem.UI
         [SerializeField] private ItemRemoverUI _itemRemover;
 
         private Equipment _targetEquipment;
+        private bool _dragging;
 
         public EquipmentSlotType SlotType { get; private set; }
 
@@ -53,15 +54,16 @@ namespace SpaceHorror.InventorySystem.UI
         public void OnBeginDrag(PointerEventData eventData)
         {
             ItemSlot slot = _targetEquipment.ClearConsumableSlot(SlotType);
-
+            if (slot == null)
+            {
+                return;
+            }
+            _dragging = true;
             _image.sprite = _defaultSprite;
             _nameText.text = "Empty Slot";
             _amountText.text = "x00";
 
-            if (slot == null)
-            {
-                print("Slot is null");
-            }
+
 
             _itemRemover.gameObject.SetActive(true);
             _itemRemover.SetItemSlot(slot);
@@ -70,13 +72,15 @@ namespace SpaceHorror.InventorySystem.UI
 
         public void OnDrag(PointerEventData eventData)
         {
+            if (_dragging == false) return;
             _itemRemover.transform.position = eventData.position;
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
+            if (_dragging == false) return;
             CellUI cell = _itemRemover.GetItemAtPivot<CellUI>();
-
+            _dragging = false;
 
             if (cell == null)
             {
@@ -91,6 +95,7 @@ namespace SpaceHorror.InventorySystem.UI
                     _itemRemover.gameObject.SetActive(false);
                 }
             }
+           
         }
     }
 }
