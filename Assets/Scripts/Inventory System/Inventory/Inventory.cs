@@ -238,5 +238,14 @@ namespace SpaceHorror.InventorySystem
                 }
             }
         }
+
+        public bool ContainsItem(GameItemData item)
+        {
+            foreach(ItemSlot itemSlot in _allItems)
+            {
+                if (itemSlot.ItemData == item) return true;
+            }
+            return false;
+        }
     }
 }

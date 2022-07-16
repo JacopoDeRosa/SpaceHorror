@@ -21,6 +21,7 @@ namespace SpaceHorror.InventorySystem.Interaction
                 _input.actions["Equip B"].started += OnEquipB;
                 _input.actions["Remove Equipped"].started += OnRemoveEquipped;
                 _input.actions["Fire"].started += OnFire;
+                _input.actions["Utility"].started += OnUtility;
             }
         }
 
@@ -32,6 +33,7 @@ namespace SpaceHorror.InventorySystem.Interaction
                 _input.actions["Equip B"].started -= OnEquipB;
                 _input.actions["Remove Equipped"].started -= OnRemoveEquipped;
                 _input.actions["Fire"].started -= OnFire;
+                _input.actions["Utility"].started -= OnUtility;
             }
         }
 
@@ -52,11 +54,17 @@ namespace SpaceHorror.InventorySystem.Interaction
 
         private void OnFire(InputAction.CallbackContext context)
         {
-            EquippableItem item = _playerEquipment.GetActiveSlotItem();
-
-            if(item)
+            if(_playerEquipment.GetActiveSlotItem())
             {
-                item.PrimaryUse();
+                _playerEquipment.GetActiveSlotItem().PrimaryUse();
+            }
+        }
+
+        private void OnUtility(InputAction.CallbackContext context)
+        {
+            if (_playerEquipment.GetActiveSlotItem())
+            {
+                _playerEquipment.GetActiveSlotItem().UtilityUse();
             }
         }
     }

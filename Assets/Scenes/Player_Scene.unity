@@ -29475,6 +29475,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8069067934729585862}
+  - component: {fileID: 8069067934729585876}
   - component: {fileID: 8069067934729585859}
   - component: {fileID: 1466310507516492814}
   - component: {fileID: 8069067934729585874}
@@ -29624,6 +29625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 338b84c8ec61ff44ab5e782cd48076b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _user: {fileID: 8069067934729585876}
   _equippableA:
     _item: {fileID: 0}
   _equippableB:
@@ -29665,6 +29667,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerEquipment: {fileID: 8069067934729585873}
+--- !u!114 &8069067934729585876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8069067934729585869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1d831b3592c2844ebbcc2885d5094b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: Mr Bombastic
+  _inventory: {fileID: 8069067934729585872}
 --- !u!1001 &9159389461100928137
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ namespace SpaceHorror.InventorySystem
     {
         [SerializeField] private EquippableItem _item;
         [SerializeField] private AnimatorOverrideController _animatorOverride;
+        
 
         public EquippableItem Item { get => _item; }
         public AnimatorOverrideController AnimatorOverride { get => _animatorOverride; }

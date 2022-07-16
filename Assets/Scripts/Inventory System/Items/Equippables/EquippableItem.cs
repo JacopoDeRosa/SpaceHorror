@@ -6,6 +6,11 @@ namespace SpaceHorror.InventorySystem
 {
     public class EquippableItem : GameItem
     {
+        // TODO: Add a character class to the equippable item
+        private Character _user;
+
+        protected Character User { get => _user; }
+
         public virtual void PrimaryUse()
         {
 
@@ -20,6 +25,11 @@ namespace SpaceHorror.InventorySystem
         {
 
         }
+
+        public void SetUser(Character user)
+        {
+            _user = user;
+        }    
 
         protected virtual void OnValidate()
         {

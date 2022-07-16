@@ -6,6 +6,7 @@ namespace SpaceHorror.InventorySystem
 {
     public class Equipment : MonoBehaviour
     {
+        [SerializeField] private Character _user;
         [SerializeField] private EquippableSlot _equippableA, _equippableB;
         [SerializeField] private ConsumableSlot _consumableA, _consumableB;
         [SerializeField] private CharacterAnimatorWrap _animator;
@@ -44,6 +45,8 @@ namespace SpaceHorror.InventorySystem
             item.LoadParameters(itemSlot.ItemParameters);
 
             item.gameObject.SetActive(false);
+
+            item.SetUser(_user);
 
             slot.SetItem(item);
 

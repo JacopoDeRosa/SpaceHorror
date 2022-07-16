@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace SpaceHorror.InventorySystem
@@ -7,6 +5,7 @@ namespace SpaceHorror.InventorySystem
     public class Flashlight : EquippableItem
     {
         [SerializeField] private Light _light;
+        [SerializeField] private GameItemData _batteryType;
 
         private bool _on = true;
 
@@ -21,6 +20,23 @@ namespace SpaceHorror.InventorySystem
             else
             {
                 _light.enabled = false;
+            }
+        }
+
+        public override void UtilityUse()
+        {
+           if(User == null)
+           {
+                Debug.LogError("Item tried to access a null user");
+           }
+
+            if (User.Inventory.ContainsItem(_batteryType))
+            {
+                Debug.Log("Reload");
+            }
+            else
+            {
+                Debug.Log("User does not posses the correct battery");
             }
         }
     }

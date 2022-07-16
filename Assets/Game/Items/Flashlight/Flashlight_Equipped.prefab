@@ -216,6 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: 00df4ce862f42a640b347c05b2fc2b62, type: 2}
   _light: {fileID: 8462057041900058399}
+  _batteryType: {fileID: 11400000, guid: 5f46950219a021e438cdbf362c66e0a1, type: 2}
 --- !u!108 &8462057041900058399
 Light:
   m_ObjectHideFlags: 0
