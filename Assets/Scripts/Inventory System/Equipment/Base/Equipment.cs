@@ -95,6 +95,7 @@ namespace SpaceHorror.InventorySystem
             {
                 ActivateSlot(_equippableB);
             }
+            _activeSlot = slotType;
         }
 
         private void ActivateSlot(EquippableSlot slot)

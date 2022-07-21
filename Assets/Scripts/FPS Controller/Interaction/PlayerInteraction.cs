@@ -10,6 +10,7 @@ namespace FPS.Interaction
     public class PlayerInteraction : MonoBehaviour
     {
         [SerializeField] private float _interactionRange;
+        [SerializeField] private float _interactionTime;
         [SerializeField] private Transform _viewPivot;
         [SerializeField] private LayerMask _interactionMask;
 
@@ -18,6 +19,9 @@ namespace FPS.Interaction
 
         public event Action<IInteractable> onSelected;
         public event Action<IInteractable> onDeSelected;
+
+        private float _nextInteractionViable;
+       
 
 
 
@@ -28,7 +32,8 @@ namespace FPS.Interaction
 
             if (_input)
             {
-                _input.actions["Interact"].started += OnInteract;
+                _input.actions["Interact"].started += OnInteractDown;
+                _input.actions["Interact"].canceled += OnInteractUp;
             }
         }
 
@@ -36,7 +41,8 @@ namespace FPS.Interaction
         {
             if (_input)
             {
-                _input.actions["Interact"].started -= OnInteract;
+                _input.actions["Interact"].started -= OnInteractDown;
+                _input.actions["Interact"].canceled -= OnInteractUp;
             }
         }
 
@@ -90,9 +96,16 @@ namespace FPS.Interaction
             _target = null; // Setting target to null prevents conflicts if target is destroyed in use        
         }
 
-        private void OnInteract(InputAction.CallbackContext context)
+        private void OnInteractDown(InputAction.CallbackContext context)
         {
-            Interact();
+            _nextInteractionViable = Time.time + _interactionTime;
+        }
+        private void OnInteractUp(InputAction.CallbackContext context)
+        {
+            if (_nextInteractionViable >= Time.time)
+            {
+                Interact();
+            }
         }
     }
 }

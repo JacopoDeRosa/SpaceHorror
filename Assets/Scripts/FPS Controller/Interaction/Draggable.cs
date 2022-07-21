@@ -5,11 +5,9 @@ using UnityEngine;
 
 namespace FPS.Interaction
 {
-    public class Draggable : MonoBehaviour, IDraggable
+    public class Draggable : MonoBehaviour
     {
-        [Tooltip("WARNING: Beacuse of an Unkown Bug Layer Mask must be set above the desired one.   " +
-            "Ex: To set it to Ignore Raycast choose TransparentFX")]
-        [SerializeField] LayerMask _pickUpMask;
+        [SerializeField] private LayerMask _pickUpMask;
 
         private GameObject _actor;
         private Rigidbody _rigidbody;
@@ -55,11 +53,11 @@ namespace FPS.Interaction
             // switch Mask
             if(gameObject.layer == _startingMask)
             {
-                gameObject.layer = _pickUpMask;
+                gameObject.layer = _pickUpMask.value;
             }
             else
             {
-                gameObject.layer = _startingMask;
+                gameObject.layer = _startingMask.value;
             }
         }
 

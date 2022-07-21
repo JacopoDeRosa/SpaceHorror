@@ -21,8 +21,8 @@ namespace FPS.Interaction
         private Transform _activeTransform;
         private PlayerInput _input;
 
-        private IDraggable _activeObject;
-        private IDraggable _currentTarget;
+        private Draggable _activeObject;
+        private Draggable _currentTarget;
 
         private void Start()
         {
@@ -82,7 +82,7 @@ namespace FPS.Interaction
 
             if (CanSelect(out _hitInfo, ray))
             {
-                _currentTarget = _hitInfo.transform.GetComponent<IDraggable>();
+                _currentTarget = _hitInfo.transform.GetComponent<Draggable>();
                 _currentTarget.Select();
             }
             else

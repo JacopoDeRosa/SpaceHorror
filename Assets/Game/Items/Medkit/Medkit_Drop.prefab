@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1178795395596483809}
   - component: {fileID: 1178795395596483820}
   - component: {fileID: 1178795395596483808}
+  - component: {fileID: 6206578886664948995}
   m_Layer: 0
   m_Name: Medkit_Drop
   m_TagString: Untagged
@@ -92,6 +93,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6266924, y: 0.1588831, z: 0.5664048}
   m_Center: {x: 0.0017829984, y: -0.002649784, z: 0.018538713}
+--- !u!114 &6206578886664948995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178795395596483821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a06b6d62361107d4aaa4324a79475292, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pickUpMask:
+    serializedVersion: 2
+    m_Bits: 4
 --- !u!1 &2061107093209651555
 GameObject:
   m_ObjectHideFlags: 0
