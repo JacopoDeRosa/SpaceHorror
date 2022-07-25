@@ -167,7 +167,7 @@ namespace FPS.Movement
 
             float actualHardness = Mathf.Clamp01(_orientationChangeHardness * Time.fixedDeltaTime); 
 
-            if (Physics.Raycast(_controllerData.GroundCheckRay, out hit, 1.5f, ~LayerMask.GetMask("Player")))
+            if (UnityEngine.Physics.Raycast(_controllerData.GroundCheckRay, out hit, 1.5f, ~LayerMask.GetMask("Player")))
             {
                 _targetRotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
                 _groundOrientation.rotation = Quaternion.Lerp(_groundOrientation.rotation, _targetRotation, actualHardness);

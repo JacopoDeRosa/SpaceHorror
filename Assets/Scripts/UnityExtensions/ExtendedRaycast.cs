@@ -8,7 +8,7 @@ namespace RaycastExtensions
         public static float GetSurfaceAngle(Ray ray, float distance, LayerMask layerMask)
         {
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, distance, layerMask))
+            if (UnityEngine.Physics.Raycast(ray, out hit, distance, layerMask))
             {
                 return Vector3.Angle(hit.normal, -ray.direction);
             }
@@ -22,7 +22,7 @@ namespace RaycastExtensions
         {
             Ray ray = new Ray(origin, direction);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, distance, layerMask))
+            if (UnityEngine.Physics.Raycast(ray, out hit, distance, layerMask))
             {
                 return Vector3.Angle(hit.normal, -ray.direction);
             }

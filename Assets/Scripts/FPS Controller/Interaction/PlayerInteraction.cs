@@ -49,14 +49,12 @@ namespace FPS.Interaction
 
         private void SetTarget()
         {
-            RaycastHit hitInfo;
-            Ray ray = new Ray(_viewPivot.position + _viewPivot.forward / 4, _viewPivot.forward);
+            Ray ray = new Ray(_viewPivot.position, _viewPivot.forward);
 
-            if (Physics.Raycast(ray, out hitInfo, _interactionRange, _interactionMask, QueryTriggerInteraction.Collide))
+            if (UnityEngine.Physics.Raycast(ray, out RaycastHit hitInfo, _interactionRange, _interactionMask, QueryTriggerInteraction.Collide))
             {
-                IInteractable interaction = hitInfo.transform.GetComponent<IInteractable>();
 
-                if (interaction != null && interaction != _target)
+                if (hitInfo.transform.TryGetComponent(out IInteractable interaction) && interaction != _target)
                 {
                     _target = interaction;
                     _target.Select();

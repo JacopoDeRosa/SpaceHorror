@@ -10,19 +10,18 @@ namespace FPS.Interaction
 {
     public class PlayerDragging : MonoBehaviour
     {
-        [SerializeField] private Transform _camera;
+        [SerializeField] private Transform _viewPivot;
         [SerializeField] private float _pickUpDistance = 4;
+        [SerializeField] private float _holdingForce = 3;
         [SerializeField] private float _maxDistance = 5;
         [SerializeField] private float _holdingDistance = 1.5f;
-        [SerializeField] private float _liftingForce = 5;
+        [SerializeField] private LayerMask _draggingMask;
 
+        private Vector3 HoldingPoint { get => _viewPivot.position + (_viewPivot.forward * _holdingDistance); }
 
-        private RaycastHit _hitInfo;
-        private Transform _activeTransform;
         private PlayerInput _input;
 
-        private Draggable _activeObject;
-        private Draggable _currentTarget;
+        private Draggable _draggedObject;
 
         private void Start()
         {
@@ -30,7 +29,8 @@ namespace FPS.Interaction
 
             if (_input)
             {
-                _input.actions["Interact"].started += OnInteract;
+                _input.actions["Interact"].started += OnInteractStart;
+                _input.actions["Interact"].canceled += OnInteractEnd;
             }
         }
 
@@ -38,73 +38,60 @@ namespace FPS.Interaction
         {
             if (_input)
             {
-                _input.actions["Interact"].started -= OnInteract;
+                _input.actions["Interact"].started -= OnInteractStart;
+                _input.actions["Interact"].canceled -= OnInteractEnd;
             }
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
-            //clamp object distance
+           if(_draggedObject)
+           {
+                DragTarget();
+           }
+        }
 
-            if (_activeTransform != null)
+        private void DragTarget()
+        {
+            float distanceFromHold = Vector3.Distance(_draggedObject.transform.position, HoldingPoint);
+
+            if (distanceFromHold > _maxDistance)
             {
-                if (Vector3.Distance(transform.position, _activeTransform.position) > _maxDistance)
-                {
-                    _activeObject.Drag(_camera.gameObject, _liftingForce, _holdingDistance);
-                    _activeTransform = null;
-                    _activeObject = null;
-                }
+                StopDragging();
+                return;
             }
 
-            SetTraget();
+            _draggedObject.Rigidbody.AddForce((HoldingPoint - _draggedObject.transform.position) * _holdingForce, ForceMode.Acceleration);
         }
-
-        private void DragObject()
-        {                 
-                if(_currentTarget != null)
-                {
-                    _currentTarget.Drag(_camera.gameObject, _liftingForce, _holdingDistance);
-                    _activeTransform = _hitInfo.transform;
-                    _activeObject = _currentTarget;
-                }
-                else if(_currentTarget == null && _activeObject != null)
-                {
-                    _activeObject.Drag(_camera.gameObject, _liftingForce, _holdingDistance);
-                    _activeTransform = null;
-                    _activeObject = null;
-                }
-        }
-
-        private void SetTraget()
+        private void StopDragging()
         {
-            
-            Ray ray = new Ray(_camera.position + _camera.forward / 4, _camera.forward);
-
-            if (CanSelect(out _hitInfo, ray))
+            if (_draggedObject != null)
             {
-                _currentTarget = _hitInfo.transform.GetComponent<Draggable>();
-                _currentTarget.Select();
+                _draggedObject.EndDrag();
+                _draggedObject = null;
             }
-            else
-            {
-                if (_currentTarget != null)
-                {
-                    _currentTarget.DeSelect();
-                    _currentTarget = null;
-                }
-            }
-
         }
 
-        private bool CanSelect(out RaycastHit hitInfo, Ray ray)
+        private bool FoundValidTarget(Ray ray, out Draggable draggable)
         {
-            return Physics.Raycast(ray, out hitInfo, _pickUpDistance) && hitInfo.transform.GetComponent<Draggable>() != null && _activeObject == null;
+            draggable = null;
+            if (_draggedObject != null) return false;
+            return Physics.Raycast(ray, out RaycastHit hitInfo, _pickUpDistance, _draggingMask) && hitInfo.transform.TryGetComponent(out draggable);
         }
 
-        private void OnInteract(InputAction.CallbackContext context)
+        private void OnInteractStart(InputAction.CallbackContext context)
         {
-            DragObject();
+           Ray ray = new Ray(_viewPivot.position, _viewPivot.forward);
+           if(FoundValidTarget(ray, out _draggedObject))
+           {
+                _draggedObject.StartDrag();
+           }
         }
+
+        private void OnInteractEnd(InputAction.CallbackContext context)
+        {
+            StopDragging();
+        }      
     }
 }
 

@@ -8096,6 +8096,90 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da855edbff602944da7ba5767704f47f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &723777048
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1479874434355254126, guid: 5593104f1e372dd4bb98a1746be54606,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1479874434355254126, guid: 5593104f1e372dd4bb98a1746be54606,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 1479874434355254126, guid: 5593104f1e372dd4bb98a1746be54606,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1479874434355254126, guid: 5593104f1e372dd4bb98a1746be54606,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1479874434355254126, guid: 5593104f1e372dd4bb98a1746be54606,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1479874434355254126, guid: 5593104f1e372dd4bb98a1746be54606,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1479874434355254126, guid: 5593104f1e372dd4bb98a1746be54606,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1479874434355254126, guid: 5593104f1e372dd4bb98a1746be54606,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1479874434355254126, guid: 5593104f1e372dd4bb98a1746be54606,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1479874434355254126, guid: 5593104f1e372dd4bb98a1746be54606,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1479874434355254126, guid: 5593104f1e372dd4bb98a1746be54606,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8305975111616616208, guid: 5593104f1e372dd4bb98a1746be54606,
+        type: 3}
+      propertyPath: m_Name
+      value: Battery_Drop
+      objectReference: {fileID: 0}
+    - target: {fileID: 8305975111616616221, guid: 5593104f1e372dd4bb98a1746be54606,
+        type: 3}
+      propertyPath: m_Drag
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8305975111616616221, guid: 5593104f1e372dd4bb98a1746be54606,
+        type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8305975111616616221, guid: 5593104f1e372dd4bb98a1746be54606,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5593104f1e372dd4bb98a1746be54606, type: 3}
 --- !u!1 &754183996
 GameObject:
   m_ObjectHideFlags: 0
@@ -24609,12 +24693,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b31ffb019ee5b445a11c1c87d74ccb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactionRange: 4
+  _interactionRange: 2
   _interactionTime: 0.5
   _viewPivot: {fileID: 6167529373089825467}
   _interactionMask:
     serializedVersion: 2
-    m_Bits: 2147483647
+    m_Bits: 51
 --- !u!1 &1466310506742045808
 GameObject:
   m_ObjectHideFlags: 0
@@ -27100,11 +27184,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcf5cbd407babf2479fca9cce92d7753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 6167529373089825467}
-  _pickUpDistance: 4
+  _viewPivot: {fileID: 6167529373089825467}
+  _pickUpDistance: 2
+  _holdingForce: 25
   _maxDistance: 5
   _holdingDistance: 1.5
-  _liftingForce: 25
+  _draggingMask:
+    serializedVersion: 2
+    m_Bits: 51
 --- !u!4 &6167529372685859056
 Transform:
   m_ObjectHideFlags: 0
@@ -29640,7 +29727,6 @@ MonoBehaviour:
       _itemData: {fileID: 0}
       _itemCount: 0
   _animator: {fileID: 8069067934729585874}
-  _parentInventory: {fileID: 8069067934729585872}
   _itemContainer: {fileID: 6167529373089825467}
 --- !u!114 &8069067934729585874
 MonoBehaviour:

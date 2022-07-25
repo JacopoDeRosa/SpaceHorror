@@ -45,7 +45,7 @@ namespace FPS.Movement
         }
         public bool IsCenterGrounded
         {
-            get { return Physics.SphereCast(GroundCheckRay, _sphereRadius, _sphereDistance, ~LayerMask.GetMask("Player")); }
+            get { return UnityEngine.Physics.SphereCast(GroundCheckRay, _sphereRadius, _sphereDistance, ~LayerMask.GetMask("Player")); }
         }
         public bool AllSidedsGrounded
         {
@@ -53,7 +53,7 @@ namespace FPS.Movement
             {
                 foreach (Vector3 check in _additionalGroundChecks)
                 {
-                    if (Physics.Raycast(transform.TransformPoint(check), Vector3.down, check.y + _additionalChecksOffset, ~LayerMask.GetMask("Player")))
+                    if (UnityEngine.Physics.Raycast(transform.TransformPoint(check), Vector3.down, check.y + _additionalChecksOffset, ~LayerMask.GetMask("Player")))
                     {
                         continue;
                     }
@@ -72,7 +72,7 @@ namespace FPS.Movement
             {
                 Vector3 capsuleStart = transform.position + new Vector3(0, _crouchCheckerRadious + _checkerOffset, 0);
                 Vector3 capsuleEnd = transform.position + new Vector3(0, _checkerHeight - _crouchCheckerRadious, 0);
-                return Physics.CheckCapsule(capsuleStart, capsuleEnd, _crouchCheckerRadious, ~LayerMask.GetMask("Player"));
+                return UnityEngine.Physics.CheckCapsule(capsuleStart, capsuleEnd, _crouchCheckerRadious, ~LayerMask.GetMask("Player"));
             }
         }
         public Vector3 PlanarInput { get; private set; }
