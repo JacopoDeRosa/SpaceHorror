@@ -1,4 +1,4 @@
-using System;
+    using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,9 +15,12 @@ namespace FPS.Interaction
         [SerializeField] private float _holdingForce = 3;
         [SerializeField] private float _maxDistance = 5;
         [SerializeField] private float _holdingDistance = 1.5f;
+        [SerializeField] private float _holdingSmoothing = 5;
         [SerializeField] private LayerMask _draggingMask;
 
         private Vector3 HoldingPoint { get => _viewPivot.position + (_viewPivot.forward * _holdingDistance); }
+        private Vector3 _holdingPosition;
+        private float _hSmooth;
 
         private PlayerInput _input;
 
@@ -43,7 +46,7 @@ namespace FPS.Interaction
             }
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
            if(_draggedObject)
            {
@@ -58,10 +61,14 @@ namespace FPS.Interaction
             if (distanceFromHold > _maxDistance)
             {
                 StopDragging();
-                return;
+                return;  
             }
 
-            _draggedObject.Rigidbody.AddForce((HoldingPoint - _draggedObject.transform.position) * _holdingForce, ForceMode.Acceleration);
+            _hSmooth = Mathf.Clamp01(_holdingSmoothing * Time.deltaTime);
+            _holdingPosition = Vector3.Lerp(_holdingPosition, HoldingPoint, _hSmooth);
+
+
+            _draggedObject.DragController.Move(_holdingPosition - _draggedObject.transform.position)  ;
         }
         private void StopDragging()
         {
@@ -85,6 +92,7 @@ namespace FPS.Interaction
            if(FoundValidTarget(ray, out _draggedObject))
            {
                 _draggedObject.StartDrag();
+                _holdingPosition = _draggedObject.transform.position;
            }
         }
 

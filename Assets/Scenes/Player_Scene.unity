@@ -24693,7 +24693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b31ffb019ee5b445a11c1c87d74ccb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactionRange: 2
+  _interactionRange: 3
   _interactionTime: 0.5
   _viewPivot: {fileID: 6167529373089825467}
   _interactionMask:
@@ -27185,10 +27185,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _viewPivot: {fileID: 6167529373089825467}
-  _pickUpDistance: 2
+  _pickUpDistance: 3
   _holdingForce: 25
   _maxDistance: 5
   _holdingDistance: 1.5
+  _holdingSmoothing: 15
   _draggingMask:
     serializedVersion: 2
     m_Bits: 51

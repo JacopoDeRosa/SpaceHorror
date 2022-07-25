@@ -97,6 +97,8 @@ GameObject:
   - component: {fileID: 8305975111616616210}
   - component: {fileID: 8305975111616616211}
   - component: {fileID: 1509502604763903039}
+  - component: {fileID: 9095609844913351024}
+  - component: {fileID: 6264160398799672442}
   m_Layer: 0
   m_Name: Battery_Drop
   m_TagString: Untagged
@@ -189,3 +191,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 8305975111616616221}
+  _colliders:
+  - {fileID: 8305975111616616220}
+  _dragController: {fileID: 6264160398799672442}
+  _kinematicVelocity: {fileID: 9095609844913351024}
+--- !u!114 &9095609844913351024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8305975111616616208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c13707c485d76ff48a7c09784935d050, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _calculateVelocity: 1
+  _calculateAngularVelocity: 0
+--- !u!143 &6264160398799672442
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8305975111616616208}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 0.1
+  m_Radius: 0.12
+  m_SlopeLimit: 180
+  m_StepOffset: 0
+  m_SkinWidth: 0.0001
+  m_MinMoveDistance: 0
+  m_Center: {x: 0, y: 0, z: -0.015}

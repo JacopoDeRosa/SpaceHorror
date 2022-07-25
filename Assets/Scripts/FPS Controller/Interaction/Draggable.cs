@@ -11,6 +11,7 @@ namespace FPS.Interaction
     public class Draggable : MonoBehaviour
     {
         [SerializeField] private Rigidbody _rigidbody;
+        [SerializeField] private Collider[] _colliders;
         [SerializeField] private CharacterController _dragController;
         [SerializeField] private KinematicVelocity _kinematicVelocity;
 
@@ -24,15 +25,35 @@ namespace FPS.Interaction
             if (_dragController == null) _dragController = GetComponent<CharacterController>();
             if (_kinematicVelocity == null) _kinematicVelocity = GetComponent<KinematicVelocity>();
         }
+        private void Awake()
+        {
+            _kinematicVelocity.enabled = false;
+            _dragController.enabled = false;
+        }
 
         public void StartDrag()
         {
-            _rigidbody.useGravity = false;
+            foreach(Collider collider in _colliders)
+            {
+                collider.enabled = false;
+            }
+
+            _rigidbody.isKinematic = true;
+            _kinematicVelocity.enabled = true;
+            _dragController.enabled = true;
         }
 
         public void EndDrag()
         {
-           _rigidbody.useGravity = true;
+            foreach (Collider collider in _colliders)
+            {
+                collider.enabled = true;
+            }
+
+            _rigidbody.isKinematic = false;
+            _rigidbody.velocity = _kinematicVelocity.Velocity;
+            _kinematicVelocity.enabled = false;
+            _dragController.enabled = false;
         }
     }
 }
