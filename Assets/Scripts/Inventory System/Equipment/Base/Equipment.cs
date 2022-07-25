@@ -10,13 +10,10 @@ namespace SpaceHorror.InventorySystem
         [SerializeField] private EquippableSlot _equippableA, _equippableB;
         [SerializeField] private ConsumableSlot _consumableA, _consumableB;
         [SerializeField] private CharacterAnimatorWrap _animator;
-        [SerializeField] private Inventory _parentInventory;
         [SerializeField] private Transform _itemContainer;
 
         private EquipmentSlotType _activeSlot;
         private bool _slotIsActive;
-
-        public Inventory ParentInventory { get => _parentInventory; }
 
         public bool TrySetEquippableItem(ItemSlot itemSlot, EquipmentSlotType type)
         {

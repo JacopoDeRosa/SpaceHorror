@@ -6,7 +6,6 @@ namespace SpaceHorror.InventorySystem
 {
     public class EquippableItem : GameItem
     {
-        // TODO: Add a character class to the equippable item
         private Character _user;
 
         protected Character User { get => _user; }

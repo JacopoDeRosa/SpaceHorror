@@ -63,12 +63,12 @@ namespace FPS.Interaction
 
         public void Select()
         {
-            GetComponent<MeshRenderer>().material.color = Color.red;
+         
         }
 
         public void DeSelect()
         {
-            GetComponent<MeshRenderer>().material.color = Color.white;
+           
         }
     }
 }

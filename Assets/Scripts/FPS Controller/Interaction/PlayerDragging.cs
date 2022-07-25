@@ -98,7 +98,7 @@ namespace FPS.Interaction
 
         private bool CanSelect(out RaycastHit hitInfo, Ray ray)
         {
-            return Physics.Raycast(ray, out hitInfo, _pickUpDistance) && hitInfo.transform.GetComponent<IDraggable>() != null && _activeObject == null;
+            return Physics.Raycast(ray, out hitInfo, _pickUpDistance) && hitInfo.transform.GetComponent<Draggable>() != null && _activeObject == null;
         }
 
         private void OnInteract(InputAction.CallbackContext context)

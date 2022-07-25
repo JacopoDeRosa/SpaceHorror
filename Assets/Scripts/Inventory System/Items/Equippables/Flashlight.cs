@@ -6,6 +6,7 @@ namespace SpaceHorror.InventorySystem
     {
         [SerializeField] private Light _light;
         [SerializeField] private GameItemData _batteryType;
+        [SerializeField] private AudioClip _toggleClip;
 
         private bool _on = true;
 
@@ -21,6 +22,8 @@ namespace SpaceHorror.InventorySystem
             {
                 _light.enabled = false;
             }
+
+            AudioSource.PlayClipAtPoint(_toggleClip, transform.position);
         }
 
         public override void UtilityUse()

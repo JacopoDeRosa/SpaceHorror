@@ -22,10 +22,6 @@ namespace FPS.Interaction
 
         private float _nextInteractionViable;
        
-
-
-
-
         private void Start()
         {
             _input = FindObjectOfType<PlayerInput>();
