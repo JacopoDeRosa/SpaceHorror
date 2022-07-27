@@ -39,22 +39,27 @@ namespace SpaceHorror.InventorySystem.Interaction
 
         private void OnEquipA(InputAction.CallbackContext context)
         {
+            if (GameStatus.MenuFocused || GameStatus.Paused) return;
             _playerEquipment.ActivateSlot(EquipmentSlotType.Primary);
         }
 
         private void OnEquipB(InputAction.CallbackContext context)
         {
+            if (GameStatus.MenuFocused || GameStatus.Paused) return;
             _playerEquipment.ActivateSlot(EquipmentSlotType.Secondary);
         }
 
         private void OnRemoveEquipped(InputAction.CallbackContext context)
         {
+            if (GameStatus.MenuFocused || GameStatus.Paused) return;
             _playerEquipment.ClearActiveSlot();
         }
 
         private void OnFire(InputAction.CallbackContext context)
         {
-            if(_playerEquipment.GetActiveSlotItem())
+            if (GameStatus.MenuFocused || GameStatus.Paused) return;
+
+            if (_playerEquipment.GetActiveSlotItem())
             {
                 _playerEquipment.GetActiveSlotItem().PrimaryUse();
             }
@@ -62,6 +67,8 @@ namespace SpaceHorror.InventorySystem.Interaction
 
         private void OnUtility(InputAction.CallbackContext context)
         {
+            if (GameStatus.MenuFocused || GameStatus.Paused) return;
+
             if (_playerEquipment.GetActiveSlotItem())
             {
                 _playerEquipment.GetActiveSlotItem().UtilityUse();

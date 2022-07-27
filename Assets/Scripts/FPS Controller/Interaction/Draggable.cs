@@ -39,6 +39,7 @@ namespace FPS.Interaction
             }
 
             _rigidbody.isKinematic = true;
+            _rigidbody.useGravity = false;
             _kinematicVelocity.enabled = true;
             _dragController.enabled = true;
         }
@@ -49,7 +50,7 @@ namespace FPS.Interaction
             {
                 collider.enabled = true;
             }
-
+            _rigidbody.useGravity = true;
             _rigidbody.isKinematic = false;
             _rigidbody.velocity = _kinematicVelocity.Velocity;
             _kinematicVelocity.enabled = false;
