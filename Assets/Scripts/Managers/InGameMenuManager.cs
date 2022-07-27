@@ -8,6 +8,8 @@ namespace SpaceHorror.UI
     public class InGameMenuManager : MonoBehaviour
     {
         [SerializeField] GameMenu _menu;
+        [SerializeField] private AudioClip _openMenuChime;
+        [SerializeField] private AudioSource _audioSource;
 
         private PlayerInput _input;
 
@@ -48,6 +50,7 @@ namespace SpaceHorror.UI
         public void OpenMenu(string menu)
         {
             if (_menu.gameObject.activeInHierarchy) return;
+            _audioSource.PlayOneShot(_openMenuChime);
             _menu.gameObject.SetActive(true);
             _menu.OpenMenu(menu);
             GameStatus.SetMenuFocus(true);

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-6636036737326939357
+--- !u!114 &-1610744724255661369
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,12 +20,12 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Map_View_Mat
-  m_Shader: {fileID: -6465566751694194690, guid: 79603534781c0cb4fb1775bd7ea0fd10,
+  m_Name: Holo_Map_Mat
+  m_Shader: {fileID: -6465566751694194690, guid: a85b45e61a9b63c488498e6835a9bcd1,
     type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 2
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -34,15 +34,11 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
+    - _Alpha:
+        m_Texture: {fileID: 2800000, guid: f25c9def6f40e6f43bf0e8f83e323e51, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Map_Render:
-        m_Texture: {fileID: 8400000, guid: 33777ed38c68d004498f99cfbed9fbb5, type: 2}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Mask:
+    - _Base_Alpha:
         m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -60,8 +56,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Mask_Hardness: 2.4
+    - _Alpha_Multiply: 0.75
     - _QueueControl: 0
     - _QueueOffset: 0
-    m_Colors: []
+    m_Colors:
+    - _Color: {r: 0, g: 0.38039216, b: 0.7490196, a: 1}
+    - _Move_Speed: {r: 0, g: 0.25, b: 0, a: 0}
+    - _Tiling: {r: 1, g: 5, b: 0, a: 0}
   m_BuildTextureStacks: []
