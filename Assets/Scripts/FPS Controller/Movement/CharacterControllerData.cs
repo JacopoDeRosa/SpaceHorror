@@ -10,6 +10,7 @@ namespace FPS.Movement
         [SerializeField] private PlayerStanceHandler _stanceHandler;
 
         [Header("Ground Check")]
+        [SerializeField] private LayerMask _groundCheckMask;
         [SerializeField] private bool _lockControls;
         [SerializeField] private float _sphereRadius = 0.39f;
         [SerializeField] private float _sphereDistance = 0.62f;
@@ -17,6 +18,7 @@ namespace FPS.Movement
         [SerializeField] private float _additionalChecksOffset = 0.3f;
 
         [Header("Crouch Check")]
+        [SerializeField] private LayerMask _crouchCheckMask;
         [SerializeField] private float _crouchCheckerRadious = 0.35f;
         [SerializeField] private float _checkerHeight = 2f;
         [SerializeField] private float _checkerOffset = 0;
@@ -45,7 +47,7 @@ namespace FPS.Movement
         }
         public bool IsCenterGrounded
         {
-            get { return UnityEngine.Physics.SphereCast(GroundCheckRay, _sphereRadius, _sphereDistance, ~LayerMask.GetMask("Player")); }
+            get { return UnityEngine.Physics.SphereCast(GroundCheckRay, _sphereRadius, _sphereDistance, _groundCheckMask); }
         }
         public bool AllSidedsGrounded
         {
@@ -53,7 +55,7 @@ namespace FPS.Movement
             {
                 foreach (Vector3 check in _additionalGroundChecks)
                 {
-                    if (UnityEngine.Physics.Raycast(transform.TransformPoint(check), Vector3.down, check.y + _additionalChecksOffset, ~LayerMask.GetMask("Player")))
+                    if (UnityEngine.Physics.Raycast(transform.TransformPoint(check), Vector3.down, check.y + _additionalChecksOffset, _groundCheckMask))
                     {
                         continue;
                     }
@@ -72,7 +74,7 @@ namespace FPS.Movement
             {
                 Vector3 capsuleStart = transform.position + new Vector3(0, _crouchCheckerRadious + _checkerOffset, 0);
                 Vector3 capsuleEnd = transform.position + new Vector3(0, _checkerHeight - _crouchCheckerRadious, 0);
-                return UnityEngine.Physics.CheckCapsule(capsuleStart, capsuleEnd, _crouchCheckerRadious, ~LayerMask.GetMask("Player"));
+                return UnityEngine.Physics.CheckCapsule(capsuleStart, capsuleEnd, _crouchCheckerRadious, _crouchCheckMask);
             }
         }
         public Vector3 PlanarInput { get; private set; }

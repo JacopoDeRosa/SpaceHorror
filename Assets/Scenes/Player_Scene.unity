@@ -8,8 +8,9 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: dbff7d28664f4104b8f1b72147380cbd
+  m_OcclusionCullingData: {fileID: 36300000, guid: 9a35ce33058482043b898bce1825d95e,
+    type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -8510,7 +8511,7 @@ PrefabInstance:
     - target: {fileID: 1479874434355254126, guid: 5593104f1e372dd4bb98a1746be54606,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.85
+      value: -4.846
       objectReference: {fileID: 0}
     - target: {fileID: 1479874434355254126, guid: 5593104f1e372dd4bb98a1746be54606,
         type: 3}
@@ -8520,7 +8521,7 @@ PrefabInstance:
     - target: {fileID: 1479874434355254126, guid: 5593104f1e372dd4bb98a1746be54606,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -2.125
       objectReference: {fileID: 0}
     - target: {fileID: 1479874434355254126, guid: 5593104f1e372dd4bb98a1746be54606,
         type: 3}
@@ -10744,7 +10745,7 @@ MonoBehaviour:
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
-  m_Antialiasing: 1
+  m_Antialiasing: 2
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 1
@@ -10812,7 +10813,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 961739749}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.8499999, z: -3.55}
+  m_LocalPosition: {x: 1.25, y: 1.8499999, z: -2.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26180,7 +26181,7 @@ MonoBehaviour:
   _viewPivot: {fileID: 6167529373089825467}
   _interactionMask:
     serializedVersion: 2
-    m_Bits: 51
+    m_Bits: 129
 --- !u!1 &1466310506742045808
 GameObject:
   m_ObjectHideFlags: 0
@@ -30972,7 +30973,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8069067934729585869}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.05, z: -3.55}
+  m_LocalPosition: {x: 1.25, y: 0.05, z: -2.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -31024,6 +31025,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stanceHandler: {fileID: 6722338899827219365}
+  _groundCheckMask:
+    serializedVersion: 2
+    m_Bits: 1
   _lockControls: 0
   _sphereRadius: 0.41
   _sphereDistance: 0.65
@@ -31033,6 +31037,9 @@ MonoBehaviour:
   - {x: 0.4, y: 0.5, z: 0}
   - {x: -0.4, y: 0.5, z: 0}
   _additionalChecksOffset: 0.5
+  _crouchCheckMask:
+    serializedVersion: 2
+    m_Bits: 1
   _crouchCheckerRadious: 0.35
   _checkerHeight: 1.8
   _checkerOffset: 0

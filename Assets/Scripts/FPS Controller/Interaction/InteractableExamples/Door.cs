@@ -15,6 +15,15 @@ namespace FPS.Interaction
         {
             _open = !_open;
             _animator.SetBool("Open", _open);
+
+            if(_open)
+            {
+                OnOpen();
+            }
+            else
+            {
+                OnClose();
+            }
         }
         public void Select()
         {
@@ -37,13 +46,12 @@ namespace FPS.Interaction
             }
         }
 
-        public void OnOpen()
+        protected virtual void OnOpen()
         {
             if (_openAudio == null) return;
             AudioSource.PlayClipAtPoint(_openAudio, transform.position);
         }
-
-        public void OnClose()
+        protected virtual void OnClose()
         {
             if (_closeAudio == null) return;
             AudioSource.PlayClipAtPoint(_closeAudio, transform.position);
