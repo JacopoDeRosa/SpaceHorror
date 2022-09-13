@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3405879970176133526}
   - component: {fileID: 3405879970176133523}
-  - component: {fileID: 7341098894898304874}
   - component: {fileID: 3405879970176133525}
+  - component: {fileID: 6250509659498779244}
   m_Layer: 0
   m_Name: Fast Light
   m_TagString: Untagged
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3405879970176133527}
   m_LocalRotation: {x: 0.7070619, y: -0, z: -0, w: 0.7071517}
-  m_LocalPosition: {x: 0, y: 0.04, z: -0}
+  m_LocalPosition: {x: 0, y: -0.15, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -43,16 +43,16 @@ Light:
   m_GameObject: {fileID: 3405879970176133527}
   m_Enabled: 1
   serializedVersion: 10
-  m_Type: 0
+  m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 6
-  m_Range: 6.96
-  m_SpotAngle: 179
+  m_Color: {r: 0, g: 0.6401706, b: 1, a: 1}
+  m_Intensity: 1
+  m_Range: 7
+  m_SpotAngle: 75
   m_InnerSpotAngle: 0
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -96,22 +96,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &7341098894898304874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3405879970176133527}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1b0aa4d23829fe4381eb3a76feb0b15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  intensity: 1
-  raysMatrixSize: 7
-  softCullingDistance: 40
-  hardCullingDistance: 50
 --- !u!114 &3405879970176133525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,6 +116,22 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!114 &6250509659498779244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3405879970176133527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1b0aa4d23829fe4381eb3a76feb0b15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensity: 1
+  raysMatrixSize: 14
+  softCullingDistance: 70
+  hardCullingDistance: 90
 --- !u!1 &3405879971474563542
 GameObject:
   m_ObjectHideFlags: 0
