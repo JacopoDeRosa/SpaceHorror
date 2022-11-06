@@ -62,9 +62,16 @@ public class MoverAI : MonoBehaviour
 
     private IEnumerator MoveTo(Vector3 point)
     {
-            point = FindMovePoint(point);
-            _navMeshAgent.SetDestination(point);
-            yield return WaitForDistance(point, _stoppingDistance);
+        if (FindMovePoint(point, out Vector3 moveTo))
+        {
+            _navMeshAgent.SetDestination(moveTo);
+            yield return WaitForDistance(moveTo, _stoppingDistance);
+        }
+        else
+        {
+            yield return null;
+        }
+          
     }
 
     private IEnumerator WaitForDistance(Vector3 target, float distance)
@@ -78,31 +85,33 @@ public class MoverAI : MonoBehaviour
 
     private IEnumerator SearchPoint(Vector3 point, int iterations, System.Action onPointSearched)
     {
-        point = FindMovePoint(point);
-
         yield return MoveTo(point);
 
+        Debug.Log("Searching point: " + point);
+        
         int currentIterations = 0;
+
         while (currentIterations < iterations)
         {
-            NavMeshHit hit = new NavMeshHit();
-
             Vector2 randomPlane = Random.insideUnitCircle;
 
             Vector3 randomPlane3D = new Vector3(randomPlane.x, 0, randomPlane.y);
 
             Vector3 position = point + (randomPlane3D * _patrolZoneCooldown);
 
-            NavMesh.SamplePosition(position, out hit, _navMeshAgent.height * 2, NavMesh.AllAreas);
-
-            _navMeshAgent.SetDestination(hit.position);
+            if (FindMovePoint(position, out Vector3 moveTo))
+            {
+                _navMeshAgent.SetDestination(moveTo);
+            }
 
             currentIterations++;
 
             yield return new WaitForSeconds(_patrolZoneCooldown);
         }
 
-        if (onPointSearched != null) onPointSearched.Invoke();
+        Debug.Log("Done searching point: " + point);
+
+        onPointSearched?.Invoke();
     }
 
     private IEnumerator FollowTarget()
@@ -121,18 +130,29 @@ public class MoverAI : MonoBehaviour
         return _patrolPoints[Random.Range(0, _patrolPoints.Count)].position;
     }
 
-    private Vector3 FindMovePoint(Vector3 point)
+    private bool FindMovePoint(Vector3 point, out Vector3 moveTo)
     {
         bool canMove = false;
 
         int iterations = 1;
-        NavMeshHit hit = new NavMeshHit();
-        while (canMove == false)
+
+        NavMeshHit hit = new NavMeshHit();  
+
+        while (canMove == false && iterations < 50)
         {
-            canMove = NavMesh.SamplePosition(point, out hit, _navMeshAgent.height * 2 * iterations, NavMesh.AllAreas);
+            NavMesh.SamplePosition(point, out hit, _navMeshAgent.height * 2 * iterations, NavMesh.AllAreas);
+
+            NavMeshPath path = new NavMeshPath();
+
+            _navMeshAgent.CalculatePath(hit.position, path);
+
+            canMove = path.status == NavMeshPathStatus.PathComplete;
+
             iterations++;
         }
-        return hit.position;
+
+        moveTo = canMove ? hit.position : Vector3.zero;
+        return canMove;
     }
 
 }

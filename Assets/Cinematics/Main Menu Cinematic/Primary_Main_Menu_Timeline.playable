@@ -466,27 +466,18 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 21
+        time: 17.916666
         value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 136
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 24
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: material._BaseColor.r
+    attribute: material._UnlitColor.r
     path: 
     classID: 23
     script: {fileID: 0}
@@ -494,27 +485,18 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 21
+        time: 17.916666
         value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 136
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 24
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: material._BaseColor.g
+    attribute: material._UnlitColor.g
     path: 
     classID: 23
     script: {fileID: 0}
@@ -522,27 +504,18 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 21
+        time: 17.916666
         value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 136
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 24
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: material._BaseColor.b
+    attribute: material._UnlitColor.b
     path: 
     classID: 23
     script: {fileID: 0}
@@ -550,27 +523,45 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 21
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 24
+        time: 17.916666
         value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
+        inSlope: 0.5791933
+        outSlope: 0.5791933
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
+        outWeight: 1
+      - serializedVersion: 3
+        time: 19.616667
+        value: 1
+        inSlope: 0.5905585
+        outSlope: 0
+        tangentMode: 1
+        weightedMode: 0
+        inWeight: 0.99170977
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 22.533333
+        value: 1
+        inSlope: 0
+        outSlope: -0.57950073
+        tangentMode: 1
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 1
+      - serializedVersion: 3
+        time: 24.216667
+        value: 0
+        inSlope: -0.60347456
+        outSlope: 0
+        tangentMode: 1
+        weightedMode: 0
+        inWeight: 1
         outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: material._BaseColor.a
+    attribute: material._UnlitColor.a
     path: 
     classID: 23
     script: {fileID: 0}
@@ -584,28 +575,28 @@ AnimationClip:
     genericBindings:
     - serializedVersion: 2
       path: 0
-      attribute: 1941764792
+      attribute: 1932651729
       script: {fileID: 0}
       typeID: 23
       customType: 22
       isPPtrCurve: 0
     - serializedVersion: 2
       path: 0
-      attribute: 1136458424
+      attribute: 1127345361
       script: {fileID: 0}
       typeID: 23
       customType: 22
       isPPtrCurve: 0
     - serializedVersion: 2
       path: 0
-      attribute: 1404893880
+      attribute: 1395780817
       script: {fileID: 0}
       typeID: 23
       customType: 22
       isPPtrCurve: 0
     - serializedVersion: 2
       path: 0
-      attribute: 1673329336
+      attribute: 1664216273
       script: {fileID: 0}
       typeID: 23
       customType: 22
@@ -616,7 +607,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 24
+    m_StopTime: 24.216667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -636,27 +627,18 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 21
+        time: 17.916666
         value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 136
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 24
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: material._BaseColor.r
+    attribute: material._UnlitColor.r
     path: 
     classID: 23
     script: {fileID: 0}
@@ -664,27 +646,18 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 21
+        time: 17.916666
         value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 136
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 24
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: material._BaseColor.g
+    attribute: material._UnlitColor.g
     path: 
     classID: 23
     script: {fileID: 0}
@@ -692,27 +665,18 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 21
+        time: 17.916666
         value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 136
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 24
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: material._BaseColor.b
+    attribute: material._UnlitColor.b
     path: 
     classID: 23
     script: {fileID: 0}
@@ -720,27 +684,45 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 21
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 24
+        time: 17.916666
         value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
+        inSlope: 0.5791933
+        outSlope: 0.5791933
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
+        outWeight: 1
+      - serializedVersion: 3
+        time: 19.616667
+        value: 1
+        inSlope: 0.5905585
+        outSlope: 0
+        tangentMode: 1
+        weightedMode: 0
+        inWeight: 0.99170977
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 22.533333
+        value: 1
+        inSlope: 0
+        outSlope: -0.57950073
+        tangentMode: 1
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 1
+      - serializedVersion: 3
+        time: 24.216667
+        value: 0
+        inSlope: -0.60347456
+        outSlope: 0
+        tangentMode: 1
+        weightedMode: 0
+        inWeight: 1
         outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: material._BaseColor.a
+    attribute: material._UnlitColor.a
     path: 
     classID: 23
     script: {fileID: 0}
@@ -3205,7 +3187,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 13
+        time: 9.833333
         value: 1
         inSlope: 0
         outSlope: 0
@@ -3214,35 +3196,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 16
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: material._BaseColor.r
-    path: 
-    classID: 23
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 13
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 16
+        time: 10.883333
         value: 1
         inSlope: 0
         outSlope: 0
@@ -3253,7 +3207,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: material._BaseColor.g
+    attribute: material._UnlitColor.r
     path: 
     classID: 23
     script: {fileID: 0}
@@ -3261,7 +3215,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 13
+        time: 9.833333
         value: 1
         inSlope: 0
         outSlope: 0
@@ -3270,7 +3224,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 16
+        time: 10.883333
         value: 1
         inSlope: 0
         outSlope: 0
@@ -3281,7 +3235,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: material._BaseColor.b
+    attribute: material._UnlitColor.g
     path: 
     classID: 23
     script: {fileID: 0}
@@ -3289,7 +3243,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 13
+        time: 9.833333
         value: 1
         inSlope: 0
         outSlope: 0
@@ -3298,18 +3252,64 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 16
+        time: 10.883333
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: material._UnlitColor.b
+    path: 
+    classID: 23
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 10.35
         value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
+        inSlope: 0.5625898
+        outSlope: 0.5625898
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
+        outWeight: 0.9706119
+      - serializedVersion: 3
+        time: 12.2
+        value: 1
+        inSlope: 0.52042204
+        outSlope: -0.0025454164
+        tangentMode: 1
+        weightedMode: 0
+        inWeight: 1
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 14.533334
+        value: 1
+        inSlope: 0
+        outSlope: -0.5167167
+        tangentMode: 1
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 1
+      - serializedVersion: 3
+        time: 16.4
+        value: 0
+        inSlope: -0.55150276
+        outSlope: 0
+        tangentMode: 1
+        weightedMode: 0
+        inWeight: 1
         outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: material._BaseColor.a
+    attribute: material._UnlitColor.a
     path: 
     classID: 23
     script: {fileID: 0}
@@ -3323,28 +3323,28 @@ AnimationClip:
     genericBindings:
     - serializedVersion: 2
       path: 0
-      attribute: 1941764792
+      attribute: 1932651729
       script: {fileID: 0}
       typeID: 23
       customType: 22
       isPPtrCurve: 0
     - serializedVersion: 2
       path: 0
-      attribute: 1136458424
+      attribute: 1127345361
       script: {fileID: 0}
       typeID: 23
       customType: 22
       isPPtrCurve: 0
     - serializedVersion: 2
       path: 0
-      attribute: 1404893880
+      attribute: 1395780817
       script: {fileID: 0}
       typeID: 23
       customType: 22
       isPPtrCurve: 0
     - serializedVersion: 2
       path: 0
-      attribute: 1673329336
+      attribute: 1664216273
       script: {fileID: 0}
       typeID: 23
       customType: 22
@@ -3355,7 +3355,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 16
+    m_StopTime: 16.4
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -3375,7 +3375,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 13
+        time: 9.833333
         value: 1
         inSlope: 0
         outSlope: 0
@@ -3384,35 +3384,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 16
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: material._BaseColor.r
-    path: 
-    classID: 23
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 13
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 16
+        time: 10.883333
         value: 1
         inSlope: 0
         outSlope: 0
@@ -3423,7 +3395,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: material._BaseColor.g
+    attribute: material._UnlitColor.r
     path: 
     classID: 23
     script: {fileID: 0}
@@ -3431,7 +3403,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 13
+        time: 9.833333
         value: 1
         inSlope: 0
         outSlope: 0
@@ -3440,7 +3412,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 16
+        time: 10.883333
         value: 1
         inSlope: 0
         outSlope: 0
@@ -3451,7 +3423,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: material._BaseColor.b
+    attribute: material._UnlitColor.g
     path: 
     classID: 23
     script: {fileID: 0}
@@ -3459,7 +3431,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 13
+        time: 9.833333
         value: 1
         inSlope: 0
         outSlope: 0
@@ -3468,18 +3440,64 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 16
+        time: 10.883333
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: material._UnlitColor.b
+    path: 
+    classID: 23
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 10.35
         value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
+        inSlope: 0.5625898
+        outSlope: 0.5625898
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
+        outWeight: 0.9706119
+      - serializedVersion: 3
+        time: 12.2
+        value: 1
+        inSlope: 0.52042204
+        outSlope: -0.0025454164
+        tangentMode: 1
+        weightedMode: 0
+        inWeight: 1
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 14.533334
+        value: 1
+        inSlope: 0
+        outSlope: -0.5167167
+        tangentMode: 1
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 1
+      - serializedVersion: 3
+        time: 16.4
+        value: 0
+        inSlope: -0.55150276
+        outSlope: 0
+        tangentMode: 1
+        weightedMode: 0
+        inWeight: 1
         outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: material._BaseColor.a
+    attribute: material._UnlitColor.a
     path: 
     classID: 23
     script: {fileID: 0}
