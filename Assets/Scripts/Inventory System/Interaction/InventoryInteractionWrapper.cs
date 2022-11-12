@@ -8,6 +8,7 @@ namespace SpaceHorror.InventorySystem.UI
     public class InventoryInteractionWrapper : MonoBehaviour, IInteractable
     {
         [SerializeField] private Inventory _targetInventory;
+        [SerializeField] private string _prompt = "Open";
 
         public void DeSelect()
         {
@@ -30,7 +31,7 @@ namespace SpaceHorror.InventorySystem.UI
 
         public string GetInteractionName()
         {
-            return "Open " + _targetInventory.Name;
+            return _prompt + " " + _targetInventory.Name;
         }
     }
 }
